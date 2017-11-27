@@ -266,6 +266,7 @@
     <Content Include="Views\Teacher\FixedRollStartCallUI.cshtml" />
     <Content Include="Views\Teacher\GroupInfoUI2.cshtml" />
     <Content Include="Views\Teacher\RollCallListUI.cshtml" />
+    <Content Include="Views\Student\StudentRollCallUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

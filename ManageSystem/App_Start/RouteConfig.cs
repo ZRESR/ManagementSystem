@@ -16,7 +16,7 @@ namespace ManageSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Student", action = "FixedRollStartCallUI", id = UrlParameter.Optional }
+                defaults: new { controller = "Student", action = "ClassManage", id = UrlParameter.Optional }
                 );
         }
     }
