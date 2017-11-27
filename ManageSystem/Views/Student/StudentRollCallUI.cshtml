@@ -17,14 +17,7 @@
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/StudentRollCallUI.css")" rel="stylesheet" type="text/css" />
-    <script>
-        $(document).ready(function () {
-            $(".blueBigBtn").click(function () {
-                $(".blueBigBtn").hide();
-                $(".successCall").show();
-            });
-        });
-    </script>
+
 </head>
 <body>
     <!--设置左上角的blueBoardIcon-->
@@ -56,14 +49,18 @@
     </div>
 
 
+    <!--签到成功-
     <div class="successCall">
-          <img src="~/images/clock.png" class='courseInfoIcon'/>
+          <img src="闹钟.png" class='courseInfoIcon'/>
           <strong>签到成功</strong>
      </div>
+    -->
+    <!--迟到签到
     <div class="lateCall">
-          <img src="~/images/clock.png" class='courseInfoIcon'/>
+          <img src="闹钟.png" class='courseInfoIcon'/>
           <strong>迟到签到成功</strong>
      </div>
+    -->
     <!--签到按钮-->
     <div>
         <button type="button" class="blueBigBtn">
