@@ -65,20 +65,56 @@ body {
     width:100%;
     background-color:white;
 }
-/*课程图标*/
-.courseName{
+/*进入课程按钮*/
+.intoCourse{
     position:relative;
     background-color:rgba(66, 204, 255, 1);
-    color:white;
+    height:90px;
     width:96%;
-    padding:2%;
-    font-weight:normal;
-    font-size:50px;
-    font-family:'Microsoft YaHei';
     border-radius: 20px;
     margin-left: 2%;
     margin-top: 2%;
     float: left;
     border-style: none;
+}
+/*课程名字*/
+.courseName{
+    position:relative;
+    background-color:rgba(66, 204, 255, 0);
+    color:white;
+    text-align:left;
+    padding:6%;
+    height:100%;
+    width:50%;
+    font-weight:normal;
+    font-size:30px;
+    font-family:'Microsoft YaHei';
+    border-radius: 20px;
+    float: left;
+    border-style: none;
+}
+/*课程老师名字*/
+.courseTeacherName{
+    position:relative;
+    background-color:rgba(66, 204, 255, 0);
+    color:gray;
+    text-align:left;
+    padding:8%;
+    height:100%;
+    width:50%;
+    font-weight:normal;
+    font-size:18px;
+    font-family:'Microsoft YaHei';
+    border-radius: 20px;
+    float: left;
+    border-style: none;
+}
+/*分割线*/
+.grayLine{
+    height:100%;
+    width:2px;
+    position:relative;
+    background-color:lightgray;
+    left:50%;
 }
 

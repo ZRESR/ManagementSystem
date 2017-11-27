@@ -33,5 +33,9 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult StudnetMainUI()
+        {
+            return View();
+        }
     }
 }
