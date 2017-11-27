@@ -24,11 +24,12 @@ body {
 
 /* 班级名的位置、字体等样式 */
 .classNameDiv {
-    margin-top: 6.7%;
     width: 40%;
     height: 7.5%;
     font-size: 40px;
-    float: right;
+    float: left;
+    margin-top: 6.7%;
+    margin-left: 7%
 }
 
 /* 学生总数的位置、字体等样式*/
@@ -36,8 +37,8 @@ body {
     font-size: 24px;
     width: 46.6%;
     height: 6%;
-    float: right;
-    margin-right: 4%;
+    float: left;
+    margin-left: 7%;
     padding-top: 1.5%;
 }
 
@@ -62,7 +63,7 @@ body {
     color: black;
     margin-right: 10%;
     margin-top: 11.2%;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /*居中已签到学生签名的icon*/
@@ -80,7 +81,7 @@ body {
     float: left;
     color: black;
     margin-top: 10.5%;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /*居左已签到学生签名的icon*/
@@ -94,14 +95,15 @@ body {
 .blueSmallBtn {
     background-color: rgba(102, 204, 255, 1);
     color: white;
-    width: 30.667%;
+    width: 30%;
     font-size: 14px;
     border-radius: 20px;
-    margin-top: -7.1%;
-    margin-left: 30.667%;
+    margin-top: -7.5%;
+    margin-left: 30%;
     margin-right: 9.3%;
     float: right;
     border-style: none;
+    padding: 1%
 }
 
 /*蓝色的大button*/
@@ -115,19 +117,7 @@ body {
     margin-top: 11.2%;
     float: left;
     border-style: none;
-}
-
-/*红色的大button*/
-.redBigBtn {
-    background-color: #FA8888;
-    color: white;
-    font-size: 24px;
-    width: 38.67%;
-    border-radius: 20px;
-    margin-left: 30.67%;
-    margin-top: 11.2%;
-    float: left;
-    border-style: none;
+    padding: 1%
 }
 
 /*绿色的大button*/
@@ -141,6 +131,7 @@ body {
     margin-top: 11.2%;
     float: left;
     border-style: none;
+    padding: 1%
 }
 
 /*灰色的大button*/
@@ -154,14 +145,15 @@ body {
     margin-top: 11.2%;
     float: left;
     border-style: none;
+    padding: 1%
 }
 
 /*灰色的大button下的灰色提示信息字样*/
 .noGroup {
     color: #ccc;
-    font-size: 14px;
+    font-size: 16px;
     float: left;
-    margin-top: 1%;
-    margin-left: 21.3%;
+    margin-top: 2%;
+    margin-left: 21%;
     border-style: none;
 }
