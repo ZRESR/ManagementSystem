@@ -213,6 +213,7 @@
     <Content Include="Content\FixedRollStartCallUI.css" />
     <Content Include="Content\GroupInfoUI2.css" />
     <Content Include="Content\RollCallListUI.css" />
+    <Content Include="Content\StudentRollCallUI.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -264,6 +265,7 @@
     <Content Include="Views\Student\ClassManage.cshtml" />
     <Content Include="Views\Student\FixedRollStartCallUI.cshtml" />
     <Content Include="Views\Teacher\GroupInfoUI2.cshtml" />
+    <Content Include="Views\Teacher\RollCallListUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

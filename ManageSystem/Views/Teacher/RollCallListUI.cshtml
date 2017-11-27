@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>RollCallListUI</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/RollCallListUI.css")" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <!--设置左上角的蓝色板-->
+    <div class="blueBoardDiv">
+        <img src="~/images/blueboard.png" class='blueBoardIcon' />
+    </div>
+
+
+    <!--班级1 的字样-->
+    <div class='classNameDiv'>
+        班级1
+    </div>
+
+    <!--学生总数：40 的字样-->
+    <div class='studentSumDiv'>
+        签到人数：9/40
+    </div>
+
+
+    <!--学生名单上面那个蓝色的bar-->
+    <div class='studentListBarDiv'>
+        已签到人员
+    </div>
+
+    <!--学生块-->
+    <div class="studentBox">
+        <div class='studentBlock'>
+            <img src="~/images/user.png" class='userIcon' />
+            <span class="studentName">杨xx</span>
+        </div>
+
+        <div class='studentBlock'>
+            <img src="~/images/user.png" class='userIcon' />
+            <span class="studentName">周xx</span>
+        </div>
+
+        <div class='studentBlock'>
+            <img src="~/images/user.png" class='userIcon' />
+            <span class="studentName">孙xx</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -13,18 +13,6 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult FixedRollStartCallUI()
-        {
-            return View();
-        }
-        public ActionResult GroupInfoUI2()
-        {
-            return View();
-        }
-        public ActionResult RollCallListUI()
-        {
-            return View();
-        }
         public ActionResult StudentRollCallUI()
         {
             return View();

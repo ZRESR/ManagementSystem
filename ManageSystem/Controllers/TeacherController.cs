@@ -13,5 +13,13 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult RollCallListUI()
+        {
+            return View();
+        }
+        public ActionResult FixedRollStartCallUI()
+        {
+            return View();
+        }
     }
 }
