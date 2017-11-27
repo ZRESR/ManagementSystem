@@ -9,6 +9,10 @@ namespace ManageSystem.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher
+        public ActionResult TeacherMainUI()
+        {
+            return View();
+        }
         public ActionResult GroupInfoUI2()
         {
             return View();

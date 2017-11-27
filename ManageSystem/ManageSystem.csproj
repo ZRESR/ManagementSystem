@@ -210,23 +210,32 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChooseCharacter.css" />
     <Content Include="Content\ClassManage.css" />
+    <Content Include="Content\CourseUI.css" />
     <Content Include="Content\FixedRollStartCallUI.css" />
     <Content Include="Content\GroupInfoUI2.css" />
     <Content Include="Content\RandomGroupChooseTopicUI2.css" />
     <Content Include="Content\RollCallListUI.css" />
     <Content Include="Content\StudentRollCallUI.css" />
+    <Content Include="Content\TeacherMainUI.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\add.png" />
+    <Content Include="images\bg.jpg" />
     <Content Include="images\blueboard.png" />
+    <Content Include="images\bulb.png" />
     <Content Include="images\calendar.png" />
     <Content Include="images\class.png" />
     <Content Include="images\clip.png" />
     <Content Include="images\clock.png" />
+    <Content Include="images\email.png" />
+    <Content Include="images\file.png" />
+    <Content Include="images\headimg.png" />
     <Content Include="images\home.png" />
+    <Content Include="images\house.png" />
     <Content Include="images\letter.png" />
     <Content Include="images\redcross.png" />
     <Content Include="images\site.png" />
@@ -275,6 +284,9 @@
     <Content Include="Views\Student\RandomGroupChooseTopicUI2.cshtml" />
     <Content Include="Views\Student\CourseUI.cshtml" />
     <Content Include="Views\Home\ChooseCharacter.cshtml" />
+    <Content Include="Views\Student\CourseInfoUI.cshtml" />
+    <Content Include="Views\Student\Seminar.cshtml" />
+    <Content Include="Views\Teacher\TeacherMainUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

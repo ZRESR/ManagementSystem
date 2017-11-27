@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>TeacherMainUI</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/TeacherMainUI.css")" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    
+    <div class="topDiv">
+        <img src="~/images/user.png" class="avatar" />
+        <img src="~/images/sunscholl.png" class="sunschoolimage" />
+        <p class="nameLine">姓名 ：邱明</p>
+        <p class="teacherNumberLine">教工号 ：24321432534</p>
+    </div>
+    <div class="courseListDiv">
+        <button type="button"class="courseName">J2EE</button>
+        <button type="button"class="courseName">操作系统</button>
+        <button type="button"class="courseName">OOAD</button>
+        <button type="button"class="courseName">数据仓库</button>
+    </div>
+</body>
+</html>

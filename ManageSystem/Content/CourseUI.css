@@ -1,0 +1,146 @@
+/* CSS Document */
+.body{
+    width: 100%;
+    margin: 0;
+}
+.headTitle
+{
+    display: inline-block;
+	width:100%;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+	background-color: #66CCFF;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+.boxCInfo{
+    width: 90%;
+    height: auto;
+    margin: 5%;
+}
+.iconC{
+    width: 10%;
+    height: auto;
+    margin-left: 10%;
+}
+.content{
+    margin-top:3%;
+    margin-left: 20%;
+}
+.fontSeminarTitle
+{
+	font-size: 22px;
+    float:left;
+	color: #FFFFFF;
+	height: 10px;
+	margin-left: 7%;
+	margin-top: 17.9%;
+}
+.fontContent
+{
+	font-size: 18px;
+	color: #FFFFFF;
+	margin-left: 40%;
+}
+
+.fontInfo{
+	font-size: 18px;
+}
+
+.fontDes{
+	font-size: 18px;
+}
+.box1
+{
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	width: 40%;
+	padding-bottom: 40%;
+	border-radius: 15px;
+	
+}
+
+.box2
+{
+	position:relative;
+	float: right;
+	margin-right: 5%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	width: 40%;
+	padding-bottom: 85%;
+	border-radius: 15px;
+}
+.blueBoxSeminar{
+	width: 90%;
+	background-color:#66CCFF;
+    margin-top: 5%;
+    margin-left: 4%;
+    border-radius: 20px;
+	padding: 1%;
+}
+.greyBoxSeminar{
+	width: 90%;
+	background-color:#CCCCCC;
+    margin-top: 5%;
+    margin-left: 4%;
+    border-radius: 20px;
+	padding: 1%;
+	
+}
+.box5{
+	left: 0px;
+	position:absolute;
+	width: 100%;
+	height: 150px;
+}
+.box6{
+	position:absolute;
+	left: 0px;
+	width: 100%;
+	height: 11%;
+	background-color: #66CCFF;
+}
+/* box7 省份、州市、学校的选择div*/
+.box7{
+	position:absolute;
+	background-color: #ffffff;
+	left: 0px;
+	width: 100%;
+	height: 50%;
+	margin-top: 15%;
+}
+.button1{
+	background-color: #66CCFF;
+	font-size: 1vw;
+	position: relative;
+	border:none;
+	text-align: center;
+	display: inline-block;
+	padding: 15px 32px;
+	height: 100%;
+	width: 32%;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.1);
+}
+.box8{
+	left: 0px;
+	width: 100%;
+	height: 50px;
+}
+/* button1 省份、州市、学校 的按钮*/
+.button2{
+	background-color: #ffffff;
+	color:#000000;
+	font-size: 3vw;
+	border:none;
+	display: inline-block;
+	padding: 13px;
+	margin-top: 1%;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.1);
+	width:100%;
+}

@@ -21,5 +21,17 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult CourseUI()
+        {
+            return View();
+        }
+        public ActionResult CourseInfoUI()
+        {
+            return View();
+        }
+        public ActionResult Seminar()
+        {
+            return View();
+        }
     }
 }

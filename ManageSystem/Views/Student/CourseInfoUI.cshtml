@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>CourseInfoUI</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/CourseUI.css")" rel="stylesheet" type="text/css" />
+</head>
+<body class="body">
+    <div class="headTitle">
+        <span>OOAD</span>
+    </div>
+    <div class="boxCInfo">
+        <img src="~/images/headimg.png" class="iconC"/>
+        <span class="fontInfo">老师：邱明</span>
+    </div>
+    <div class="boxCInfo">
+        <img src="~/images/email.png" class="iconC" />
+        <span class="fontInfo">邮箱：qiuming@gmail.com</span>
+    </div>
+    <div class="boxCInfo">
+        <img src="~/images/house.png" class="iconC" />
+        <span class="fontInfo">班级</span>
+        <div class="btn-group" style="font-size:18px;">
+            <button type="button" class="btn btn-default dropdown-toggle btn-xs btn-group"
+                    data-toggle="dropdown" style="margin-left: 15%;float:left;">
+                周三56节 单周
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">周三56节 单周</a></li>
+                <li><a href="#">周三56节 单周</a></li>
+                <li><a href="#">周三56节 单周</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="boxCInfo">
+        <img src="~/images/file.png" class="iconC" />
+        <span class="fontInfo">简介</span>
+        <div class="content">
+            <span class="fontDes">地点: 学生公寓405</span>     
+        </div>
+        <div class="content">
+            <span class="fontDes">班级人数:31人</span>
+        </div>
+    </div>
+</body>
+</html>
+
