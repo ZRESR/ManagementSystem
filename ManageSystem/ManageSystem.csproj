@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +230,7 @@
     <Content Include="images\letter.png" />
     <Content Include="images\redcross.png" />
     <Content Include="images\site.png" />
+    <Content Include="images\sunscholl.png" />
     <Content Include="images\teacher.png" />
     <Content Include="images\user.png" />
     <Content Include="images\users.png" />
@@ -243,6 +245,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -270,6 +273,8 @@
     <Content Include="Views\Teacher\RollCallListUI.cshtml" />
     <Content Include="Views\Student\StudentRollCallUI.cshtml" />
     <Content Include="Views\Student\RandomGroupChooseTopicUI2.cshtml" />
+    <Content Include="Views\Student\CourseUI.cshtml" />
+    <Content Include="Views\Home\ChooseCharacter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
