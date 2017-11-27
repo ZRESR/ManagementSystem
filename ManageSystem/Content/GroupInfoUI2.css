@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*背景色*/
 body {
     background: rgba(102, 204, 255, 0.5);
@@ -11,34 +11,33 @@ body {
 /* 左上角的users图标和文字的容器*/
 
 .blueUsersDiv {
-    width: 40%;
+    width: 60%;
     height: 10%;
     float: left;
-    margin-top: 5%;
-    margin-left: 10%;
-
-    font-size: 14px;
+    margin-left: 5%;
+    font-size: 22px;
 }
-
+.teamText{
+}
 /* 左上角的蓝色users图标大小*/
 
 .blueUsersIcon {
     width: 40%;
     height: 100%;
-    margin-right: 10%;
-    margin-top: 50%;
+    margin-right: 5%;
+    margin-top: 10%;
 }
 
 /*黑色线的样式*/
 .hrDiv {
     height: 1.5%;
-    width: 80%;
+    width: 90%;
     margin: auto;
     border: 1px solid black;
     background-color: black;
     color: black;
     float: right;
-    margin-right: 10%;
+    margin-right: 5%;
     margin-top: 2.5%;
     margin-bottom: 5%;
 }
@@ -50,11 +49,11 @@ body {
     width: 90%;
     height: 5%;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     color: black;
     margin-right: 5%;
-    margin-top: 2%;
-    padding-bottom: 1%;
+    margin-top: 1%;
+    padding: 2%;
 }
 
 /*队伍和选题的文字*/
@@ -63,31 +62,26 @@ body {
     margin-right: 25%;
 }
 
-/*左边的学生块*/
-.studentLeftBlock {
+.studentBox{
+    width:90%;
+    margin:auto;
+}
+/*学生块*/
+.studentBlock {
     background-color: #fff;
-    width: 45%;
+    width: 50%;
+    height: 7.5%;
+    font-size: 18px;
     float: left;
     border-radius: 10px;
+    padding: 1%;
     color: black;
-    height: 7.5%;
-    margin-left: 5%;
-}
-
-/*右边的学生块*/
-.studentRightBlock {
-    background-color: #fff;
-    width: 45%;
-    float: right;
-    border-radius: 10px;
-    color: black;
-    height: 7.5%;
-    margin-right: 5%;
 }
 
 /*学生前面的icon*/
 .userIcon {
     float: left;
+    border-radius: 10px;
     width: 25%;
     height: 100%;
 }
@@ -110,9 +104,9 @@ body {
 
 /*增加学生前面的加号*/
 .addIcon {
-    float: right;
-    width: 25%;
+    width: 24%;
     height: 100%;
+    margin-left: 36%;
 }
 
 /*未签到学生名单上面那个蓝色的bar,相比普通的增加了上方间距*/
@@ -122,9 +116,9 @@ body {
     width: 90%;
     height: 5%;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     color: black;
     margin-right: 5%;
-    margin-top: 10%;
-    padding-bottom: 1%;
+    margin-top: 5%;
+    padding: 2%;
 }

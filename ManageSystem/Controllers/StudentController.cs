@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class ClassController : Controller
+    public class StudentController : Controller
     {
         // GET: Class
         public ActionResult ClassManage()
