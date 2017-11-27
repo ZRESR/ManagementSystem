@@ -263,7 +263,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Student\ClassManage.cshtml" />
-    <Content Include="Views\Student\FixedRollStartCallUI.cshtml" />
+    <Content Include="Views\Teacher\FixedRollStartCallUI.cshtml" />
     <Content Include="Views\Teacher\GroupInfoUI2.cshtml" />
     <Content Include="Views\Teacher\RollCallListUI.cshtml" />
   </ItemGroup>
