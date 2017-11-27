@@ -19,6 +19,7 @@ namespace ManageSystem
                 defaults: new { controller = "Student", action = "ClassManage", id = UrlParameter.Optional }
                 );
             routes.MapRoute("StudentRollCallUI", "Student/StudentRollCallUI");
+            routes.MapRoute("StudentMainUI", "Student/StudentMainUI");
         }
     }
 }
