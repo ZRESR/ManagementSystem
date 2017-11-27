@@ -212,6 +212,7 @@
     <Content Include="Content\ClassManage.css" />
     <Content Include="Content\FixedRollStartCallUI.css" />
     <Content Include="Content\GroupInfoUI2.css" />
+    <Content Include="Content\RandomGroupChooseTopicUI2.css" />
     <Content Include="Content\RollCallListUI.css" />
     <Content Include="Content\StudentRollCallUI.css" />
     <Content Include="favicon.ico" />
@@ -224,6 +225,7 @@
     <Content Include="images\class.png" />
     <Content Include="images\clip.png" />
     <Content Include="images\clock.png" />
+    <Content Include="images\home.png" />
     <Content Include="images\letter.png" />
     <Content Include="images\redcross.png" />
     <Content Include="images\site.png" />
@@ -267,6 +269,7 @@
     <Content Include="Views\Teacher\GroupInfoUI2.cshtml" />
     <Content Include="Views\Teacher\RollCallListUI.cshtml" />
     <Content Include="Views\Student\StudentRollCallUI.cshtml" />
+    <Content Include="Views\Student\RandomGroupChooseTopicUI2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

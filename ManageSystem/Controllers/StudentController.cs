@@ -17,5 +17,9 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult RandomGroupChooseTopicUI2()
+        {
+            return View();
+        }
     }
 }

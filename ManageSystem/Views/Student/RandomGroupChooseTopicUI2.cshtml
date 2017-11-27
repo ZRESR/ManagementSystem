@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>RandomGroupChooseTopicUI2</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/RandomGroupChooseTopicUI2.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".nineIcon").click(function () {
+                $(this).parent().parent().children(".topicDescribeDiv").toggle();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!--设置左上角的usersIcon-->
+    <div class="blueUsersDiv">
+        <img src="~/images/users.png" class='blueUsersIcon' />
+        <strong>请为您的队伍选题</strong>
+    </div>
+
+    <!--细线，hr不好设置css，用一个高度很小的div来代替-->
+    <div class="hrDiv">
+    </div>
+
+    <!--当选题未选完时框是蓝色的-->
+    <div>
+        <div class="blueTopicDiv">
+            <span class="topic">话题A</span>
+            <div class="hrVertical"> </div>
+            <span class="topicName">领域模型设计</span>
+            <!--剩余选题数量大于等于2时-->
+            <span class="leftNumWhite">剩余 ： 2/5</span>
+            <img src='~/images/home.png' class="nineIcon"></img>
+        </div>
+
+        <!--当点击home时出现topic的简介-->
+        <div class="topicDescribeDiv">
+            <span class="topicDescribeTitle">
+                领域模型设计
+            </span>
+            <span class="topicDescribeText">
+                领域模型分析，包括领域模型的Package Diagrams
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="blueTopicDiv">
+            <span class="topic">话题B</span>
+            <div class="hrVertical"> </div>
+            <span class="topicName">模块划分</span>
+            <!--剩余选题为1时会变红-->
+            <span class="leftNumRed">剩余 ： 1/5</span>
+            <img src='~/images/home.png' class="nineIcon"></img>
+        </div>
+
+        <div class="topicDescribeDiv">
+            <span class="topicDescribeTitle">
+                模块划分
+            </span>
+            <span class="topicDescribeText">
+                模块划分，Package Diagrams
+            </span>
+        </div>
+    </div>
+
+    <!--无剩余名额时选题框为灰色-->
+    <div>
+        <div class="greyTopicDiv">
+            <span class="topic">话题C</span>
+            <div class="hrVertical"> </div>
+            <span class="topicName">界面设计</span>
+            <span class="leftNumWhite">剩余 ： 0/5</span>
+            <img src='~/images/home.png' class="nineIcon"></img>
+        </div>
+        <div class="topicDescribeDiv">
+            <span class="topicDescribeTitle">
+                界面设计
+            </span>
+            <span class="topicDescribeText">
+                界面设计，界面原型设计
+            </span>
+        </div>
+    </div>
+</body>
+</html>
