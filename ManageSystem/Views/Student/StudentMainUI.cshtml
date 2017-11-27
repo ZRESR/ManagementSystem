@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>StudentMainUI</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/StudentMainUI.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div class="topDiv">
+        <img src="/images/sunscholl.png" class="sunschoolimage" />
+        <img src="/images/user.png" class="avatar" />
+        <p class="nameLine">姓名 ：韦小宝</p>
+        <p class="teacherNumberLine">教工号 ：24320162202991</p>
+        <button type="button" class="checkInfo"/>
+    </div>
+    <div class="courseListDiv">
+        <button type="button" class="intoCourse">
+            <div class="courseName">J2EE</div>
+            <div class="courseTeacherName">老师：邱明</div>
+            <div class="grayLine"></div>
+        </button>
+        <button type="button" class="intoCourse">
+            <div class="courseName">OOAD</div>
+            <div class="courseTeacherName">老师：邱明</div>
+            <div class="grayLine"></div>
+        </button>
+        <button type="button" class="intoCourse">
+            <div class="courseName">操作系统</div>
+            <div class="courseTeacherName">老师：吴清强</div>
+            <div class="grayLine"></div>
+        </button>
+        <button type="button" class="intoCourse">
+            <div class="courseName">数据仓库</div>
+            <div class="courseTeacherName">老师：王鸿吉</div>
+            <div class="grayLine"></div>
+        </button>
+       
+
+    </div>
+</body>
+</html>
