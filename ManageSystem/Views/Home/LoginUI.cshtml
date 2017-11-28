@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>LoginUI</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/LoginUI.css")" rel="stylesheet" type="text/css" />
+</head>
+<body class="body">
+    <div class="topBoardView">
+        <img src="~/images/sunscholl.png" class="topIcon" />
+        <img src="~/images/light.png" class="topLight" />
+        <p class="topTips">请先登录</p>
+        <img src="~/images/line.png" class="topLine" />
+    </div>
+    <div class="mainView">
+        <p class="phoneID">手机号：</p>
+        <input class="inputPhoneID" />
+        <p class="password">密码：</p>
+        <input type="password" class="inputPassword" />
+        <button type="button" class="confirmButton">登录</button>
+        <p class="tip1">还没有注册账号？</p>
+        <a href="" class="tip2"><u>请先注册</u></a>
+    </div>
+</body>
+</html>
