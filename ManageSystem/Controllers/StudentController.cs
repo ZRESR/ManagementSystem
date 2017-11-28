@@ -33,7 +33,11 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult StudnetMainUI()
+        public ActionResult StudentMainUI()
+        {
+            return View();
+        }
+        public ActionResult StudentBindingUI()
         {
             return View();
         }

@@ -51,29 +51,36 @@
 .fontDes{
 	font-size: 18px;
 }
+.fontSeminar{
+    font-size: 18px;
+}
+.fontItem{
+    color:white;
+    font-size:24px;
+}
 .box1
 {
-	position: relative;
 	float: left;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin: 3%;
+    margin-bottom: 0;
 	background-color:#66CCFF;
-	margin-top: 5%;
-	width: 40%;
-	padding-bottom: 40%;
+	width: 45%;
 	border-radius: 15px;
-	
+    text-align: center;
+	padding-top: 18%;
+    padding-bottom: 18%;
 }
 
 .box2
 {
-	position:relative;
 	float: right;
-	margin-right: 5%;
+	margin: 3%;
+    margin-left: 0;
+    width: 45%;
 	background-color:#66CCFF;
-	margin-top: 5%;
-	width: 40%;
-	padding-bottom: 85%;
+    text-align: center;
+    padding-top: 42%;
+	padding-bottom: 43%;
 	border-radius: 15px;
 }
 .blueBoxSeminar{
@@ -93,28 +100,6 @@
 	padding: 1%;
 	
 }
-.box5{
-	left: 0px;
-	position:absolute;
-	width: 100%;
-	height: 150px;
-}
-.box6{
-	position:absolute;
-	left: 0px;
-	width: 100%;
-	height: 11%;
-	background-color: #66CCFF;
-}
-/* box7 省份、州市、学校的选择div*/
-.box7{
-	position:absolute;
-	background-color: #ffffff;
-	left: 0px;
-	width: 100%;
-	height: 50%;
-	margin-top: 15%;
-}
 .button1{
 	background-color: #66CCFF;
 	font-size: 1vw;
@@ -126,21 +111,4 @@
 	height: 100%;
 	width: 32%;
 	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.1);
-}
-.box8{
-	left: 0px;
-	width: 100%;
-	height: 50px;
-}
-/* button1 省份、州市、学校 的按钮*/
-.button2{
-	background-color: #ffffff;
-	color:#000000;
-	font-size: 3vw;
-	border:none;
-	display: inline-block;
-	padding: 13px;
-	margin-top: 1%;
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.1);
-	width:100%;
 }

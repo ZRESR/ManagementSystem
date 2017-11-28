@@ -25,5 +25,9 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult TeacherBindingUI()
+        {
+            return View();
+        }
     }
 }

@@ -217,6 +217,7 @@
     <Content Include="Content\GroupInfoUI2.css" />
     <Content Include="Content\RandomGroupChooseTopicUI2.css" />
     <Content Include="Content\RollCallListUI.css" />
+    <Content Include="Content\StudentMainUI.css" />
     <Content Include="Content\StudentRollCallUI.css" />
     <Content Include="Content\TeacherMainUI.css" />
     <Content Include="favicon.ico" />
@@ -287,6 +288,7 @@
     <Content Include="Views\Student\CourseInfoUI.cshtml" />
     <Content Include="Views\Student\Seminar.cshtml" />
     <Content Include="Views\Teacher\TeacherMainUI.cshtml" />
+    <Content Include="Views\Student\StudentMainUI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
