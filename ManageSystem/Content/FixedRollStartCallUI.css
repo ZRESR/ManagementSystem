@@ -5,6 +5,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+	font-family:"微软雅黑";
 }
 
 /* 左上角的蓝色板的容器*/
@@ -57,18 +58,16 @@ body {
 /*居中的已签到学生的文字和容器*/
 .studentNum {
     height: 3.75%;
-    width: 80%;
-    margin: auto;
+    width: 90%;
     float: left;
     color: black;
-    margin-right: 10%;
+    margin-left: 22%;
     margin-top: 11.2%;
     font-size: 16px;
 }
 
 /*居中已签到学生签名的icon*/
 .usersIcon {
-
     width: 10%;
     height: 100%;
     margin-left: 17.3%;

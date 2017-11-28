@@ -29,6 +29,8 @@
                     $(".noGroup").remove();
                     $("#checkStudent").toggleClass("blueBigBtn");
                     $("#checkGroup").css("background-color", "#66ccff").removeAttr("disabled");
+                    $("#stuNum").toggleClass("studentNum");
+                    $("#usersIcon").toggleClass("usersIcon");
                 }
             });
         });
@@ -63,8 +65,8 @@
       </div>
     -->
     <!--已签到的学生+icon+签到名单，表示当签到开始后结束前的样子-->
-    <div class="studentNum2">
-        <img src="~/images/users.png" class="usersIcon2" />
+    <div id="stuNum" class="studentNum2">
+        <img id="usersIcon" src="~/images/users.png" class="usersIcon2" />
         <span>已签到学生: 0/40</span>
     </div>
     <button id="checkStudent" type="button" class="blueSmallBtn" onclick="javascript: window.location = '/Teacher/RollCallListUI'">
