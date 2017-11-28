@@ -13,5 +13,9 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult LoginUI()
+        {
+            return View();
+        }
     }
 }
