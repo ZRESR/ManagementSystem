@@ -33,6 +33,14 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult Score()
+        {
+            return View();
+        }
+        public ActionResult GroupList()
+        {
+            return View();
+        }
         public ActionResult StudentMainUI()
         {
             return View();

@@ -20,6 +20,7 @@ namespace ManageSystem
                 );
             routes.MapRoute("StudentRollCallUI", "Student/StudentRollCallUI");
             routes.MapRoute("StudentMainUI", "Student/StudentMainUI");
+            routes.MapRoute("Score", "Student/Score");
         }
     }
 }
