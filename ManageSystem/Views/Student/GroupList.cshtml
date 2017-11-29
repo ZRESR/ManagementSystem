@@ -22,11 +22,13 @@
                 $(".btnquit").show();
                 $(".btnleader").hide();
                 $(".middlegreyword").hide();
+                $(".column3").show();
             });
             $(".btnquit").click(function () {
                 $(".btnquit").hide();
                 $(".btnleader").show();
                 $(".middlegreyword").show();
+                $(".column3").hide();
             });
         });
     </script>
@@ -48,7 +50,7 @@
         <div class="panel-body">
             <div class="column1"><img src="~/images/user.png"/></div>
             <div class="column2">name<br />number</div>
-            <div class="column3 rightblueword">队长</div>
+            <div class="column3 rightblueword" style="display: none;">队长</div>
         </div>
     </div>
     <div class="block">

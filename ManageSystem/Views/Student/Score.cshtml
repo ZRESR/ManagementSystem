@@ -24,6 +24,10 @@
                 $(this).children().toggle();
                 $(this).prevAll().children().toggle();
             });
+            $(".btnsubmit").click(function () {
+                $(this).remove();
+                $(".heart").unbind("click");
+            });
         });
     </script>
 </head>

@@ -16,6 +16,13 @@
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/ClassManage.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".class").click(function () {
+                $(window).attr("location", '/Student/Seminar');
+            });
+        });
+    </script>
 </head>
 <body class="body">
     <!--设置蓝色上方-->
