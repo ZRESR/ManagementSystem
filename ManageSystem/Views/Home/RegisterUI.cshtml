@@ -14,14 +14,19 @@
                                    maximum-scale=1.0,
                                    user-scalable=no">
     <title>RegisterUI</title>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
     <link href="@Url.Content("~/Content/RegisterUI.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".confirmButton").click(function () {
+                $(window).attr("location", '/Home/ChooseCharacter');
+            });
+        });
+    </script>
 </head>
 <body class="body">
     <div class="topBoardView">
-        <img src="~/images/sunscholl.png" class="topIcon" />
+        <img src="~/images/bg.png" class="topIcon" />
         <img src="~/images/light.png" class="topLight" />
         <p class="topTips">注册</p>
         <img src="~/images/line.png" class="topLine" />

@@ -25,7 +25,11 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
-        public ActionResult FixedRollStartCallUI()
+        public ActionResult FixedRollCallUI()
+        {
+            return View();
+        }
+        public ActionResult RandomRollCallUI()
         {
             return View();
         }

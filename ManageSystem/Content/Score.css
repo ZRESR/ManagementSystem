@@ -3,6 +3,7 @@
 
 /* 背景色 */
 .fullbackground{	
+    font-family:"Microsoft YaHei";
 	background-color:rgba(102,204,255,0.5);
     font-family:"Microsoft YaHei";
 }
@@ -14,6 +15,18 @@
 }
 /* “成为队长”按钮 */
 .btnleader{
+	margin: auto;
+	background-color:#66ccff;
+	color:#FFF;
+	font-size:2.4rem;
+	border-radius:1.5rem;
+	width:50%;
+	border-style: none; 
+    padding:1%;
+}
+/* “选题”按钮 */
+.btntopic{
+    display: none;
 	margin: auto;
 	background-color:#66ccff;
 	color:#FFF;
@@ -80,7 +93,7 @@
 }
 .column3{
 	float:right;
-	width:30%
+	width:20%
 }
 .column4{
 	float:left;
@@ -113,10 +126,10 @@
 }
 .columndisplay{
 	display:inline;
-	font-size:1.4rem;
+	font-size:1.7rem;
 }
 div{
-	font-family:"微软雅黑";
+	font-family:"Microsoft YaHei";
 }
 html{
 	height:100%;

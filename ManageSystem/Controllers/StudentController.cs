@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult RandomGroupChooseTopicUI2()
+        public ActionResult RandomGroupChooseTopicUI()
         {
             return View();
         }
@@ -33,7 +33,11 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        public ActionResult GroupList()
+        public ActionResult RandomGroupList()
+        {
+            return View();
+        }
+        public ActionResult FixedGroupList()
         {
             return View();
         }

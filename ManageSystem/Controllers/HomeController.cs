@@ -17,5 +17,9 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult RegisterUI()
+        {
+            return View();
+        }
     }
 }

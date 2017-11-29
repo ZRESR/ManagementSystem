@@ -18,23 +18,26 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/ChooseCharacter.css")" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <div>
-        <p class="chooseUsersDiv">请选择您的账号类型</p>
-        <a class="hrDiv"></a>
-        <img src="~/images/sunscholl.png"class="sunschoolimage" />
+<body class="body">
+    <div class="topBoardView">
+        <img src="~/images/bg.png" class="topIcon" />
+        <img src="~/images/light.png" class="topLight" />
+        <div class="topLine"></div>
+        <p class="topTips">请选择您的账号类型</p>
     </div>
 
-    <div>
-        <button type="button" class="teacherBigBtn">
-            老师
-        </button>
-    </div>
+    <div class="mainView">
+        <div>
+            <button type="button" class="teacherBigBtn" onclick="javascript: window.location = '/Teacher/TeacherBindingUI'">
+                老师
+            </button>
+        </div>
 
-    <div>
-        <button type="button" class="studentBigBtn">
-            学生
-        </button>
+        <div>
+            <button type="button" class="studentBigBtn" onclick="javascript: window.location = '/Student/StudentBindingUI'">
+                学生
+            </button>
+        </div>
     </div>
 </body>
 </html>

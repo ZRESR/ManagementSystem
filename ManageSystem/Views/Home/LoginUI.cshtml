@@ -14,14 +14,12 @@
                                    maximum-scale=1.0,
                                    user-scalable=no">
     <title>LoginUI</title>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
     <link href="@Url.Content("~/Content/LoginUI.css")" rel="stylesheet" type="text/css" />
 </head>
 <body class="body">
     <div class="topBoardView">
-        <img src="~/images/sunscholl.png" class="topIcon" />
+        <img src="~/images/bg.png" class="topIcon" />
         <img src="~/images/light.png" class="topLight" />
         <p class="topTips">请先登录</p>
         <img src="~/images/line.png" class="topLine" />
@@ -33,7 +31,7 @@
         <input type="password" class="inputPassword" />
         <button type="button" class="confirmButton">登录</button>
         <p class="tip1">还没有注册账号？</p>
-        <a href="" class="tip2"><u>请先注册</u></a>
+        <a href="/Home/RegisterUI" class="tip2"><u>请先注册</u></a>
     </div>
 </body>
 </html>

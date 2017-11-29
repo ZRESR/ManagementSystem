@@ -7,6 +7,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    margin: 0;
 }
 /*上方标题容器*/
 .topDiv{
@@ -33,9 +34,9 @@ body {
 .avatar{
     position:absolute;
     z-index:2;
-    height:15%;
-    width:25%;
-    top:5%;
+    width:20%;
+    height: auto;
+    top: 8%;
     left:8%;
     font-size:16px;
 }
@@ -60,7 +61,7 @@ body {
 /*课程列表容器*/
 .courseListDiv{
     position:absolute;
-    top:30%;
+    top:33%;
     height:auto;
     width:100%;
     background-color:white;

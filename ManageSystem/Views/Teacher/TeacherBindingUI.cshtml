@@ -12,11 +12,18 @@
                                    initial-scale=1.0,
                                    maximum-scale=1.0,
                                    user-scalable=no">
-    <title>StudentMainUI</title>
+    <title>TeacherBindingUI</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/TeacherBindingUI.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(window).attr("location", '/Teacher/TeacherMainUI');
+            });
+        });
+    </script>
 </head>
 <body class="body">
     <div class="topBoardView">

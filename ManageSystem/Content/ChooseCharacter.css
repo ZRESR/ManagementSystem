@@ -1,9 +1,8 @@
-﻿@charset "utf-8";
-/* 背景色 */
-body {
+﻿/* 背景色 */
+body{
     background: rgba(66, 204, 255, 0.5);
     width: 100%;
-    height: 100%;
+    height: 35%;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -23,6 +22,57 @@ body {
     margin-top: 10%;
     float: left;
     border-style: none;
+}
+.topBoardView
+{
+    width: 100%;
+    height: 20%;
+}
+.topIcon
+{
+  position:absolute;
+  width:100%;
+  height:35%;
+  z-index:1;
+}
+/*上面的灯*/
+.topLight
+{
+  position: absolute;
+  height: 8%;
+  width: 12%;
+  top:5%;
+  left:8%;
+  z-index: 2;
+}
+/*上面的线*/
+.topLine
+{
+  position:absolute;
+  background-color:black;
+  width:70%;
+  height: 2px;
+  left: 8%;
+  top:13%;
+  z-index: 2;
+}
+/*上面的提示框*/
+.topTips
+{
+  position:absolute;
+  font-family:'Microsoft YaHei';
+  font-weight:bold;
+  font-size: 15px;
+  margin-left: 23%;
+  margin-top:12%;
+  z-index: 2;
+}
+/*下方的主要选择页面*/
+.mainView
+{
+  background-color: #6cf;
+  width:100%;
+  height: 65%;
 }
 .studentBigBtn {
     position:absolute;

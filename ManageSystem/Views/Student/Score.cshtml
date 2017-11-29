@@ -27,14 +27,15 @@
             $(".btnsubmit").click(function () {
                 $(this).remove();
                 $(".heart").unbind("click");
+                $("#title").text("您的打分结果");
             });
         });
     </script>
 </head>
 <body class="fullbackground">
     <div class="columndisplay">
-        <img class="UsersIcon" src="~/images/user.png" />
-        <label>请为别的小组展示打分</label>
+        <img class="UsersIcon" src="~/images/users.png" />
+        <label id="title">请为别的小组展示打分</label>
     </div>
     <div class="middlediv scoremargin">
         <div>
