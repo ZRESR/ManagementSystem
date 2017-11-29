@@ -17,7 +17,11 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
-        public ActionResult GroupInfoUI2()
+        public ActionResult FixedGroupInfoUI()
+        {
+            return View();
+        }
+        public ActionResult RandomGroupInfoUI()
         {
             return View();
         }

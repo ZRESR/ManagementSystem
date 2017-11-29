@@ -5,6 +5,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    margin: 0;
 }
 /*上方的风景模块*/
 .topBoardView
