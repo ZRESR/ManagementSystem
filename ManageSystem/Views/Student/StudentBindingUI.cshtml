@@ -19,8 +19,21 @@
     <link href="@Url.Content("~/Content/StudentBindingUI.css")" rel="stylesheet" type="text/css" />
     <script>
         $(document).ready(function () {
+            $(".inputSchool").val(window.localStorage.getItem("school"));
             $("button").click(function () {
+                window.localStorage.removeItem("school")
                 $(window).attr("location", '/Student/StudentMainUI');
+            });
+            $(".selectSchoolIcon").click(function () {
+                var sid = $(".inputStudentID").text();
+                var name = $(".inputName").text();
+                var state = {
+                    'sid': sid,
+                    'name': name
+                };
+                var url = 'StudentBindingUI';
+                window.history.pushState(state, 'Hello', url);
+                $(window).attr("location", '/Home/ChooseSchool');
             });
         });
     </script>
@@ -41,7 +54,7 @@
         <input class="inputName" />
         <a class="school">学校：</a>
         <input class="inputSchool" />
-        <img src="~/images/home.png" class="selectSchoolIcon"></img> 
+        <img src="~/images/home.png" class="selectSchoolIcon"/>
         <button type="button" class="confirmButton">绑定</button>
     </div>
 </body>

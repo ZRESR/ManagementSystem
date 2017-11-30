@@ -1,0 +1,155 @@
+/* RegisterUI.css */
+body {
+    background: white;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+}
+/*上方的风景模块*/
+.topBoardView
+{
+    width: 100%;
+    height: 150px;
+}
+.topIcon
+{
+  position:absolute;
+  width:100%;
+  height:150px;
+  z-index:1;
+}
+/*上面的灯*/
+.topLight
+{
+    position:absolute;
+    z-index:2;
+    height:8%;
+    width:12%;
+    top:5%;
+    left:5%;
+}
+/*上面的线*/
+.topLine
+{
+  position:absolute;
+  width:60%;
+  height: 1%;
+  left: 8%;
+  top:12%;
+  z-index: 2;
+}
+/*上面的提示框*/
+.topTips
+{
+  position:absolute;
+  font-size: 15px;
+  margin-left: 20%;
+  margin-top:15%;
+  z-index: 2;
+}
+/*下方的主要选择页面*/
+.mainView
+{
+  background-color:rgba(66, 204, 255, 0.5);
+  width:100%;
+  height: 500px;
+}
+/*手机号的标签*/
+.phoneID
+{
+  position:absolute;
+  font-size: 20px;
+  left:15%;
+  top:35%;
+  z-index: 2;
+}
+/*密码的标签*/
+.password
+{
+  position:absolute;
+  font-size: 20px;
+  left:20%;
+  top:48%;
+  z-index: 2;
+}
+/*确认密码的标签*/
+.confirmPassword
+{
+  position:absolute;
+  font-size: 20px;
+  left:10%;
+  top:61%;
+  z-index: 2;
+}
+/*手机号输入框*/
+.inputPhoneID
+{
+  position:absolute;
+  background: #fff;
+  width: 160px;
+  height: 45px;
+  font-size:20px;
+  left:39%;
+  top:33%;
+  z-index:2;
+  border-radius: 10px;
+}
+/*密码输入框*/
+.inputPassword
+{
+  position:absolute;
+  background: #fff;
+  width: 160px;
+  height: 45px;
+  font-size:20px;
+  left:39%;
+  top:46%;
+  z-index:2;
+  border-radius: 10px;
+}
+/*确认密码输入框*/
+.inputConfirmPassword
+{
+  position:absolute;
+  background: #fff;
+  width: 160px;
+  height: 45px;
+  font-size:20px;
+  left:39%;
+  top:59%;
+  z-index:2;
+  border-radius: 10px;
+}
+/*确定按钮*/
+.confirmButton
+{
+  position:absolute;
+  width:40%;
+  height:9%;
+  font-size: 20px;
+  border-radius: 20px;
+  top:75%;
+  left:30%;
+}
+/*提示图标*/
+.tipIcon
+{
+  position: absolute;
+  width: 5%;
+  height: 3%;
+  left: 40%;
+  top:41%;
+  z-index: 2;
+}
+/*提示文字自体*/
+.tipFont
+{
+  position: absolute;
+  font-size: 14px;
+  color: red;
+  left: 46%;
+  top:41%;
+  z-index: 2;
+}

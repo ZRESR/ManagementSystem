@@ -16,17 +16,25 @@
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/StudentMainUI.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function load(a) {
+            var b;
+            $.get("/api/Course", function (data, status) {
+                $(a).hide();
+            });
+        }
+    </script>
 </head>
 <body class="body">
     <div class="topDiv">
         <img src="~/images/bg.png" class="sunschoolimage" />
         <img src="~/images/user.png" class="avatar" />
-        <p class="nameLine">姓名 ：韦小宝</p>
+        <p class="nameLine" on>姓名 ：韦小宝</p>
         <p class="teacherNumberLine">教工号 ：24320162202991</p>
         <button type="button" class="checkInfo"/>
     </div>
     <div class="courseListDiv">
-        <button type="button" class="intoCourse">
+        <button type="button" class="intoCourse" onclick="javascript:load(this)">
             <div class="courseName">J2EE</div>
             <div class="courseTeacherName">老师：邱明</div>
             <div class="grayLine"></div>

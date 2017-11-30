@@ -1,0 +1,123 @@
+/* CSS Document */
+.body{
+    width: 100%;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+}
+.headTitle
+{
+    display: inline-block;
+	width:100%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    font-size: 38px;
+	background-color: #66CCFF;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+.nineIcon {
+    height: auto;
+    width: 10%;
+    margin-top: 2%;
+    margin-right: 5%;
+    z-index:2;
+    float: right;
+}
+.boxCInfo{
+    width: 90%;
+    height: auto;
+    margin: 5%;
+}
+.iconC{
+    width: 10%;
+    height: auto;
+    margin-left: 10%;
+}
+.content{
+    margin-top:3%;
+    margin-left: 20%;
+}
+.fontSeminarTitle
+{
+	font-size: 22px;
+    float:left;
+	color: #FFFFFF;
+	margin-left: 7%;
+	margin-top: 14.9%;
+}
+.fontContent
+{
+	font-size: 16px;
+	color: #FFFFFF;
+	margin-left: 40%;
+}
+
+.fontInfo{
+	font-size: 18px;
+}
+
+.fontDes{
+	font-size: 18px;
+}
+.fontSeminar{
+    font-size: 18px;
+}
+.fontItem{
+    color:white;
+    font-size:24px;
+}
+.box1
+{
+	float: left;
+	margin: 2%;
+    margin-bottom: 0;
+	background-color:#66CCFF;
+	width: 59%;
+	border-radius: 15px;
+    text-align: center;
+	padding-top: 25%;
+    padding-bottom: 25%;
+}
+
+.box2
+{
+	float: right;
+	margin: 2%;
+    margin-left: 0;
+    width: 35%;
+	background-color:#66CCFF;
+    text-align: center;
+    padding-top: 56%;
+	padding-bottom: 55%;
+	border-radius: 15px;
+}
+.blueBoxSeminar{
+	width: 90%;
+	background-color:#66CCFF;
+    margin-top: 5%;
+    margin-left: 4%;
+    border-radius: 20px;
+	padding: 1%;
+}
+.greyBoxSeminar{
+	width: 90%;
+	background-color:#CCCCCC;
+    margin-top: 5%;
+    margin-left: 4%;
+    border-radius: 20px;
+	padding: 1%;
+	
+}
+.button1{
+	background-color: #66CCFF;
+	font-size: 1vw;
+	position: relative;
+	border:none;
+	text-align: center;
+	display: inline-block;
+	padding: 15px 32px;
+	height: 100%;
+	width: 32%;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.1);
+}

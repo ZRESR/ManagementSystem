@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>LoginUI</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <link href="@Url.Content("~/Content/LoginUI.css")" rel="stylesheet" type="text/css" />
+</head>
+<body class="body">
+    <div class="topBoardView">
+        <img src="~/images/bg.png" class="topIcon" />
+        <img src="~/images/light.png" class="topLight" />
+        <p class="topTips">请先登录</p>
+        <img src="~/images/line.png" class="topLine" />
+    </div>
+    <div class="mainView">
+        <p class="phoneID">手机号：</p>
+        <input class="inputPhoneID" />
+        <p class="password">密码：</p>
+        <input type="password" class="inputPassword" />
+        <button type="button" class="confirmButton">登录</button>
+        <p class="tip1">还没有注册账号？</p>
+        <a href="/Home/RegisterUI" class="tip2"><u>请先注册</u></a>
+    </div>
+</body>
+</html>

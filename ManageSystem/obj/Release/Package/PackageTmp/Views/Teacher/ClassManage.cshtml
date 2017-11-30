@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>ClassManage</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/ClassManage.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".class").click(function () {
+                $(window).attr("location", '/Teacher/FixedRollCallUI');
+            });
+        });
+    </script>
+</head>
+<body class="body">
+    <!--设置蓝色上方-->
+    <div class="blueHeader">
+        <span>OOAD</span>
+        <span class="seminarText">讨论课4</span>
+    </div>
+
+    <!--讨论课的时间和分组方式-->
+    <div class="clockAndGroupDiv">
+        <img src="~/images/clock.png" class="icon">
+        <span>11月6日-11月12日</span>
+    </div>
+
+    <div class="clockAndGroupDiv">
+        <img src="~/images/clip.png" class="icon">
+        <span>随机分组</span>
+    </div>
+
+    <!--班级Icon及名字,增加新班级就复制一个div-->
+    <div class="class">
+        <img src="~/images/class.png" class="classIcon">
+        <p class="className">班级1</p>
+    </div>
+
+    <div class="class">
+        <img src="~/images/class.png" class="classIcon">
+        <p class="className">班级2</p>
+    </div>
+
+    <div class="class">
+        <img src="~/images/class.png" class="classIcon">
+        <p class="className">班级3</p>
+    </div>
+
+</body>
+</html>

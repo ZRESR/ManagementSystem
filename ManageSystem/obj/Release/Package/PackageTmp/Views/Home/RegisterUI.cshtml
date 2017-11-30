@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>RegisterUI</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <link href="@Url.Content("~/Content/RegisterUI.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".confirmButton").click(function () {
+                $(window).attr("location", '/Home/ChooseCharacter');
+            });
+        });
+    </script>
+</head>
+<body class="body">
+    <div class="topBoardView">
+        <img src="~/images/bg.png" class="topIcon" />
+        <img src="~/images/light.png" class="topLight" />
+        <p class="topTips">注册</p>
+        <img src="~/images/line.png" class="topLine" />
+    </div>
+    <div class="mainView">
+        <p class="phoneID">手机号：</p>
+        <input class="inputPhoneID" />
+        <img src="~/images/warn.png" class="tipIcon" />
+        <p class="tipFont">提交后不能修改</p>
+        <p class="password">密码：</p>
+        <input type="password" class="inputPassword" />
+        <p class="confirmPassword">确认密码：</p>
+        <input type="password" class="inputConfirmPassword" />
+        <button type="button" class="confirmButton">注册</button>        
+    </div>
+</body>
+</html>

@@ -13,6 +13,10 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult ChooseSchool()
+        {
+            return View();
+        }
         public ActionResult LoginUI()
         {
             return View();

@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   height=device-height,
+                                   target-densitydpi=device-dpi,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
+    <title>TeacherMainUI</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <link href="@Url.Content("~/Content/TeacherMainUI.css")" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <div class="topDiv">
+        <img src="~/images/bg.png" class="sunschoolimage" />
+        <img src="~/images/user.png" class="avatar" />
+        <p class="nameLine">姓名 ：邱明</p>
+        <p class="teacherNumberLine">教工号 ：24321432543</p>
+        <button type="button" class="checkInfo" />
+    </div>
+    <div class="courseListDiv">
+        <button type="button" class="courseName">J2EE</button>
+        <button type="button" class="courseName">操作系统</button>
+        <button type="button" class="courseName"  onclick="javascript: window.location = '/Teacher/ClassManage'">OOAD</button>
+        <button type="button" class="courseName">数据仓库</button>
+    </div>
+</body>
+</html>
