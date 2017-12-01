@@ -20,18 +20,21 @@
 <body class="body">
     <div class="topBoardView">
         <img src="~/images/bg.png" class="topIcon" />
-        <img src="~/images/light.png" class="topLight" />
-        <p class="topTips">请先登录</p>
-        <img src="~/images/line.png" class="topLine" />
+        <p class="topTips">
+            <img src="~/images/light.png" class="topLight" />
+        请先登录
+        </p>
     </div>
     <div class="mainView">
-        <p class="phoneID">手机号：</p>
-        <input class="inputPhoneID" />
-        <p class="password">密码：</p>
-        <input type="password" class="inputPassword" />
-        <button type="button" class="confirmButton">登录</button>
+        <form class="formInput">
+            <label class="phoneID">手机号：</label>
+            <input type="text" class="inputPhoneID" />
+            <label class="password">密&nbsp;&nbsp;&nbsp;码：</label>
+            <input type="password" class="inputPassword" />
+            <input type="submit" class="confirmButton" value="登录"/>
+        </form>
         <p class="tip1">还没有注册账号？</p>
-        <a href="/Home/RegisterUI" class="tip2"><u>请先注册</u></a>
+        <a href="/Home/RegisterUI"><u class="tip2">请先注册</u></a>
     </div>
 </body>
 </html>

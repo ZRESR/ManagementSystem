@@ -12,16 +12,37 @@
                                    maximum-scale=1.0,
                                    user-scalable=no">
     <title>StudentMainUI</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/StudentMainUI.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".courseListDiv").click(function () {
+                //var obj = new { name: 'ka', pwd: '123456' }
+                $.ajax({
+                    url: '/api/Course',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    data: JSON.stringify({id:'123',name:'222'}),
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body class="body">
     <div class="topDiv">
         <img src="~/images/bg.png" class="sunschoolimage" />
         <img src="~/images/user.png" class="avatar" />
-        <p class="nameLine">姓名 ：韦小宝</p>
+        <p class="nameLine" on>姓名 ：韦小宝</p>
         <p class="teacherNumberLine">教工号 ：24320162202991</p>
         <button type="button" class="checkInfo"/>
     </div>

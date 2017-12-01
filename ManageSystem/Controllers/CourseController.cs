@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace ManageSystem.Controllers
 {
@@ -32,8 +33,14 @@ namespace ManageSystem.Controllers
         }
 
         // POST: api/Course
-        public void Post([FromBody]string value)
+        public JsonResult Post([FromBody]dynamic Json)
         {
+            
+            var course = new { id = Json.id, name = Json.name, status = "success" };
+            var result = new JsonResult();
+            result.Data = course;
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return result;
         }
 
         // PUT: api/Course/5

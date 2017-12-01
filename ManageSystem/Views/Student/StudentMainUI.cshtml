@@ -12,17 +12,30 @@
                                    maximum-scale=1.0,
                                    user-scalable=no">
     <title>StudentMainUI</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/StudentMainUI.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function load(a) {
-            var b;
-            $.get("/api/Course", function (data, status) {
-                $(a).hide();
+        $(document).ready(function () {
+            $(".courseListDiv").click(function () {
+                //var obj = new { name: 'ka', pwd: '123456' }
+                $.ajax({
+                    url: '/api/Course',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    data: JSON.stringify({id:'123',name:'222'}),
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function () {
+
+                    }
+                });
             });
-        }
+        });
     </script>
 </head>
 <body class="body">
@@ -34,7 +47,7 @@
         <button type="button" class="checkInfo"/>
     </div>
     <div class="courseListDiv">
-        <button type="button" class="intoCourse" onclick="javascript:load(this)">
+        <button type="button" class="intoCourse">
             <div class="courseName">J2EE</div>
             <div class="courseTeacherName">老师：邱明</div>
             <div class="grayLine"></div>

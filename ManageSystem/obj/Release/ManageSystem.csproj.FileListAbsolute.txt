@@ -98,3 +98,9 @@ D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.Twit
 D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\Github\ManagementSystem\ManageSystem\obj\Release\ManageSystem.dll
 D:\Github\ManagementSystem\ManageSystem\obj\Release\ManageSystem.pdb
+D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.xml
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.xml
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.xml

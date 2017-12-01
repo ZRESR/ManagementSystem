@@ -6,6 +6,9 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
 }
+c{
+
+}
 /*白色的大button，显示 老师或学生 */
 .teacherBigBtn {
     position:absolute;

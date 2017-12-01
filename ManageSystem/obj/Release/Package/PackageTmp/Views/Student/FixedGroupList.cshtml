@@ -23,6 +23,14 @@
                 $(".btnleader").hide();
                 $(".middlegreyword").hide();
                 $(".column3").show();
+                $.ajax({
+                    url: "/api/City",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
             });
             $(".btnquit").click(function () {
                 $(".btnquit").hide();

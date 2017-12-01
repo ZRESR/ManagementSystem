@@ -25,7 +25,7 @@
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/ManageSystem.dll">
-      <publishTime>11/29/2017 17:10:28</publishTime>
+      <publishTime>12/01/2017 22:08:38</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -132,8 +132,17 @@
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>06/18/2015 20:19:46</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/28/2015 04:02:42</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/28/2015 04:02:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/28/2015 04:03:46</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>01/28/2015 04:02:18</publishTime>
@@ -220,7 +229,10 @@
       <publishTime>11/26/2017 19:44:59</publishTime>
     </File>
     <File Include="Content/ChooseCharacter.css">
-      <publishTime>11/29/2017 12:27:29</publishTime>
+      <publishTime>11/30/2017 11:27:14</publishTime>
+    </File>
+    <File Include="Content/chooseschool.css">
+      <publishTime>12/01/2017 09:48:05</publishTime>
     </File>
     <File Include="Content/ClassManage.css">
       <publishTime>11/29/2017 17:04:56</publishTime>
@@ -235,13 +247,13 @@
       <publishTime>11/27/2017 11:10:09</publishTime>
     </File>
     <File Include="Content/LoginUI.css">
-      <publishTime>11/28/2017 22:49:47</publishTime>
+      <publishTime>12/01/2017 21:59:16</publishTime>
     </File>
     <File Include="Content/RandomGroupChooseTopicUI2.css">
       <publishTime>11/27/2017 19:45:20</publishTime>
     </File>
     <File Include="Content/RegisterUI.css">
-      <publishTime>11/29/2017 17:02:47</publishTime>
+      <publishTime>12/01/2017 22:05:08</publishTime>
     </File>
     <File Include="Content/RollCallListUI.css">
       <publishTime>11/27/2017 12:57:20</publishTime>
@@ -253,7 +265,7 @@
       <publishTime>11/26/2017 19:44:34</publishTime>
     </File>
     <File Include="Content/StudentBindingUI.css">
-      <publishTime>11/28/2017 22:46:14</publishTime>
+      <publishTime>12/01/2017 20:54:53</publishTime>
     </File>
     <File Include="Content/StudentMainUI.css">
       <publishTime>11/29/2017 13:30:50</publishTime>
@@ -298,7 +310,7 @@
       <publishTime>11/24/2017 22:56:10</publishTime>
     </File>
     <File Include="images/bulb.png">
-      <publishTime>11/27/2017 10:55:02</publishTime>
+      <publishTime>11/27/2017 19:04:18</publishTime>
     </File>
     <File Include="images/calendar.png">
       <publishTime>11/26/2017 00:45:04</publishTime>
@@ -364,13 +376,16 @@
       <publishTime>11/28/2017 22:49:47</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>11/26/2017 19:46:52</publishTime>
+      <publishTime>11/29/2017 17:58:57</publishTime>
     </File>
     <File Include="Scripts/ai.0.22.9-build00167.js">
       <publishTime>11/26/2017 19:46:51</publishTime>
     </File>
     <File Include="Scripts/ai.0.22.9-build00167.min.js">
       <publishTime>11/26/2017 19:46:51</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-chinese-region.js">
+      <publishTime>11/30/2017 16:54:20</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/26/2017 19:44:58</publishTime>
@@ -411,17 +426,26 @@
     <File Include="Scripts/respond.min.js">
       <publishTime>11/26/2017 19:45:23</publishTime>
     </File>
+    <File Include="Scripts/sql_areas.json">
+      <publishTime>11/30/2017 16:54:20</publishTime>
+    </File>
+    <File Include="Scripts/tab.js">
+      <publishTime>11/30/2017 16:17:28</publishTime>
+    </File>
     <File Include="Scripts/_references.js">
-      <publishTime>11/27/2017 20:13:45</publishTime>
+      <publishTime>11/30/2017 17:01:59</publishTime>
     </File>
     <File Include="Views/Home/ChooseCharacter.cshtml">
       <publishTime>11/29/2017 12:28:51</publishTime>
     </File>
+    <File Include="Views/Home/ChooseSchool.cshtml">
+      <publishTime>12/01/2017 09:48:05</publishTime>
+    </File>
     <File Include="Views/Home/LoginUI.cshtml">
-      <publishTime>11/29/2017 12:37:42</publishTime>
+      <publishTime>12/01/2017 21:45:34</publishTime>
     </File>
     <File Include="Views/Home/RegisterUI.cshtml">
-      <publishTime>11/29/2017 12:37:42</publishTime>
+      <publishTime>12/01/2017 22:06:44</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/26/2017 19:45:31</publishTime>
@@ -442,7 +466,7 @@
       <publishTime>11/29/2017 12:34:59</publishTime>
     </File>
     <File Include="Views/Student/FixedGroupList.cshtml">
-      <publishTime>11/29/2017 16:51:14</publishTime>
+      <publishTime>12/01/2017 09:12:10</publishTime>
     </File>
     <File Include="Views/Student/RandomGroupChooseTopicUI.cshtml">
       <publishTime>11/27/2017 20:14:37</publishTime>
@@ -457,10 +481,10 @@
       <publishTime>11/29/2017 12:51:33</publishTime>
     </File>
     <File Include="Views/Student/StudentBindingUI.cshtml">
-      <publishTime>11/29/2017 09:57:02</publishTime>
+      <publishTime>11/30/2017 21:00:52</publishTime>
     </File>
     <File Include="Views/Student/StudentMainUI.cshtml">
-      <publishTime>11/29/2017 12:11:06</publishTime>
+      <publishTime>12/01/2017 09:34:14</publishTime>
     </File>
     <File Include="Views/Student/StudentRollCallUI.cshtml">
       <publishTime>11/27/2017 20:18:24</publishTime>
@@ -484,19 +508,19 @@
       <publishTime>11/29/2017 16:57:38</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherBindingUI.cshtml">
-      <publishTime>11/29/2017 13:18:36</publishTime>
+      <publishTime>11/30/2017 21:05:49</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherMainUI.cshtml">
       <publishTime>11/29/2017 13:31:25</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>11/26/2017 19:44:34</publishTime>
+      <publishTime>11/29/2017 21:49:47</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>11/26/2017 19:44:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/29/2017 17:10:30</publishTime>
+      <publishTime>12/01/2017 22:08:40</publishTime>
     </File>
   </ItemGroup>
 </Project>
