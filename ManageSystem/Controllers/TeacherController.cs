@@ -17,6 +17,14 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult CreateSchool()
+        {
+            return View();
+        }
+        public ActionResult CheckTeacherInfoUI()
+        {
+            return View();
+        }
         public ActionResult FixedGroupInfoUI()
         {
             return View();

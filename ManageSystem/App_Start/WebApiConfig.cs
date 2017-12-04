@@ -23,6 +23,11 @@ namespace ManageSystem
                 routeTemplate: "actionapi/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(
+                name: "TypeApi",
+                routeTemplate: "typeapi/{controller}/{type}",
+                defaults: new { type = RouteParameter.Optional }
+            );
         }
     }
 }

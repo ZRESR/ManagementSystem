@@ -5,32 +5,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>GroupList</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="@Url.Content("~/Content/Score.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link href="@Url.Content("~/Content/GroupList.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".btnleader").hide();
+            $(".middlegreyword").hide();
+            $.ajax({
+                type: 'GET',
+                url: "/api/Seminar/"+window.localStorage.getItem("seminarid")+"/Group",
+                contentType: "application/json; charset=utf-8",
+                data:{
+                    "include":123
+                },
+                success: function (data, status) {
+                    var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.Data.leader.name
+                        + "<br />" + data.Data.leader.number
+                        + "</div><div class='column3 rightblueword'>队长</div></div></div>";
+                    $("#list").append(col);
+                    for (var i in data.Data.members) {
+                        var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.Data.members[i].name
+                            + "<br />" + data.Data.members[i].number + "</div></div></div>";
+                        $("#list").append(col);
+                    }
+                    $(".panel-body").children("p").text(data.Data.topics.name);
+                    $(".seminarblackword").text(data.Data.topics.name+"-"+"固定分组");
+                }
+            });
             $(".btnleader").click(function () {
                 $(".btnquit").show();
                 $(".btnleader").hide();
                 $(".middlegreyword").hide();
                 $(".column3").show();
-                $.ajax({
-                    url: "/api/City",
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
             });
             $(".btnquit").click(function () {
                 $(".btnquit").hide();
@@ -42,37 +52,27 @@
     </script>
 </head>
 <body class="fullbackground">
-    <div class="seminarblock">
+    <div class="columndisplay">
         <img class="UsersIcon" src="~/images/users.png"/>
-        <label>讨论课<br />固定分组</label>
+        <label class="seminarblackword"></label>
     </div>
 
     <div class="whiteword">
         <div class="panel-body">
             <div class="column4">分组信息：</div>
-            <div class="column3"><button class="btnquit" style="display:none;">辞职</button></div>
+            <div class="column3"><button class="btnquit">辞职</button></div>
         </div>
     </div>
 
-    <div class="block">
-        <div class="panel-body">
-            <div class="column1"><img src="~/images/user.png"/></div>
-            <div class="column2">name<br />number</div>
-            <div class="column3 rightblueword" style="display: none;">队长</div>
-        </div>
-    </div>
-    <div class="block">
-        <div class="panel-body">
-            <div class="column1"><img src="~/images/user.png"/></div>
-            <div class="column2">name<br />number</div>
-
-        </div>
+    
+    <div id="list">
 
     </div>
+
     <div class="whiteword">
         <div class="panel-body">
             <div>选题：</div>
-            <div style="margin-left: 25%;">领域模型设计</div>
+            <p style="margin:auto; width:80%; text-align:center;"></p>
         </div>
     </div>
     <div class="middlediv">

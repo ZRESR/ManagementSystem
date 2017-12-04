@@ -7,34 +7,59 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0", user-scalable=no/>
     <title>LoginUI</title>
     <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <link href="@Url.Content("~/Content/LoginUI.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            window.localStorage.clear();
+            $("#login").click(function () {
+                var ata = { username: $("#username").val(), password: $("#password").val() };
+                $.ajax({
+                    type: 'POST',
+                    url: "../api/signin",
+                    data: JSON.stringify(ata),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data, status) {
+                        if (data.Data == false)
+                            alert("账号密码错误");
+                        else {
+                            if (data.Data.type == "teacher") {
+                                window.localStorage.setItem("type", "teacher");
+                                $(window).attr("location", '/Teacher/TeacherMainUI');
+                            }
+                            else {
+                                window.localStorage.setItem("type", "student");
+                                $(window).attr("location", '/Student/StudentMainUI');
+                            }
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 </head>
 <body class="body">
-    <div class="topBoardView">
-        <img src="~/images/bg.png" class="topIcon" />
-        <p class="topTips">
-            <img src="~/images/light.png" class="topLight" />
-        请先登录
-        </p>
+    <div class="PictureDiv">
+        <!-- 背景图的div -->
+        <img class="bulb" src="../images/bulb.png" />
+        <img src="../images/bg.png" class="Picture" />
+        <div class="title">请先登录</div>
     </div>
+    <div class="hrDiv"></div>
     <div class="mainView">
-        <form class="formInput">
-            <label class="phoneID">手机号：</label>
-            <input type="text" class="inputPhoneID" />
-            <label class="password">密&nbsp;&nbsp;&nbsp;码：</label>
-            <input type="password" class="inputPassword" />
-            <input type="submit" class="confirmButton" value="登录"/>
-        </form>
-        <p class="tip1">还没有注册账号？</p>
-        <a href="/Home/RegisterUI"><u class="tip2">请先注册</u></a>
+        <div class="phoneID">手机号：</div>
+        <input id="username" type="text" class="inputPhoneID" style="padding:2%;"/>
+        <div class="password">密码：</div>
+        <input id="password" type="password" class="inputPassword" style="padding:2%;"/>
+        <div id="login" class="comfirmDiv">
+            <button class="confirmButton">登录</button>
+        </div>
+        <div class="tip1">还没有注册账号？</div>
+        <a href="/Home/RegisterUI"><p class="tip2">请先注册</p></a>
     </div>
 </body>
 </html>

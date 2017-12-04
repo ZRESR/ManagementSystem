@@ -6,38 +6,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>ChooseCharacter</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/ChooseCharacter.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".teacherButton").click(function () {
+                window.localStorage.setItem("type", "teacher");
+                $(window).attr("location", '/Teacher/TeacherBindingUI');
+            });
+            $(".studentButton").click(function () {
+                window.localStorage.setItem("type", "student");
+                $(window).attr("location", '/Student/StudentBindingUI');
+            });
+        });
+    </script>
 </head>
 <body class="body">
-    <div class="topBoardView">
-        <img src="~/images/bg.png" class="topIcon" />
-        <img src="~/images/light.png" class="topLight" />
-        <div class="topLine"></div>
-        <p class="topTips">请选择您的账号类型</p>
+    <div class="PictureDiv">
+        <!-- 背景图的div -->
+        <img class="bulb" src="../images/bulb.png" />
+        <img src="../images/background.jpg" class="Picture" />
+        <div class="title">请选择您的身份</div>
     </div>
 
-    <div class="mainView">
-        <div>
-            <button type="button" class="teacherBigBtn" onclick="javascript: window.location = '/Teacher/TeacherBindingUI'">
-                老师
-            </button>
-        </div>
-
-        <div>
-            <button type="button" class="studentBigBtn" onclick="javascript: window.location = '/Student/StudentBindingUI'">
-                学生
-            </button>
-        </div>
+    <div class="hrDiv"></div>
+    <div class="teacherDiv">
+        <button class="teacherButton">老师</button>
+    </div>
+    <div class="studentDiv">
+        <button class="studentButton">学生</button>
     </div>
 </body>
 </html>

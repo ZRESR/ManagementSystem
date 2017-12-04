@@ -1,61 +1,74 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>TeacherBindingUI</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/TeacherBindingUI.css")" rel="stylesheet" type="text/css" />
     <script>
+        if ((/iphone|ipod|ipad.*os 5/gi).test(navigator.appVersion)) {
+            window.onpageshow = function (event) {
+                if (event.persisted) {
+                    window.location.reload()
+                }
+            };
+        }
+        else {
+            onload = function () {
+                var refreshedId = document.getElementById("refreshed");
+                if (refreshedId.value == "no") {
+                    refreshedId.value = "yes";
+                } else {
+                    refreshedId.value = "no";
+                    location.reload();
+                }
+            }
+        }
+
         $(document).ready(function () {
+            $(window).bind("unload", function () { });
             $(".inputSchool").val(window.localStorage.getItem("school"));
+            $(".inputSchool").attr("readonly", "readonly");
             $("button").click(function () {
                 window.localStorage.removeItem("school")
                 $(window).attr("location", '/Teacher/TeacherMainUI');
             });
             $(".selectSchoolIcon").click(function () {
-                var sid = $(".inputStudentID").text();
-                var name = $(".inputName").text();
-                var state = {
-                    'sid': sid,
-                    'name': name
-                };
-                var url = 'StudentBindingUI';
-                window.history.pushState(state, 'Hello', url);
+                var url = 'TeacherBindingUI';
                 $(window).attr("location", '/Home/ChooseSchool');
             });
         });
     </script>
 </head>
 <body class="body">
-    <div class="topBoardView">
-        <img src="~/images/bg.png" class="topIcon" />
-        <img src="~/images/light.png" class="topLight" />
-        <div class="topLine"></div>
-        <p class="topTips">请先绑定您的账号</p>
+    <div class="PictureDiv">
+        <!-- 背景图的div -->
+        <img class="bulb" src="../images/bulb.png" />
+        <img src="../images/background.jpg" class="Picture" />
+        <div class="title">请先绑定您的账号</div>
     </div>
+    <div class="hrDiv"></div>
     <div class="mainView">
-        <a class="teacherID">教工号：</a>
-        <input class="inputTeacherID" />
+        <div class="teacherID">教工号：</div>
+        <input class="inputteacherID" />
         <img src="~/images/warn.png" class="tipIcon" />
-        <a class="tipFont">提交后不能修改</a>
-        <a class="name">姓名：</a>
+        <div class="tipFont">提交后不能修改</div>
+        <div class="Name">姓名：</div>
         <input class="inputName" />
-        <a class="school">学校：</a>
-        <input class="inputSchool"/>
-        <img src="~/images/home.png" class="selectSchoolIcon"></img>
-        <button type="button" class="confirmButton">绑定</button>
+        <div class="school"> 学校 :</div>
+        <input class="inputSchool">
+            <img class="selectSchoolIcon" src="../images/ninedot.png"/>
+        </input>
+        <div class="comfirmDiv">
+            <button class="confirmButton">绑定</button>
+        </div>
     </div>
+    <input type="hidden" id="refreshed" value="no" />
 </body>
 </html>

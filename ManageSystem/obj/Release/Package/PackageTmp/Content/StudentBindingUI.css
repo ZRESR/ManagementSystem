@@ -1,180 +1,186 @@
 /* StudentBindingUI.css */
-body{
-    background: #6cf;
-    width: 100%;
-    height: 35%;
-    overflow-x: hidden;
-    overflow-y: auto;
+
+html{
+  font-family:"微软雅黑";
+  font-size:100px;
+  height:100%;
+  width: 100%;
 }
-/*上方的风景模块*/
-.topBoardView
-{
-    width: 100%;
-    height: 20%;
+.body{
+  background-color: rgba(102, 204, 255, 0.5);  
+  height: 100%
 }
-.topIcon
-{
-  position:absolute;
+/* 灯泡img */
+.bulb{
+  position:absolute;margin-left: 12%;top: 0.8rem;
+  width:8em;
+  height:8em;
+}
+/* 背景img */
+.Picture{
   width:100%;
-  z-index:1;
+  height:100%;
 }
-/*上面的灯*/
-.topLight
-{
+/* 标题 */
+.title{
+  margin-left: 22%;
+  color: #000000;
+  font-size: 3em;
+  position:absolute;
+  font-weight: bold;
+  z-index:2; 
+  top:3em
+}
+
+/* 背景图的view*/
+.PictureDiv{  
+  left: 0rpx;
+  width: 100%;
+  position:relative;
+  height:40em;
+}
+.hrDiv {
+  height: 4px;
+  width: 80%;
+  margin: auto;
   position: absolute;
-  height: 8%;
-  width: 12%;
-  top:5%;
-  left:8%;
-  z-index: 2;
-}
-/*上面的线*/
-.topLine
-{
-  position:absolute;
-  background-color:black;
-  width:70%;
-  height: 2px;
-  left: 8%;
-  top:13%;
-  z-index: 2;
-}
-/*上面的提示框*/
-.topTips
-{
-  position:absolute;
-  font-family:'Microsoft YaHei';
-  font-weight:bold;
-  font-size: 15px;
-  margin-left: 23%;
-  margin-top:12%;
-  z-index: 2;
+  border: 0.5px solid black;
+  background-color: black;
+  color: black;
+  float: left;
+  margin-left: 5%;
+  margin-right: 15%;
+  top:2.2rem;
 }
 /*下方的主要选择页面*/
 .mainView
 {
-  background-color: #6cf;
+  background-color: rgba(102, 204, 255, 0.5);  
   width:100%;
-  height: 65%;
+  height: 100%;
 }
-/*教工号的标签*/
+/*学号的标签*/
 .studentID
 {
   position:absolute;
-  color:black;
-  font-size: 20px;
-  font-family:'Microsoft YaHei';
-  font-weight:bold;
-  left:20%;
-  top:40%;
-  z-index: 2;
+  font-size: 3em;
+  left:15%;
+  font-weight: bolder;
+  top:18em;
 }
-/*姓名的标签*/
-.name
+/*密码的标签*/
+.Name
 {
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  color:black;
-  font-family:'Microsoft YaHei';
-  font-weight:bold;
-  top:53%;
-  z-index: 2;
+  font-size: 3em;
+  left:15%;
+  top:22em;
+  font-weight: bolder;
 }
 /*学校的标签*/
 .school
 {
+  float:left;
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  top:64%;
-  font-family:'Microsoft YaHei';
-  font-weight:bold;
-  z-index: 2;
-  color:black;
+  font-size: 3em;
+  left:15%;
+  top:26em;
+  font-weight: bolder;
 }
-/*教工号输入框*/
-.inputStudentID
+/*学号输入框*/
+.inputstudentID
 {
   position:absolute;
   background: #fff;
-  width: 150px;
-  height: 45px;
-  font-size:20px;
-  left:39%;
-  top:38%;
-  z-index:2;
-  border-radius: 10px;
+  width: 42%;
+  height: 2em;
+  font-size:3em;
+  left:35%;
+  top:17.7em;
+  border-radius: 0.5em;
 }
 /*姓名输入框*/
 .inputName
 {
   position:absolute;
   background: #fff;
-  width: 150px;
-  height: 45px;
-  font-size:20px;
-  left:39%;
-  top:52%;
-  z-index:2;
-  border-radius: 10px;
+  width: 42%;
+  height: 2em;
+  font-size:3em;
+  left:35%;
+  top:21.7em;
+  border-radius: 0.5em;
 }
+
 /*学校输入框*/
 .inputSchool
 {
   position:absolute;
   background: #fff;
-  width: 150px;
-  height: 45px;
-  font-size:20px;
-  left:39%;
-  top:62%;
-  z-index:2;
-  border-radius: 10px;
+  width: 42%;
+  height: 2em;
+  font-size:3em;
+  left:35%;
+  top:25.7em;
+  border-radius: 0.5em;
+}
+
+.confirmDiv{
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 4em;
+  top:50%;
 }
 /*确定按钮*/
 .confirmButton
 {
-  position:absolute;
-  width:40%;
-  height:10%;
-  left:30%;
-  font-family:'Microsoft YaHei';
-  font-weight:bold;
-  background-color:white;
-  color:black;
-  font-size: 22px;
-  top:80%;
-   border-radius: 20px;
+  position: absolute;
+   background-color: #ffffff;
+  color:#000000;
+  font-size: 3em;
+  border:blue;
+  display: inline-block;
+  margin-top: 70%;
+  margin-left: 35%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.1);
+  width:30%;
+  height: 3em;
+  border-radius: 15px;
+  font-weight: bolder;
 }
+
+
+
 /*提示图标*/
 .tipIcon
 {
   position: absolute;
-  width: 5%;
-  height: 3%;
-  left: 42%;
-  top:47%;
+  width: 3em;
+  height: 3em;
+  left: 38%;
+  top:60em;
   z-index: 2;
 }
 /*提示文字自体*/
 .tipFont
 {
   position: absolute;
-  font-size: 14px;
-  font-family:'Microsoft YaHei';
+  font-size: 2em;
   color: red;
-  left: 48%;
-  top:47%;
+  font-weight: bolder;
+  left: 43%;
+  top:30em;
   z-index: 2;
 }
 /*选择学校按钮*/
 .selectSchoolIcon
 {
   position:absolute;
-  width: 40px;
-  height: 40px;
-  left:80%;
-  top:63%;
-  z-index:2;
+  background: #fff;
+  width: 45px;
+  height: 45px;
+   margin-left: 71%;
+  margin-top:38.4em;
+  float:left;
 }

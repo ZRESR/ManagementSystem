@@ -5,12 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>StudentMainUI</title>
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -19,55 +14,58 @@
     <link href="@Url.Content("~/Content/StudentMainUI.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".courseListDiv").click(function () {
-                //var obj = new { name: 'ka', pwd: '123456' }
-                $.ajax({
-                    url: '/api/Course',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: "json",
-                    data: JSON.stringify({id:'123',name:'222'}),
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function () {
-
-                    }
-                });
+            $.ajax({
+                type: 'GET',
+                url: "/api/Me",
+                headers: {
+                    type: "student"
+                },
+                contentType: "application/json; charset=utf-8",
+                success: function (data, status) {
+                    $("#name").text("姓名：" + data.Data.name);
+                    $("#sid").text("教工号：" + data.Data.number);
+                }
             });
+            $.ajax({
+                type: 'GET',
+                url: "/api/Course",
+                headers: {
+                    type: "student"
+                },
+                contentType: "application/json; charset=utf-8",
+                success: function (data, status) {
+                    var box = "blueBox";
+                    for (var i in data.Data) {
+                        if (data.Data[i].id > 2)
+                            box = "greyBox";
+                        var col = "<div id='" + data.Data[i].id + "' class='" + box + "'><p class='leftText'>" + data.Data[i].name
+                            + "</p> <p class='rightText'>老师：" + data.Data[i].teacher + "</p></div>";
+                        $("#list").append(col);
+                    }
+
+                }
+            });
+            $(".user").click(function () {
+                $(window).attr("location", '/Student/CheckStudentInfoUI');
+            });
+            function chooseCourse() {
+                window.localStorage.setItem("courseid", $(this).attr("id"));
+                $(window).attr("location", '/Student/CourseUI');
+            }
+            $("#list").on('click', '.blueBox', chooseCourse);
         });
     </script>
 </head>
 <body class="body">
-    <div class="topDiv">
-        <img src="~/images/bg.png" class="sunschoolimage" />
-        <img src="~/images/user.png" class="avatar" />
-        <p class="nameLine" on>姓名 ：韦小宝</p>
-        <p class="teacherNumberLine">教工号 ：24320162202991</p>
-        <button type="button" class="checkInfo"/>
+    <div class="PictureDiv">
+    <!-- 背景图的div -->
+        <img class="user" src="../images/user.png" />
+        <img src="../images/background.jpg" class="Picture" />
+        <div id ="name" class="name"></div>
+        <div id="sid" class="ID"></div>
     </div>
-    <div class="courseListDiv">
-        <button type="button" class="intoCourse">
-            <div class="courseName">J2EE</div>
-            <div class="courseTeacherName">老师：邱明</div>
-            <div class="grayLine"></div>
-        </button>
-        <button type="button" class="intoCourse" onclick="javascript: window.location = '/Student/CourseUI'">
-            <div class="courseName">OOAD</div>
-            <div class="courseTeacherName">老师：邱明</div>
-            <div class="grayLine"></div>
-        </button>
-        <button type="button" class="intoCourse">
-            <div class="courseName">操作系统</div>
-            <div class="courseTeacherName">老师：吴清强</div>
-            <div class="grayLine"></div>
-        </button>
-        <button type="button" class="intoCourse">
-            <div class="courseName">数据仓库</div>
-            <div class="courseTeacherName">老师：王鸿吉</div>
-            <div class="grayLine"></div>
-        </button>
-       
+    <div id="list">
+        
     </div>
 </body>
 </html>

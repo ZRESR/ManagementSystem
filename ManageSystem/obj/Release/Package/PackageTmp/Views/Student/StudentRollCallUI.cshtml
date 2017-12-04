@@ -6,12 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>StudentRollCallUI</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
@@ -22,6 +17,7 @@
             $(".blueBigBtn").click(function () {
                 $(".blueBigBtn").hide();
                 $(".successCall").show();
+                setTimeout(function () { window.history.go(-1); }, 1000);
             });
         });
     </script>
@@ -29,8 +25,8 @@
 <body>
     <!--设置左上角的blueBoardIcon-->
     <div class="blueUsersDiv">
-        <img src="~/images/blueboard.png" class='blueUsersIcon' />
-        <strong>讨论课信息</strong>
+        <img src="~/images/blueboard.png" class='blueUsersIcon' style="float:left;margin-top:7%; " />
+        <strong class="title">讨论课信息</strong>
     </div>
 
     <!--细线，hr不好设置css，用一个高度很小的div来代替-->
@@ -38,30 +34,33 @@
     </div>
 
     <!--课堂信息，由一个icon和一行文字组成-->
-    <div class="courseInfoDiv">
-        <img src="~/images/teacher.png" class='courseInfoIcon' />
-        <strong>邱明</strong>
-    </div>
-    <div class="courseInfoDiv">
-        <img src="~/images/letter.png" class='courseInfoIcon' />
-        <strong>mingqiu@gmail.com</strong>
-    </div>
-    <div class="courseInfoDiv">
-        <img src="~/images/calendar.png" class='courseInfoIcon' />
-        <strong>2017-11-11</strong>
-    </div>
-    <div class="courseInfoDiv">
-        <img src="~/images/calendar.png" class='courseInfoIcon' />
-        <strong>海韵教学楼201</strong>
+    <div class="lowBox">
+        <!--课堂信息，由一个icon和一行文字组成-->
+        <div class="courseInfoDiv">
+            <img src="../images/teacher.png" class='courseInfoIcon' />
+            <strong>邱明</strong>
+        </div>
+        <div class="courseInfoDiv">
+            <img src="../images/letter.png" class='courseInfoIcon' />
+            <strong>mingqiu@gmail.com</strong>
+        </div>
+        <div class="courseInfoDiv">
+            <img src="../images/calendar.png" class='courseInfoIcon' />
+            <strong>2017-11-11</strong>
+        </div>
+        <div class="courseInfoDiv">
+            <img src="../images/site.png" class='courseInfoIcon' />
+            <strong>海韵教学楼201</strong>
+        </div>
     </div>
 
 
-    <div class="successCall">
-          <img src="~/images/clock.png" class='courseInfoIcon'/>
+    <div class="successCall" style="display:none;">
+          <img src="../images/clock.png" class='courseInfoIcon'/>
           <strong>签到成功</strong>
      </div>
-    <div class="lateCall">
-          <img src="~/images/clock.png" class='courseInfoIcon'/>
+    <div class="lateCall" style="display:none;">
+          <img src="../images/clock.png" class='courseInfoIcon'/>
           <strong>迟到签到成功</strong>
      </div>
     <!--签到按钮-->

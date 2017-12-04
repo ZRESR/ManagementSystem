@@ -16,11 +16,8 @@ namespace ManageSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "LoginUI", id = UrlParameter.Optional }
                 );
-            routes.MapRoute("StudentRollCallUI", "Student/StudentRollCallUI");
-            routes.MapRoute("StudentMainUI", "Student/StudentMainUI");
-            routes.MapRoute("Score", "Student/Score");
         }
     }
 }

@@ -25,7 +25,7 @@
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/ManageSystem.dll">
-      <publishTime>12/01/2017 22:08:38</publishTime>
+      <publishTime>12/04/2017 22:36:03</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -223,61 +223,85 @@
       <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>11/26/2017 19:44:59</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>11/26/2017 19:44:59</publishTime>
     </File>
+    <File Include="Content/CheckStudentInfo.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
+    <File Include="Content/CheckTeacherInfo.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
     <File Include="Content/ChooseCharacter.css">
-      <publishTime>11/30/2017 11:27:14</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/chooseschool.css">
-      <publishTime>12/01/2017 09:48:05</publishTime>
+      <publishTime>12/04/2017 20:31:33</publishTime>
     </File>
     <File Include="Content/ClassManage.css">
-      <publishTime>11/29/2017 17:04:56</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
+    <File Include="Content/CourseInfoUI.css">
+      <publishTime>12/04/2017 21:30:58</publishTime>
     </File>
     <File Include="Content/CourseUI.css">
-      <publishTime>11/29/2017 11:13:45</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
+    <File Include="Content/CreateSchoolUI.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/FixedRollStartCallUI.css">
       <publishTime>11/28/2017 22:44:38</publishTime>
     </File>
+    <File Include="Content/GradePresentation.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
     <File Include="Content/GroupInfoUI2.css">
-      <publishTime>11/27/2017 11:10:09</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
+    </File>
+    <File Include="Content/GroupList.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/LoginUI.css">
-      <publishTime>12/01/2017 21:59:16</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/RandomGroupChooseTopicUI2.css">
-      <publishTime>11/27/2017 19:45:20</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/RegisterUI.css">
-      <publishTime>12/01/2017 22:05:08</publishTime>
+      <publishTime>12/04/2017 20:49:09</publishTime>
     </File>
     <File Include="Content/RollCallListUI.css">
-      <publishTime>11/27/2017 12:57:20</publishTime>
+      <publishTime>12/04/2017 20:08:50</publishTime>
+    </File>
+    <File Include="Content/RollStartCallUI.css">
+      <publishTime>12/04/2017 20:06:35</publishTime>
     </File>
     <File Include="Content/Score.css">
       <publishTime>11/29/2017 12:55:35</publishTime>
+    </File>
+    <File Include="Content/Seminar.css">
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/26/2017 19:44:34</publishTime>
     </File>
     <File Include="Content/StudentBindingUI.css">
-      <publishTime>12/01/2017 20:54:53</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/StudentMainUI.css">
-      <publishTime>11/29/2017 13:30:50</publishTime>
+      <publishTime>12/04/2017 21:26:04</publishTime>
     </File>
     <File Include="Content/StudentRollCallUI.css">
-      <publishTime>11/27/2017 17:27:06</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="Content/TeacherBindingUI.css">
-      <publishTime>11/29/2017 13:17:52</publishTime>
+      <publishTime>12/04/2017 18:25:03</publishTime>
     </File>
     <File Include="Content/TeacherMainUI.css">
-      <publishTime>11/29/2017 13:30:51</publishTime>
+      <publishTime>12/04/2017 16:02:13</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>11/26/2017 19:44:34</publishTime>
@@ -300,6 +324,9 @@
     <File Include="images/add.png">
       <publishTime>11/25/2017 20:34:22</publishTime>
     </File>
+    <File Include="images/background.jpg">
+      <publishTime>12/02/2017 19:58:04</publishTime>
+    </File>
     <File Include="images/bg.jpg">
       <publishTime>11/24/2017 20:15:22</publishTime>
     </File>
@@ -310,12 +337,15 @@
       <publishTime>11/24/2017 22:56:10</publishTime>
     </File>
     <File Include="images/bulb.png">
-      <publishTime>11/27/2017 19:04:18</publishTime>
+      <publishTime>12/02/2017 19:58:04</publishTime>
     </File>
     <File Include="images/calendar.png">
       <publishTime>11/26/2017 00:45:04</publishTime>
     </File>
     <File Include="images/class.png">
+      <publishTime>11/24/2017 18:23:29</publishTime>
+    </File>
+    <File Include="images/classManage.png">
       <publishTime>11/24/2017 18:23:29</publishTime>
     </File>
     <File Include="images/clip.png">
@@ -329,6 +359,9 @@
     </File>
     <File Include="images/file.png">
       <publishTime>11/27/2017 11:35:52</publishTime>
+    </File>
+    <File Include="images/FileIcon.png">
+      <publishTime>12/02/2017 19:58:04</publishTime>
     </File>
     <File Include="images/headimg.png">
       <publishTime>11/27/2017 11:02:48</publishTime>
@@ -355,7 +388,10 @@
       <publishTime>11/28/2017 22:49:47</publishTime>
     </File>
     <File Include="images/line.png">
-      <publishTime>11/28/2017 22:49:47</publishTime>
+      <publishTime>12/02/2017 19:58:04</publishTime>
+    </File>
+    <File Include="images/ninedot.png">
+      <publishTime>12/02/2017 19:58:04</publishTime>
     </File>
     <File Include="images/redcross.png">
       <publishTime>11/25/2017 20:28:22</publishTime>
@@ -373,7 +409,7 @@
       <publishTime>11/24/2017 22:57:49</publishTime>
     </File>
     <File Include="images/warn.png">
-      <publishTime>11/28/2017 22:49:47</publishTime>
+      <publishTime>12/02/2017 19:58:04</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/29/2017 17:58:57</publishTime>
@@ -436,16 +472,16 @@
       <publishTime>11/30/2017 17:01:59</publishTime>
     </File>
     <File Include="Views/Home/ChooseCharacter.cshtml">
-      <publishTime>11/29/2017 12:28:51</publishTime>
+      <publishTime>12/04/2017 22:28:57</publishTime>
     </File>
     <File Include="Views/Home/ChooseSchool.cshtml">
-      <publishTime>12/01/2017 09:48:05</publishTime>
+      <publishTime>12/04/2017 22:58:08</publishTime>
     </File>
     <File Include="Views/Home/LoginUI.cshtml">
-      <publishTime>12/01/2017 21:45:34</publishTime>
+      <publishTime>12/04/2017 21:36:44</publishTime>
     </File>
     <File Include="Views/Home/RegisterUI.cshtml">
-      <publishTime>12/01/2017 22:06:44</publishTime>
+      <publishTime>12/04/2017 20:48:29</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/26/2017 19:45:31</publishTime>
@@ -460,58 +496,64 @@
       <publishTime>11/26/2017 19:45:32</publishTime>
     </File>
     <File Include="Views/Student/CourseInfoUI.cshtml">
-      <publishTime>11/29/2017 11:28:42</publishTime>
+      <publishTime>12/04/2017 21:32:12</publishTime>
     </File>
     <File Include="Views/Student/CourseUI.cshtml">
-      <publishTime>11/29/2017 12:34:59</publishTime>
+      <publishTime>12/04/2017 21:28:06</publishTime>
     </File>
     <File Include="Views/Student/FixedGroupList.cshtml">
-      <publishTime>12/01/2017 09:12:10</publishTime>
+      <publishTime>12/04/2017 22:19:18</publishTime>
     </File>
     <File Include="Views/Student/RandomGroupChooseTopicUI.cshtml">
-      <publishTime>11/27/2017 20:14:37</publishTime>
+      <publishTime>12/04/2017 22:30:06</publishTime>
     </File>
     <File Include="Views/Student/RandomGroupList.cshtml">
-      <publishTime>11/29/2017 12:55:35</publishTime>
+      <publishTime>12/04/2017 23:03:23</publishTime>
     </File>
     <File Include="Views/Student/Score.cshtml">
-      <publishTime>11/29/2017 12:40:57</publishTime>
+      <publishTime>12/04/2017 19:38:24</publishTime>
     </File>
     <File Include="Views/Student/Seminar.cshtml">
-      <publishTime>11/29/2017 12:51:33</publishTime>
+      <publishTime>12/04/2017 21:56:42</publishTime>
     </File>
     <File Include="Views/Student/StudentBindingUI.cshtml">
-      <publishTime>11/30/2017 21:00:52</publishTime>
+      <publishTime>12/04/2017 23:02:46</publishTime>
     </File>
     <File Include="Views/Student/StudentMainUI.cshtml">
-      <publishTime>12/01/2017 09:34:14</publishTime>
+      <publishTime>12/04/2017 21:45:31</publishTime>
     </File>
     <File Include="Views/Student/StudentRollCallUI.cshtml">
-      <publishTime>11/27/2017 20:18:24</publishTime>
+      <publishTime>12/04/2017 22:16:52</publishTime>
+    </File>
+    <File Include="Views/Teacher/CheckTeacherInfoUI.cshtml">
+      <publishTime>12/04/2017 21:08:13</publishTime>
     </File>
     <File Include="Views/Teacher/ClassManage.cshtml">
-      <publishTime>11/29/2017 17:03:14</publishTime>
+      <publishTime>12/04/2017 18:53:58</publishTime>
+    </File>
+    <File Include="Views/Teacher/CreateSchool.cshtml">
+      <publishTime>12/04/2017 22:42:15</publishTime>
     </File>
     <File Include="Views/Teacher/FixedGroupInfoUI.cshtml">
-      <publishTime>11/29/2017 16:57:38</publishTime>
+      <publishTime>12/04/2017 20:08:14</publishTime>
     </File>
     <File Include="Views/Teacher/FixedRollCallUI.cshtml">
-      <publishTime>11/29/2017 16:58:30</publishTime>
+      <publishTime>12/04/2017 20:04:00</publishTime>
     </File>
     <File Include="Views/Teacher/RandomGroupInfoUI.cshtml">
-      <publishTime>11/27/2017 20:18:24</publishTime>
+      <publishTime>12/04/2017 20:41:32</publishTime>
     </File>
     <File Include="Views/Teacher/RandomRollCallUI.cshtml">
-      <publishTime>11/29/2017 16:58:30</publishTime>
+      <publishTime>12/03/2017 23:03:14</publishTime>
     </File>
     <File Include="Views/Teacher/RollCallListUI.cshtml">
-      <publishTime>11/29/2017 16:57:38</publishTime>
+      <publishTime>12/04/2017 18:43:51</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherBindingUI.cshtml">
-      <publishTime>11/30/2017 21:05:49</publishTime>
+      <publishTime>12/04/2017 23:03:23</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherMainUI.cshtml">
-      <publishTime>11/29/2017 13:31:25</publishTime>
+      <publishTime>12/04/2017 19:23:31</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/29/2017 21:49:47</publishTime>

@@ -1,85 +1,92 @@
-﻿@charset "utf-8";
-/* 背景色 */
 
-body {
-    background: white;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin: 0;
+html{
+  font-family:"微软雅黑";
+  font-size:100px;
+  height:100%;
+  width: 100%;
 }
-/*上方标题容器*/
-.topDiv{
-    width :100%;
-    height:30%;
+.body{
+  height: 100%; 
 }
-/*查看详细信息按钮*/
-.checkInfo{
-    position:absolute;
-    z-index:0;
-    left:10%;
-    top:5%;
-    height:15%;
-    width:80%;
+/* 背景图的view*/
+.PictureDiv{  
+  left: 0rpx;
+  width: 100%;
+  position:relative;
+  height:40em;
 }
-/*阳光校园图片*/
-.sunschoolimage{
-    z-index:1;
-    position:absolute;
-    width :100%;
-    height:30%;
+/* 背景img */
+.Picture{
+  width:100%;
+  height:100%;
 }
-/*头像*/
-.avatar{
-    position:absolute;
-    z-index:2;
-    width:20%;
-    height: auto;
-    top: 8%;
-    left:8%;
-    font-size:16px;
-}
-/*姓名栏*/
-.nameLine{
-    position:absolute;
-    z-index:2;
-    top:8%;
-    left:35%;
-    font-family:'Microsoft YaHei';
-    font-size:16px;
-}
-/*教工号*/
-.teacherNumberLine{
-    position:absolute;
-    z-index:2;
-    top:13%;
-    left:35%;
-    font-family:'Microsoft YaHei';
-    font-size:16px;
-}
-/*课程列表容器*/
-.courseListDiv{
-    position:absolute;
-    top:33%;
-    height:auto;
-    width:100%;
-    background-color:white;
-}
-/*课程图标*/
-.courseName{
-    position:relative;
-    background-color:rgba(66, 204, 255, 1);
-    color:white;
-    width:96%;
-    padding:2%;
-    font-weight:normal;
-    font-size:50px;
-    font-family:'Microsoft YaHei';
-    border-radius: 20px;
-    margin-left: 2%;
-    margin-top: 2%;
-    float: left;
-    border-style: none;
+/* 用户img */
+.user{
+  position:absolute;margin-left: 8%;top:10em;
+  width:15em;
+  height:15em;
 }
 
+/* 老师姓名 */
+.name{
+	margin-left: 30%;
+	color: #000000;
+	margin-top: 4em;
+	font-size: 3em;
+	position:absolute;
+	z-index:2; 
+	top:7%
+}
+/* id */
+.ID{
+	margin-left: 30%;
+	color: #000000;
+	margin-top: 6em;
+	font-size: 3em;
+	position:absolute;
+	z-index:2; 
+	top:7%
+}
+
+.lowBox{
+	width: 100%;
+	height: 80%;
+
+}
+/*蓝色选择框的div*/
+.blueBox{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#66CCFF;
+	color: #FFFFFF;
+	margin-top: 5%;
+	font-size: 6em;
+    border-radius: 0.5em;
+	height: 2.5em;
+    text-align: center;
+	
+}
+/*灰色选择框的div*/
+.greyBox{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#CCCCCC;
+	color: #FFFFFF;
+	margin-top: 5%;
+	font-size: 6em;
+    border-radius: 0.5em;
+	height: 2.5em;
+    text-align: center;
+	
+}
+/*蓝色框内文字*/
+.text
+{
+	position: absolute;
+	color: #FFFFFF;
+	width: 100%;
+	height: 100%;
+    margin-top: 0.6em;/*负的自身高度一半*/
+}

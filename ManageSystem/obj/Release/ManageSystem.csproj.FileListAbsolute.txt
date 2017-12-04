@@ -104,3 +104,4 @@ D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.dll
 D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.xml
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.xml
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.xml
+D:\Github\ManagementSystem\ManageSystem\obj\Release\ManageSystem.csprojResolveAssemblyReference.cache

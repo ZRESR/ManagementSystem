@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,12 +82,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -195,7 +209,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\SeminarController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,40 +233,59 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CheckStudentInfo.css" />
+    <Content Include="Content\CheckTeacherInfo.css" />
     <Content Include="Content\ChooseCharacter.css" />
+    <Content Include="Content\ChooseSchool.css" />
     <Content Include="Content\ClassManage.css" />
+    <Content Include="Content\CourseInfoUI.css" />
     <Content Include="Content\CourseUI.css" />
-    <Content Include="Content\FixedRollStartCallUI.css" />
+    <Content Include="Content\CreateSchoolUI.css" />
+    <Content Include="Content\GradePresentation.css" />
     <Content Include="Content\GroupInfoUI2.css" />
+    <Content Include="Content\GroupList.css" />
+    <Content Include="Content\LoginUI.css" />
     <Content Include="Content\RandomGroupChooseTopicUI2.css" />
+    <Content Include="Content\RegisterUI.css" />
     <Content Include="Content\RollCallListUI.css" />
+    <Content Include="Content\RollStartCallUI.css" />
+    <Content Include="Content\Seminar.css" />
+    <Content Include="Content\StudentBindingUI.css" />
     <Content Include="Content\StudentMainUI.css" />
     <Content Include="Content\StudentRollCallUI.css" />
+    <Content Include="Content\TeacherBindingUI.css" />
     <Content Include="Content\TeacherMainUI.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\add.png" />
-    <Content Include="images\bg.jpg" />
+    <Content Include="images\background.jpg" />
     <Content Include="images\blueboard.png" />
     <Content Include="images\bulb.png" />
     <Content Include="images\calendar.png" />
-    <Content Include="images\class.png" />
+    <Content Include="images\classManage.png" />
     <Content Include="images\clip.png" />
     <Content Include="images\clock.png" />
     <Content Include="images\email.png" />
     <Content Include="images\file.png" />
+    <Content Include="images\FileIcon.png" />
     <Content Include="images\headimg.png" />
+    <Content Include="images\heart.png" />
+    <Content Include="images\heart_chosen.png" />
+    <Content Include="images\heart_empty.png" />
     <Content Include="images\home.png" />
     <Content Include="images\house.png" />
     <Content Include="images\letter.png" />
+    <Content Include="images\light.png" />
+    <Content Include="images\line.png" />
+    <Content Include="images\ninedot.png" />
     <Content Include="images\redcross.png" />
     <Content Include="images\site.png" />
-    <Content Include="images\sunscholl.png" />
+    <Content Include="images\bg.png" />
     <Content Include="images\teacher.png" />
     <Content Include="images\user.png" />
     <Content Include="images\users.png" />
+    <Content Include="images\warn.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -251,7 +293,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-chinese-region.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -263,7 +307,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tab.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Student\CheckStudentInfoUI.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -277,21 +323,35 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Student\ClassManage.cshtml" />
-    <Content Include="Views\Teacher\FixedRollStartCallUI.cshtml" />
-    <Content Include="Views\Teacher\GroupInfoUI2.cshtml" />
+    <Content Include="Views\Teacher\ClassManage.cshtml" />
+    <Content Include="Views\Teacher\RandomRollCallUI.cshtml" />
+    <Content Include="Views\Teacher\RandomGroupInfoUI.cshtml" />
     <Content Include="Views\Teacher\RollCallListUI.cshtml" />
     <Content Include="Views\Student\StudentRollCallUI.cshtml" />
-    <Content Include="Views\Student\RandomGroupChooseTopicUI2.cshtml" />
+    <Content Include="Views\Student\RandomGroupChooseTopicUI.cshtml" />
     <Content Include="Views\Student\CourseUI.cshtml" />
     <Content Include="Views\Home\ChooseCharacter.cshtml" />
     <Content Include="Views\Student\CourseInfoUI.cshtml" />
     <Content Include="Views\Student\Seminar.cshtml" />
     <Content Include="Views\Teacher\TeacherMainUI.cshtml" />
     <Content Include="Views\Student\StudentMainUI.cshtml" />
+    <Content Include="Views\Student\Score.cshtml" />
+    <Content Include="Views\Student\FixedGroupList.cshtml" />
+    <Content Include="Views\Student\StudentBindingUI.cshtml" />
+    <Content Include="Views\Teacher\TeacherBindingUI.cshtml" />
+    <Content Include="Views\Home\LoginUI.cshtml" />
+    <Content Include="Views\Home\RegisterUI.cshtml" />
+    <Content Include="Views\Student\RandomGroupList.cshtml" />
+    <Content Include="Views\Teacher\FixedRollCallUI.cshtml" />
+    <Content Include="Views\Teacher\FixedGroupInfoUI.cshtml" />
+    <Content Include="Views\Home\ChooseSchool.cshtml" />
+    <Content Include="Scripts\sql_areas.json" />
+    <Content Include="Views\Teacher\CheckTeacherInfoUI.cshtml" />
+    <Content Include="Views\Teacher\CreateSchool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Course\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -301,11 +361,15 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
