@@ -1,106 +1,140 @@
 /* CheckStudentInfo.css */
-/*上方的风景模块*/
-.topBoardView
-{
-    width: 100%;
-    height: 150px;
+
+html{
+  font-family:"微软雅黑";
+  font-size:100px;
+  height:100%;
+  width: 100%;
 }
-.topIcon
-{
-  position:absolute;
+.body{
+  height: 100%;
+  background-color: rgba(102, 204, 255, 0.5);  
+}
+/* 背景图的view*/
+.PictureDiv{  
+  left: 0rpx;
+  width: 100%;
+  position:relative;
+  height:40em;
+}
+/* 背景img */
+.Picture{
   width:100%;
-  height:150px;
-  z-index:1;
+  height:100%;
 }
-/*上面的头像*/
-.topHead
-{
-  position: absolute;
-  height: 12%;
-  width: 20%;
-  margin-left: 5%;
-  margin-top:5%;
-  z-index: 3;
+/* 用户img */
+.user{
+  position:absolute;margin-left: 8%;top:8em;
+  width:15em;
+  height:15em;
 }
-/*“点击头像修改”*/
-.topClickHead
-{
+
+/*修改头像的备注*/
+.unbindTip{
+  color: grey;
   position:absolute;
-  font-size: 12px;
-  color:grey;
-  left: 5%;
-  top:15%;
-  z-index: 3;
+  font-size: 2.5em;
+  left: 8%;
+  top: 10em;
 }
-/*上面的姓名*/
-.topName
-{
+/* 学生姓名 */
+.name{
+  margin-left: 32%;
+  color: #000000;
+  font-size: 2.5em;
+  font-weight: bolder;
   position:absolute;
-  font-size: 15px;
-  margin-left: 30%;
-  margin-top:10%;
-  z-index: 2;
+  z-index:2; 
+  top:5em
 }
-/*上面的ID*/
-.topID
-{
+/* 学生ID */
+.studentID{
+  margin-left: 32%;
+  color: #000000;
+  font-size: 2.5em;
+  font-weight: bolder;
   position:absolute;
-  position:absolute;
-  font-size: 15px;
-  margin-left: 30%;
-  margin-top:18%;
-  z-index: 2;
+  z-index:2; 
+  top:8em
+}
+
+
+
+.lowBox{
+  width: 100%;
+  height: 50em;
+
 }
 /*下方的主要选择页面*/
 .mainView
 {
   background-color: #6cf;
   width:100%;
-  height: 500px;
+  height: 50em;
 }
 /*号的标签*/
 .ID
 {
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  top:40%;
+  font-size: 2.5em;
+  left:15%;
+  font-weight: bolder;
+  top:25em;
   z-index: 2;
 }
 /*姓名的标签*/
-.name
+.name1
 {
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  top:60%;
+  font-size: 2.5em;
+  left:15%;font-weight: bolder;
+  top:35em;
   z-index: 2;
 }
 /*学校的标签*/
 .school
 {
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  top:50%;
+  font-size: 2.5em;font-weight: bolder;
+  left:15%;
+  top:30em;
   z-index: 2;
 }
 /*手机*/
-.phone
+.phone1
 {
   position:absolute;
-  font-size: 20px;
-  left:20%;
-  top:30%;
+  font-size: 2.5em;
+  left:15%;
+  font-weight: bolder;
+  top:20em;
   z-index: 2;
 }
-/*确定按钮*/
-.confirmButton
+/*退出按钮*/
+.exitBtn
 {
-  background-color: red;
-  color:white;
-  width:140px;
-  height:60px;
-  font-size: 25px;
-  top:62%;
+  background-color: white;
+  color:#0066FF;
+  font-weight: bolder;
+  width:7em;
+  height:3em;
+  font-size: 3em;
+  border-radius: 0.6em;
+  position: absolute;
+  left: 20%;
+  top:35em;
+}
+/*解绑按钮*/
+.UnbindBtn
+{
+  background-color: white;
+  color:#FF0000;
+  font-weight: bolder;
+  width:7em;
+  height:3em;
+  font-size: 3em;
+  border-radius: 0.6em;
+  position: absolute;
+  left: 55%;
+  top:35em;
 }

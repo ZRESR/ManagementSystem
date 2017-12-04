@@ -49,5 +49,9 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public ActionResult CheckStudentInfoUI()
+        {
+            return View();
+        }
     }
 }

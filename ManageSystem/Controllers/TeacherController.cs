@@ -41,5 +41,9 @@ namespace ManageSystem.Controllers
         {
             return View();
         }
+        public ActionResult CheckTeacherInfoUI()
+        {
+            return View();
+        }
     }
 }
