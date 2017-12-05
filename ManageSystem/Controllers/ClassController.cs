@@ -41,7 +41,7 @@ namespace ManageSystem.Controllers
             var showLate = Request.Headers.GetValues("showLate").First().ToString();
             JsonResult result = new JsonResult();
             var students = new { numPresent = 4, present = new object[]{ new { id = 2537, name = "张三" }, new { id = 8232, name = "李四" }, new { id = 3245, name = "王五" }, new { id = 1234, name = "赵六" } } };
-            var students2 = new { numPresent = 4, present = new object[] { new { id = 2537, name = "张三" }, new { id = 8232, name = "李四" }, new { id = 3245, name = "王五" }, new { id = 1234, name = "赵六" } }, late = new object[] { new { id = 4543, name = "张明" }, new { id = 2563, name = "李强" } } };
+            var students2 = new { numPresent = 4, present = new object[] { new { id = 2537, name = "张三" }, new { id = 8232, name = "李四" }, new { id = 3245, name = "王五" }, new { id = 1234, name = "赵六" } }, late = new object[] { new { id = 4543, name = "张月明" }, new { id = 2563, name = "李强" }, new { id = 2363, name = "李华" }, new { id = 1531, name = "任为逸" }, new { id = 4523, name = "陈成晨" } } };
             if (showLate == "false")
                 result.Data = students;
             else

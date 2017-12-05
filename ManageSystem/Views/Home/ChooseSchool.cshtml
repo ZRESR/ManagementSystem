@@ -91,6 +91,7 @@
                 $("#city").removeClass("cur");
                 $("#school").addClass("cur");
                 $(".list").empty();
+                $("#city").text($(this).text());
                 if(window.localStorage.getItem("type") == "teacher")
                     $("#noSch").show();
                 $.get("/api/School/" + cid, function (data, status) {
