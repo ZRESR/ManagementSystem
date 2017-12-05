@@ -79,6 +79,7 @@
                 $("#city").addClass("cur");
                 $(".list").empty();
                 $("#noSch").hide();
+                $("#province").text($(this).text());
                 $.get("/api/City/"+pid, function (data, status) {
                     for (var i in data.Data) {
                         $(".list").append("<div id='" + data.Data[i].id + "' class='ctr'>" + data.Data[i].name + "</div>");

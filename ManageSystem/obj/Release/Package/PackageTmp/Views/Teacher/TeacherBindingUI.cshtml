@@ -33,14 +33,19 @@
 
         $(document).ready(function () {
             $(window).bind("unload", function () { });
+            $(".inputteacherID").val(window.localStorage.getItem("number"));
+            $(".inputName").val(window.localStorage.getItem("name"));
             $(".inputSchool").val(window.localStorage.getItem("school"));
             $(".inputSchool").attr("readonly", "readonly");
             $("button").click(function () {
-                window.localStorage.removeItem("school")
+                window.localStorage.removeItem("number");
+                window.localStorage.removeItem("name");
+                window.localStorage.removeItem("school");
                 $(window).attr("location", '/Teacher/TeacherMainUI');
             });
             $(".selectSchoolIcon").click(function () {
-                var url = 'TeacherBindingUI';
+                window.localStorage.setItem("number", $(".inputteacherID").val());
+                window.localStorage.setItem("name", $(".inputName").val());
                 $(window).attr("location", '/Home/ChooseSchool');
             });
         });

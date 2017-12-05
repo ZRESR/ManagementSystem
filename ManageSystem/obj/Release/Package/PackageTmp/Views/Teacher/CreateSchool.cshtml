@@ -12,6 +12,16 @@
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/CreateSchoolUI.css")" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $(".createButton").click(function () {
+                if ($(".inputSchool").val() == null)
+                    alert("学校不能为空！");
+                window.localStorage.setItem("school", $(".inputSchool").val());
+                window.history.go(-2);
+            });
+        });
+    </script>
 </head>
 <body class="body">
     <div class="PictureDiv">

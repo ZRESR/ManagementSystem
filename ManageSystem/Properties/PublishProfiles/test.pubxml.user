@@ -25,7 +25,7 @@
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/ManageSystem.dll">
-      <publishTime>12/04/2017 22:36:03</publishTime>
+      <publishTime>12/04/2017 23:09:40</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -517,22 +517,22 @@
       <publishTime>12/04/2017 21:56:42</publishTime>
     </File>
     <File Include="Views/Student/StudentBindingUI.cshtml">
-      <publishTime>12/04/2017 23:02:46</publishTime>
+      <publishTime>12/04/2017 23:23:39</publishTime>
     </File>
     <File Include="Views/Student/StudentMainUI.cshtml">
-      <publishTime>12/04/2017 21:45:31</publishTime>
+      <publishTime>12/04/2017 23:28:16</publishTime>
     </File>
     <File Include="Views/Student/StudentRollCallUI.cshtml">
       <publishTime>12/04/2017 22:16:52</publishTime>
     </File>
     <File Include="Views/Teacher/CheckTeacherInfoUI.cshtml">
-      <publishTime>12/04/2017 21:08:13</publishTime>
+      <publishTime>12/04/2017 23:09:29</publishTime>
     </File>
     <File Include="Views/Teacher/ClassManage.cshtml">
       <publishTime>12/04/2017 18:53:58</publishTime>
     </File>
     <File Include="Views/Teacher/CreateSchool.cshtml">
-      <publishTime>12/04/2017 22:42:15</publishTime>
+      <publishTime>12/04/2017 23:25:18</publishTime>
     </File>
     <File Include="Views/Teacher/FixedGroupInfoUI.cshtml">
       <publishTime>12/04/2017 20:08:14</publishTime>
@@ -550,10 +550,10 @@
       <publishTime>12/04/2017 18:43:51</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherBindingUI.cshtml">
-      <publishTime>12/04/2017 23:03:23</publishTime>
+      <publishTime>12/04/2017 23:23:39</publishTime>
     </File>
     <File Include="Views/Teacher/TeacherMainUI.cshtml">
-      <publishTime>12/04/2017 19:23:31</publishTime>
+      <publishTime>12/04/2017 23:28:16</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/29/2017 21:49:47</publishTime>

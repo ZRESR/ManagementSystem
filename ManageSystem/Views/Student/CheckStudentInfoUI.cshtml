@@ -9,7 +9,7 @@
     <title>CheckStudentInfoUI</title>
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
 	<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-	<link href="/Content/CheckStudentInfo.css" rel="stylesheet" type="text/css">
+	<link href="~/Content/CheckStudentInfo.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         $(document).ready(function () {
             $.ajax({
@@ -20,7 +20,6 @@
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
-                    console.log(data.Data);
                     $(".name").text("姓名：" + data.Data.name);
                     $(".name1").text("姓名："+ data.Data.name);
                     $(".teacherID").text("教工号：" + data.Data.number);

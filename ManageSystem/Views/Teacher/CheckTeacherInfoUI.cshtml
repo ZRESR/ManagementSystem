@@ -20,7 +20,6 @@
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
-                    console.log(data.Data);
                     $(".name").text("姓名：" + data.Data.name);
                     $(".name1").text("姓名："+ data.Data.name);
                     $(".teacherID").text("教工号：" + data.Data.number);
