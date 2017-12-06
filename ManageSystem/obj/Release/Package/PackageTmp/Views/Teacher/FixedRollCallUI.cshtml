@@ -14,7 +14,26 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/RollStartCallUI.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
+        if ((/iphone|ipod|ipad.*os 5/gi).test(navigator.appVersion)) {
+            window.onpageshow = function (event) {
+                if (event.persisted) {
+                    window.location.reload()
+                }
+            };
+        }
+        else {
+            onload = function () {
+                var refreshedId = document.getElementById("refreshed");
+                if (refreshedId.value == "no") {
+                    refreshedId.value = "yes";
+                } else {
+                    refreshedId.value = "no";
+                    location.reload();
+                }
+            }
+        }
         $(document).ready(function () {
+            $(window).bind("unload", function () { });
             var showPresent = true;
             var showLate = false;
             var numstudent;
@@ -26,8 +45,22 @@
                 success: function (data, status) {
                     $(".classNameDiv").append(data.Data.name);
                     $(".studentSumDiv").append("学生总数：" + data.Data.numstudent);
-                    $("#stuNum").append("<span id='presentnum'class='studentNumText'>已签到学生: 0/" + data.Data.numstudent + "</span>");
                     numstudent = data.Data.numstudent;
+                    if (window.localStorage.getItem("trcstatus") == null) {
+                        $("#checkStudent").show();
+                        $("#presentnum").text("已签到学生: 0/" + data.Data.numstudent);
+                    }
+                    else {
+                        showLate = true;
+                        $("#presentnum").text("已签到学生: 4/" + numstudent);
+                        $("#check").append("<button id='checkStudent' type='button' class='blueBigBtn' onclick='javascript: window.location = '/Teacher/RollCallListUI''>签到名单</button>")
+                        $("#stuNum").removeClass("studentNum2");
+                        $("#stuNum").addClass("studentNum");
+                        $("#start").remove();
+                        $(".noGroup").remove();
+                        $("#usersIcon").removeClass("usersIcon2");
+                        $("#usersIcon").addClass("usersIcon");
+                    }
                 }
             });
             $("#start").click(function () {
@@ -38,16 +71,16 @@
                 }
                 else {
                     showLate = true;
+                    window.localStorage.setItem("trcstatus", "success");
                     $("#presentnum").text("已签到学生: 4/" + numstudent);
                     $("#checkStudent").remove();
                     $("#check").append("<button id='checkStudent' type='button' class='blueBigBtn' onclick='javascript: window.location = '/Teacher/RollCallListUI''>签到名单</button>")
                     $("#stuNum").removeClass("studentNum2");
-                    $("#stuNum").toggleClass("studentNum");
+                    $("#stuNum").addClass("studentNum");
                     $("#start").remove();
                     $(".noGroup").remove();
                     $("#usersIcon").removeClass("usersIcon2");
-                    $("#usersIcon").toggleClass("usersIcon");
-                    $("#check").on("click", "#checkStudent", select);
+                    $("#usersIcon").addClass("usersIcon");
                 }
             });
             $("#checkStudent").click(function () {
@@ -58,6 +91,7 @@
                 window.localStorage.setItem("showLate", showLate);
                 $(window).attr("location", "/Teacher/RollCallListUI");
             }
+            $("#check").on("click", "#checkStudent", select);
         });
     </script>
 </head>
@@ -89,8 +123,8 @@
     <!--已签到的学生+icon+签到名单，表示当签到开始后结束前的样子-->
     <div id="stuNum" class="studentNum2">
         <img id="usersIcon" src="~/images/users.png" class="usersIcon2" />
-        @*<span>已签到学生: 0/40</span>*@
-        <button id="checkStudent" type="button" class="blueCallBtn" onclick="javascript: window.location = '/Teacher/RollCallListUI'">
+        <span id='presentnum' class='studentNumText'></span>
+        <button id="checkStudent" type="button" class="blueCallBtn" style="display:none;" onclick="javascript: window.location = '/Teacher/RollCallListUI'">
             签到名单
         </button>
 </div>
@@ -112,7 +146,7 @@
         </button>
     </div>
 
-
+    <input type="hidden" id="refreshed" value="no" />
 </body>
 </html>
 

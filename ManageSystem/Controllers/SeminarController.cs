@@ -50,15 +50,31 @@ namespace ManageSystem.Controllers
             string include = HttpContext.Current.Request.QueryString["include"];
             if(gradeable != null)
             {
-                var groups = new object[] {
-                    new { id = 31, name = "A1" },
-                    new { id = 32, name = "A2" },
-                    new { id = 33, name = "A3" },
-                    new { id = 34, name = "C1" },
-                    new { id = 35, name = "C2" },
-                    new { id = 36, name = "C3" }
-                };
-                result.Data = groups;
+                int cid = int.Parse(classid);
+                if (cid == 1)
+                {
+                    var groups = new object[] {
+                        new { id = 11, name = "1-A-1" },
+                        new { id = 12, name = "1-A-2" },
+                        new { id = 13, name = "1-A-3" },
+                        new { id = 14, name = "1-C-1" },
+                        new { id = 15, name = "1-C-2" },
+                        new { id = 16, name = "1-C-3" }
+                    };
+                    result.Data = groups;
+                }
+                else
+                {
+                    var groups = new object[] {
+                        new { id = 21, name = "2-B-1" },
+                        new { id = 22, name = "2-B-2" },
+                        new { id = 23, name = "2-B-3" },
+                        new { id = 24, name = "2-C-1" },
+                        new { id = 25, name = "2-C-2" },
+                        new { id = 26, name = "2-C-3" }
+                    };
+                    result.Data = groups;
+                }
             }
             else
             {

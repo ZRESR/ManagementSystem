@@ -7,16 +7,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
+using Microsoft.CSharp;
 
 namespace ManageSystem.Controllers
 {
     public class MeController : ApiController
     {
-        public class LoginModel
-        {
-            public string username { set; get; }
-            public string password { set; get; }
-        }
         // GET: api/Me
         public JsonResult Get()
         {

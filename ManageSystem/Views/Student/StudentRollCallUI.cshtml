@@ -13,10 +13,34 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="@Url.Content("~/Content/StudentRollCallUI.css")" rel="stylesheet" type="text/css" />
     <script>
+        if ((/iphone|ipod|ipad.*os 5/gi).test(navigator.appVersion)) {
+            window.onpageshow = function (event) {
+                if (event.persisted) {
+                    window.location.reload()
+                }
+            };
+        }
+        else {
+            onload = function () {
+                var refreshedId = document.getElementById("refreshed");
+                if (refreshedId.value == "no") {
+                    refreshedId.value = "yes";
+                } else {
+                    refreshedId.value = "no";
+                    location.reload();
+                }
+            }
+        }
         $(document).ready(function () {
+            $(window).bind("unload", function () { });
+            if (window.localStorage.getItem("rcstatus") != null) {
+                $(".blueBigBtn").hide();
+                $(".successCall").show();
+            }
             $(".blueBigBtn").click(function () {
                 $(".blueBigBtn").hide();
                 $(".successCall").show();
+                window.localStorage.setItem("rcstatus", "success");
                 setTimeout(function () { window.history.go(-1); }, 1000);
             });
         });
@@ -70,6 +94,6 @@
         </button>
     </div>
 
-
+    <input type="hidden" id="refreshed" value="no" />
 </body>
 </html>

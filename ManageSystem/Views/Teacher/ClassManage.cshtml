@@ -14,6 +14,7 @@
     <script>
         $(document).ready(function () {
             var groupingMethod = "";
+            window.localStorage.removeItem("trcstatus");
             $.ajax({
                 type: 'GET',
                 url: "../api/course/"+window.localStorage.getItem("courseid"),

@@ -39,6 +39,36 @@ namespace ManageSystem.Controllers
                 var courses = new object[] { new { id = 131, name = "华侨大学" }, new { id = 132, name = "泉州师范大学" }, new { id = 133, name = "泉州理工" } };
                 result.Data = courses;
             }
+            else if (id == 21)
+            {
+                var courses = new object[] { new { id = 211, name = "中山大学" }, new { id = 212, name = "华南理工" }, new { id = 213, name = "暨南大学" } };
+                result.Data = courses;
+            }
+            else if (id == 22)
+            {
+                var courses = new object[] { new { id = 221, name = "汕头大学" } };
+                result.Data = courses;
+            }
+            else if (id == 23)
+            {
+                var courses = new object[] { new { id = 231, name = "深圳大学" }, new { id = 232, name = "南方科技大学" } };
+                result.Data = courses;
+            }
+            else if (id == 31)
+            {
+                var courses = new object[] { new { id = 311, name = "广西大学" }, new { id = 312, name = "广西民族大学" }, new { id = 313, name = "广西医科大学" } };
+                result.Data = courses;
+            }
+            else if (id == 32)
+            {
+                var courses = new object[] { new { id = 321, name = "广西科技大学" } };
+                result.Data = courses;
+            }
+            else if (id == 33)
+            {
+                var courses = new object[] { new { id = 331, name = "广西师范大学" }, new { id = 332, name = "桂林理工大学" }, new { id = 333, name = "电子科技大学" } };
+                result.Data = courses;
+            }
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return result;
         }

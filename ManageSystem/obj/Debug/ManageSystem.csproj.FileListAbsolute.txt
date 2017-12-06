@@ -140,7 +140,10 @@ D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.Owin.Security.Twitter.dll
 D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.Web.Infrastructure.dll
 D:\Github\ManagementSystem\ManageSystem\bin\Newtonsoft.Json.dll
 D:\Github\ManagementSystem\ManageSystem\bin\Owin.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.dll
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Helpers.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.dll
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.dll
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Mvc.dll
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Optimization.dll
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Razor.dll
@@ -154,6 +157,9 @@ D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.AI.Web.xml
 D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.AI.WindowsServer.xml
 D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.ApplicationInsights.xml
 D:\Github\ManagementSystem\ManageSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.xml
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.xml
+D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.xml
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Helpers.xml
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Mvc.xml
 D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Optimization.xml
@@ -196,12 +202,6 @@ D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.Face
 D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
 D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
 D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.csprojResolveAssemblyReference.cache
 D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.dll
 D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.pdb
-D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.dll
-D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.dll
-D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.dll
-D:\Github\ManagementSystem\ManageSystem\bin\System.Net.Http.Formatting.xml
-D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.xml
-D:\Github\ManagementSystem\ManageSystem\bin\System.Web.Http.WebHost.xml
+D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.csprojResolveAssemblyReference.cache

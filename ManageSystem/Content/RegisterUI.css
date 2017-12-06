@@ -133,7 +133,7 @@ html{
 .confirmButton
 {
   position: absolute;
-   background-color: #ffffff;
+  background-color: #ffffff;
   color:#000000;
   font-size: 3em;
   border:blue;
@@ -147,15 +147,12 @@ html{
   font-weight: bolder;
 }
 
-
-
 /*提示图标*/
 .tipIcon
 {
   width: 3%;
-  height: 2%;
   margin-left: 38%;
-  margin-top:18em;
+  margin-top:18.3em;
   z-index: 2;
 }
 /*提示文字自体*/
