@@ -22,7 +22,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
                     $(".name").text("姓名："+data.Data.name);
-                    $(".teacherID").text("教工号："+data.Data.number);
+                    $(".ID").text("教工号："+data.Data.number);
                 }
             });
             $.ajax({
