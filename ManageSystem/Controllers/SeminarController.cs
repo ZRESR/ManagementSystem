@@ -50,7 +50,7 @@ namespace ManageSystem.Controllers
             string include = HttpContext.Current.Request.QueryString["include"];
             if(gradeable != null)
             {
-                int cid = int.Parse(classid);
+                int cid = 1;
                 if (cid == 1)
                 {
                     var groups = new object[] {

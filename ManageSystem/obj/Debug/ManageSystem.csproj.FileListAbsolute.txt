@@ -204,4 +204,3 @@ D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.Twit
 D:\Github\ManagementSystem\ManageSystem\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.dll
 D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.pdb
-D:\Github\ManagementSystem\ManageSystem\obj\Debug\ManageSystem.csprojResolveAssemblyReference.cache

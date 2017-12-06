@@ -18,8 +18,7 @@
                 url: "/api/Seminar/" + window.localStorage.getItem("seminarid") + "/Group",
                 contentType: "application/json; charset=utf-8",
                 data: {
-                    "gradeable": "true",
-                    "classid": window.localStorage.getItem("classid")
+                    "gradeable": "true"
                 },
                 success: function (data, status) {
                     for (var i in data.Data) {
