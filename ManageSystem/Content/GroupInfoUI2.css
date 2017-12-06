@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*背景色*/
 body {
     background: rgba(102, 204, 255, 0.5);
@@ -7,6 +7,44 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+/*定义模态框样式*/
+.modalstyle{
+	margin-top:65%;
+	text-align:center;
+}
+/*模态框标题文字*/
+.modaltitle{
+	font-size:5rem;
+}
+/*模态框内容*/
+.modalbody{
+	overflow: scroll;
+	font-size:3.5rem;
+	height:17rem;
+}
+.modallist{
+	padding:1%;
+}
+/*模态框关闭按钮*/
+.modalclosebutton{
+	width:49%;
+	font-size:3.5rem;
+}
+/*模态框确认按钮*/
+.modalconfirmbutton{
+	width:49%;
+	font-size:3.5rem;
+	background-color:#66ccff;
+}
+.button{
+	position: absolute;
+	left: 15%;
+	top: 15%;
+	background: #eee;
+	padding: 5px 10px ;
+}
+
+
 
 /* 左上角的users图标和文字的容器*/
 
@@ -27,7 +65,7 @@ body {
 /* 左上角的蓝色users图标大小*/
 
 .blueUsersIcon {
-    width: 15em;
+    width: 10em;
     margin-right: 10%;
     float: left;
 }
