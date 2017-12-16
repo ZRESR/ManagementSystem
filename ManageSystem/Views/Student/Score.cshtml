@@ -5,155 +5,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Score</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="@Url.Content("~/Content/Score.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/GradePresentation.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".heart").click(function () {
-                $(this).parent().children(".heart").children("#off").show();
-                $(this).parent().children(".heart").children("#on").hide();
-                $(this).children().toggle();
-                $(this).prevAll().children().toggle();
+            $.ajax({
+                type: 'GET',
+                url: "/api/seminar/" + window.localStorage.getItem("seminarid") + "/Group",
+                contentType: "application/json; charset=utf-8",
+                data: {
+                    "gradeable": "true"
+                },
+                success: function (data, status) {
+                    for (var i in data) {
+                        var col = "<div class='GradeDiv'><span class='GroupNum'>" + data[i].name
+                            + "</span> <div> <img id='off' src='../images/heart_empty.png' class='GroupGradeIcon'/>"
+                            + "<img id='on' style='display:none;' src='../images/heart_chosen.png' class='GroupGradeIcon'/></div>"
+                            + "<div> <img id='off' src='../images/heart_empty.png' class='GroupGradeIcon'/>"
+                            + "<img id='on' style='display:none;' src='../images/heart_chosen.png' class='GroupGradeIcon'/></div>"
+                            + "<div> <img id='off' src='../images/heart_empty.png' class='GroupGradeIcon'/>"
+                            + "<img id='on' style='display:none;' src='../images/heart_chosen.png' class='GroupGradeIcon'/></div>"
+                            + "<div> <img id='off' src='../images/heart_empty.png' class='GroupGradeIcon'/>"
+                            + "<img id='on' style='display:none;' src='../images/heart_chosen.png' class='GroupGradeIcon'/></div>"
+                            + "<div> <img id='off' src='../images/heart_empty.png' class='GroupGradeIcon'/>"
+                            + "<img id='on' style='display:none;' src='../images/heart_chosen.png' class='GroupGradeIcon'/></div></div>"
+                        $("#list").append(col);
+                    }
+                }
             });
-            $(".btnsubmit").click(function () {
+            function hclick() {
+                $(this).parent().parent().children().children("#on").hide();
+                $(this).parent().parent().children().children("#off").show();
+                $(this).parent().children().toggle();
+                $(this).parent().prevAll().children().toggle();
+            }
+            $(".blueBigBtn").click(function () {
                 $(this).remove();
-                $(".heart").unbind("click");
+                $("#list").off('click', '.GroupGradeIcon', hclick)
                 $("#title").text("您的打分结果");
             });
+            $("#list").on('click', '.GroupGradeIcon', hclick)
         });
     </script>
 </head>
 <body class="fullbackground">
-    <div class="columndisplay">
-        <img class="UsersIcon" src="~/images/users.png" />
-        <label id="title">请为别的小组展示打分</label>
+    <div class="blueUsersDiv">
+        <img src="../images/users.png" class='blueUsersIcon' />
     </div>
-    <div class="middlediv scoremargin">
-        <div>
-            <label>A1</label>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-        </div>
-        <div>
-            <label>A2</label>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-        </div>
-        <div>
-            <label>A3</label>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-        </div>
-        <div>
-            <label>B1</label>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-        </div>
-        <div>
-            <label>B2</label>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-            <div class="heart" style="display:inline-block;">
-                <img id="off" src="~/images/heart_empty.png" />
-                <img id="on" style="display:none;" src="~/images/heart_chosen.png" />
-            </div>
-        </div>
-        <button class="btnsubmit">提交</button>
+    <!--设置上方的字体-->
+    <div class="blueUsersDiv2">
+        <strong id="title" class="blueUsersFont">请为别的小组打分</strong>
     </div>
+    <!--细线，hr不好设置css，用一个高度很小的div来代替-->
+    <div class="hrDiv"></div>
+    <div id="list"></div>
+    <button class="blueBigBtn">提交</button>
 </body>
 </html>

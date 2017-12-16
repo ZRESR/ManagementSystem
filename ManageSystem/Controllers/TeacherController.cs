@@ -1,47 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ManageSystem.Controllers
 {
     public class TeacherController : Controller
     {
         // GET: Teacher
-        public ActionResult ClassManage()
+        public IActionResult ClassManage()
         {
             return View();
         }
-        public ActionResult TeacherMainUI()
+        public IActionResult TeacherMainUI()
         {
             return View();
         }
-        public ActionResult FixedGroupInfoUI()
+        public IActionResult CreateSchool()
         {
             return View();
         }
-        public ActionResult RandomGroupInfoUI()
+        public IActionResult CheckTeacherInfoUI()
         {
             return View();
         }
-        public ActionResult RollCallListUI()
+        public IActionResult FixedGroupInfoUI()
         {
             return View();
         }
-        public ActionResult FixedRollCallUI()
+        public IActionResult RandomGroupInfoUI()
         {
             return View();
         }
-        public ActionResult RandomRollCallUI()
+        public IActionResult RollCallListUI()
         {
             return View();
         }
-        public ActionResult TeacherBindingUI()
+        public IActionResult FixedRollCallUI()
         {
             return View();
         }
-        public ActionResult CheckTeacherInfoUI()
+        public IActionResult RandomRollCallUI()
+        {
+            return View();
+        }
+        public IActionResult TeacherBindingUI()
         {
             return View();
         }

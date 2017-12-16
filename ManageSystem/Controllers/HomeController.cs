@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ManageSystem.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult ChooseCharacter()
+        public IActionResult ChooseCharacter()
         {
             return View();
         }
-        public ActionResult ChooseSchool()
+        public IActionResult ChooseSchool()
         {
             return View();
         }
-        public ActionResult LoginUI()
+        public IActionResult LoginUI()
         {
             return View();
         }
-        public ActionResult RegisterUI()
+        public IActionResult RegisterUI()
         {
             return View();
         }

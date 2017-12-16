@@ -6,38 +6,48 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Seminar</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css" />
-    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <link href="@Url.Content("~/Content/CourseUI.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/Seminar.css" rel="stylesheet" type="text/css" />
     <script>
         $(document).ready(function () {
-            $(".box2").click(function () {
+            var groupMethod;
+            $.ajax({
+                type: 'GET',
+                url: "../api/course/" + window.localStorage.getItem("courseid") + "/seminar",
+                contentType: "application/json; charset=utf-8",
+                success: function (data, status) {
+                    $(".title2").text(data[0].name);
+                    groupMethod = data[0].groupingMethod;
+                }
+            });
+            $(".ScoreBox").click(function () {
                 $(window).attr("location", '/Student/Score');
+            });
+            $(".GroupBox").click(function () {
+                if (groupMethod == "fixed")
+                    $(window).attr("location", '/Student/FixedGroupList');
+                else $(window).attr("location", '/Student/RandomGroupList');
             });
         });
     </script>
 </head>
 <body class="body">
-    <div class="headTitle">
-        <span>OOAD</span>
-        <span class="fontSeminar"> 讨论课4</span>
+    <div class="topBox">
+        <span class="title">OOAD</span>
+        <span class="title2"></span>
     </div>
-    <div class="box2">
-        <span class="fontItem" style="margin-top: 100%">打分</span>
+    <div class="ScoreBox">
+        <span class="ScoreText" style="margin-top: 100%">打分</span>
     </div>
-    <div class="box1">
-        <span class="fontItem" onclick="javascript: window.location = '/Student/StudentRollCallUI'">签到</span>
+    <div class="CallBox">
+        <span class="CallText" onclick="javascript: window.location = '/Student/StudentRollCallUI'">签到</span>
     </div>
-    <div class="box1">
-        <span class="fontItem" onclick="javascript: window.location = '/Student/RandomGroupList'">组队和选题</span>
+    <div class="GroupBox">
+        <span class="GroupText">组队和选题</span>
     </div>
     &nbsp;
 </body>

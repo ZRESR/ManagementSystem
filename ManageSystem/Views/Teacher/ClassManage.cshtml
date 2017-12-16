@@ -2,61 +2,92 @@
 @{
     Layout = null;
 }
-<html lang="en">
+<html lang="en" class="html">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,
-                                   height=device-height,
-                                   target-densitydpi=device-dpi,
-                                   initial-scale=1.0,
-                                   maximum-scale=1.0,
-                                   user-scalable=no">
+    <meta name="divport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>ClassManage</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="@Url.Content("~/Content/ClassManage.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="~/css/ClassManage.css" rel="stylesheet" type="text/css" />
     <script>
         $(document).ready(function () {
-            $(".class").click(function () {
-                $(window).attr("location", '/Teacher/FixedRollCallUI');
+            var groupingMethod = "";
+            window.localStorage.removeItem("trcstatus");
+            $.ajax({
+                type: 'GET',
+                url: "/api/course/" + window.localStorage.getItem("courseid"),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, status) {
+                    $(".title").text(data.name);
+                }
             });
+            $.ajax({
+                type: 'GET',
+                url: "/api/course/" + window.localStorage.getItem("courseid") + "/seminar",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, status) {
+                    window.localStorage.setItem("seminarid", data[0].id);
+                    $(".seminarText").text(data[0].name);
+                    $("#time").children("span").text("9月25日-10月9日");
+                    var str = "<span id='groupingM' class='timeText'>";
+                    if (data[0].groupingMethod == "fixed")
+                        $("#groupingMethod").children("span").text("固定分组");
+                    else
+                        $("#groupingMethod").children("span").text("随机分组");
+                    groupingMethod = data[0].groupingMethod;
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: "/api/course/" + window.localStorage.getItem("courseid") + "/class",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data, status) {
+                    for (var i in data) {
+                        $("#classDiv").append("<div class='class'><img id='" + data[i].id + "'src='../../images/classManage.png' class='classIcon'><p class='className'>" + data[i].name + "</p>");
+                    }
+                }
+            });
+            function select() {
+                if (groupingMethod == "fixed") {
+                    window.localStorage.setItem("classid", $(this).attr("id"));
+                    $(window).attr("location", "/Teacher/FixedRollCallUI");
+                }
+                else {
+                    window.localStorage.setItem("classid", $(this).attr("id"));
+                    $(window).attr("location", "/Teacher/RandomRollCallUI");
+                }
+            }
+            $("#classDiv").on('click', '.classIcon', select);
         });
     </script>
 </head>
 <body class="body">
     <!--设置蓝色上方-->
-    <div class="blueHeader">
-        <span>OOAD</span>
-        <span class="seminarText">讨论课4</span>
+    <div class="topBox">
+        <span class="title">D</span>
+        <span class="seminarText"></span>
     </div>
 
     <!--讨论课的时间和分组方式-->
-    <div class="clockAndGroupDiv">
+    <div id="time" class="clockAndGroupDiv">
         <img src="~/images/clock.png" class="icon">
-        <span>11月6日-11月12日</span>
+        <span></span>
     </div>
 
-    <div class="clockAndGroupDiv">
+    <div id="groupingMethod"class="clockAndGroupDiv">
         <img src="~/images/clip.png" class="icon">
-        <span>随机分组</span>
+        <span></span>
     </div>
 
-    <!--班级Icon及名字,增加新班级就复制一个div-->
-    <div class="class">
-        <img src="~/images/class.png" class="classIcon">
-        <p class="className">班级1</p>
+    <!--班级Icon及名字-->
+    <div id="classDiv">
     </div>
-
-    <div class="class">
-        <img src="~/images/class.png" class="classIcon">
-        <p class="className">班级2</p>
-    </div>
-
-    <div class="class">
-        <img src="~/images/class.png" class="classIcon">
-        <p class="className">班级3</p>
-    </div>
+    
 
 </body>
 </html>

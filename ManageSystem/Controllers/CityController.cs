@@ -1,46 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ManageSystem.Controllers
 {
-    public class CityController : ApiController
+    [Produces("application/json")]
+    [Route("/api/city")]
+    public class CityController : Controller
     {
         // GET: api/City
-        public JsonResult Get()
+        [HttpGet]
+        public IActionResult GetCityList()
         {
             var courses = new object[] { new { id = 1, name = "泉州"}, new { id = 2, name = "福州"}, new { id = 3, name = "厦门" } };
-            var result = new JsonResult();
-            result.Data = courses;
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return result;
+            return Json(courses);
         }
 
         // GET: api/City/5
-        public JsonResult Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetCity(int id)
         {
-            var result = new JsonResult();
             if (id == 1)
             {
                 var courses = new object[] { new { id = 11, name = "厦门" }, new { id = 12, name = "福州" }, new { id = 13, name = "泉州" } };
-                result.Data = courses;
+                return Json(courses);
             }
             else if(id == 2)
             {
                 var courses = new object[] { new { id = 21, name = "广州" }, new { id = 22, name = "汕头" }, new { id = 23, name = "深圳" } };
-                result.Data = courses;
+                return Json(courses);
             }
-            else if (id == 3)
+            else
             {
                 var courses = new object[] { new { id = 31, name = "南宁" }, new { id = 32, name = "柳州" }, new { id = 33, name = "桂林" } };
-                result.Data = courses;
+                return Json(courses);
             }
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return result;
+
         }
 
         // POST: api/City

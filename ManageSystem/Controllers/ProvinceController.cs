@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ManageSystem.Controllers
 {
-    public class ProvinceController : ApiController
+    [Produces("application/json")]
+    [Route("/api/province")]
+    public class ProvinceController : Controller
     {
         // GET: api/Province
-        public JsonResult Get()
+        [HttpGet]
+        public IActionResult GetProvinceList()
         {
             var courses = new object[] { new { id = 1, name = "福建" }, new { id = 2, name = "广东" }, new { id = 3, name = "广西" }, new { id = 4, name = "天津" }, new { id = 5, name = "江苏" }, new { id = 6, name = "安徽" } };
-            var result = new JsonResult();
-            result.Data = courses;
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return result;
+            return Json(courses);
         }
 
         // GET: api/Province/5

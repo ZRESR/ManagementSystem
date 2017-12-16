@@ -1,55 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
     public class StudentController : Controller
     {
         // GET: Class
-        public ActionResult StudentRollCallUI()
+        public IActionResult StudentRollCallUI()
         {
             return View();
         }
-        public ActionResult RandomGroupChooseTopicUI()
+        public IActionResult CheckStudentInfoUI()
         {
             return View();
         }
-        public ActionResult CourseUI()
+        public IActionResult RandomGroupChooseTopicUI()
         {
             return View();
         }
-        public ActionResult CourseInfoUI()
+        public IActionResult CourseUI()
         {
             return View();
         }
-        public ActionResult Seminar()
+        public IActionResult CourseInfoUI()
         {
             return View();
         }
-        public ActionResult Score()
+        public IActionResult Seminar()
         {
             return View();
         }
-        public ActionResult RandomGroupList()
+        public IActionResult Score()
         {
             return View();
         }
-        public ActionResult FixedGroupList()
+        public IActionResult RandomGroupList()
         {
             return View();
         }
-        public ActionResult StudentMainUI()
+        public IActionResult FixedGroupList()
         {
             return View();
         }
-        public ActionResult StudentBindingUI()
+        public IActionResult StudentMainUI()
         {
             return View();
         }
-        public ActionResult CheckStudentInfoUI()
+        public IActionResult StudentBindingUI()
         {
             return View();
         }
