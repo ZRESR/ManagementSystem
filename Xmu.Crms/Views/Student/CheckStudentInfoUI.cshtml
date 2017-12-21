@@ -13,11 +13,12 @@
     <link href="~/css/CheckTeacherInfo.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         $(document).ready(function () {
+            var token = window.localStorage.getItem("token")
             $.ajax({
                 type: 'GET',
                 url: "/api/me",
                 headers: {
-                    type: "student"
+                    "Authorization": "Bearer " + token
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {

@@ -13,17 +13,19 @@
     <link href="~/css/StudentMainUI.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
-            window.localStorage.removeItem("rcstatus");
+            var token = window.localStorage.getItem("token")
             $.ajax({
                 type: 'GET',
                 url: "/api/me",
                 headers: {
-                    type: "student"
+                    "Authorization": "Bearer " + token
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
+                    console.log(data)
+                    /*
                     $("#name").text("姓名：" + data.Data.name);
-                    $("#sid").text("教工号：" + data.Data.number);
+                    $("#sid").text("教工号：" + data.Data.number);*/
                 }
             });
             $.ajax({

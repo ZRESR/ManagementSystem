@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using Xmu.Crms.Shared.Models;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Xmu.Crms.Controllers
 {
@@ -11,11 +19,19 @@ namespace Xmu.Crms.Controllers
     [Route("/api")]
     public class MeController : Controller
     {
+        private JwtSettings _jwtSettings;
+        public MeController(IOptions<JwtSettings> _jwtSettingsAccesser)
+        {
+            _jwtSettings = _jwtSettingsAccesser.Value;
+        }
         // GET: api/Me
+        [Authorize]
         [HttpGet("me")]
         public IActionResult GetMe()
         {
-            var type = Request.Headers["type"];
+            var token = Request.Headers["token"];
+            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
+            var type = jwt.Claims.ElementAt(1).Value;
             if (type == "student")
             {
                 var me = new { id = 1, type = "student", name = "张三", number = "24320152202333", phone = "18911114514", email = "24320152202333@stu.xmu.edu.cn", gender = "male", school = new { id = 32, name = "厦门大学" }, title = "", avatar = "../../images/user.png" };
@@ -51,10 +67,29 @@ namespace Xmu.Crms.Controllers
             string a = json.username;
             string b = json.password;
             if (a == "18911114514" && b == "qwer2345!")
-                return Json(student);
+            {
+                var claims = new Claim[]
+                {
+                    new Claim("name", "karl"),
+                    new Claim(ClaimTypes.Role, "student")
+                };
+                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    null,
+                    null,
+                    claims, 
+                    DateTime.Now, DateTime.Now.AddMinutes(30),
+                    creds);
+                var t = token.Claims.ElementAt(1);
+                return Json(new { status="200", type = t, token = new JwtSecurityTokenHandler().WriteToken(token)});
+            }
             else if (a == "18911118978" && b == "asdf1234!")
                 return Json(teacher);
             else return Json(new { status = "err" });
+            
+
         }
+
     }
 }
