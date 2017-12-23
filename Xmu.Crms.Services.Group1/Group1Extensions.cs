@@ -35,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
         public static IServiceCollection AddGroup1UserDao(this IServiceCollection serviceCollection)
         {
-            return serviceCollection.AddScoped<IUserService, UserService>();
+            return serviceCollection.AddScoped<IUserDao, UserDao>();
         }
     }
 }
