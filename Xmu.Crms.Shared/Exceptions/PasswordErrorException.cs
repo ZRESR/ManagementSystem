@@ -6,6 +6,7 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class PasswordErrorException : ArgumentException
     {
+        
         public PasswordErrorException()
         {
         }
