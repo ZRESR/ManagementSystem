@@ -134,6 +134,6 @@ namespace Xmu.Crms.Shared.Service
         /// <returns>list 课程列表</returns>
         /// <seealso cref="M:Xmu.Crms.Shared.Service.IUserService.ListUserByUserName(System.String)"/>
         /// <seealso cref="M:Xmu.Crms.Shared.Service.ICourseService.ListCourseByUserId(System.Int64)"/>
-        IList<Course> ListCourseByTeacherName(string teacherName);
+        //IList<Course> ListCourseByTeacherName(string teacherName);
     }
 }
