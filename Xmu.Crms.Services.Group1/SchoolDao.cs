@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Transactions;
 using Xmu.Crms.Services.Group1.Dao;
-using Xmu.Crms.Shared.Exceptions;
+using Xmu.Crms.Services.Group1.Exceptions;
 using Xmu.Crms.Shared.Models;
 namespace Xmu.Crms.Services.Group1
 {
@@ -51,7 +51,7 @@ namespace Xmu.Crms.Services.Group1
             List<School> list = _db.School.Where(u => u.City == city).ToList<School>();
             if (list == null)
             {
-                throw new ClassNotFoundException();
+                throw new Exception();
             }
             return list;
         }
@@ -62,7 +62,7 @@ namespace Xmu.Crms.Services.Group1
             List<School> list = _db.School.Where(u => u.Province == province).ToList<School>();
             if (list == null)
             {
-                throw new ClassNotFoundException();
+                throw new Exception();
             }
             return list;
         }
