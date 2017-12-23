@@ -25,9 +25,9 @@ namespace Xmu.Crms.Services.Group1
             return _schoolDao.AddSchool(school);
         }
 
-        public List<string> ListCity(string province)
+        public IList<string> ListCity(string province)
         {
-            List<string> city=new List<string>();
+            IList<string> city=new List<string>();
             List<School> school = _schoolDao.FindAllByProvince(province);
             foreach(School s in school)
             {
@@ -37,10 +37,10 @@ namespace Xmu.Crms.Services.Group1
             return city;
         }
 
-        public List<string> ListProvince()
+        public IList<string> ListProvince()
         {
-            List<School> school = _schoolDao.FindAll();
-            List<string> province=new List<string>();
+            IList<School> school = _schoolDao.FindAll();
+            IList<string> province=new List<string>();
             foreach(School s in school)
             {
                 if (!province.Contains(s.Province))
@@ -49,9 +49,9 @@ namespace Xmu.Crms.Services.Group1
             return province;
         }
 
-        public List<School> ListSchoolByCity(string city)
+        public IList<School> ListSchoolByCity(string city)
         {
-            List<School> list = _schoolDao.FindAllByCity(city);
+            IList<School> list = _schoolDao.FindAllByCity(city);
             return list;
         }
     }

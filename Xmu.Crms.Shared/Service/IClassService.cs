@@ -23,7 +23,7 @@ namespace Xmu.Crms.Shared.Service
         /// <param name="courseName">课程名称</param>
         /// <param name="teacherName">教师名称</param>
         /// <returns>List 班级列表</returns>
-        List<ClassInfo> ListClassByName(string courseName, string teacherName);
+        IList<ClassInfo> ListClassByName(string courseName, string teacherName);
 
         /// <summary>
         /// 根据课程ID获得班级列表.
@@ -31,7 +31,7 @@ namespace Xmu.Crms.Shared.Service
         /// </summary>
         /// <param name="courseId">课程ID</param>
         /// <returns>list 班级列表</returns>
-        List<ClassInfo> ListClassByCourseId(long courseId);
+        IList<ClassInfo> ListClassByCourseId(long courseId);
 
         /// <summary>
         /// 按班级id获取班级详情.
@@ -76,14 +76,15 @@ namespace Xmu.Crms.Shared.Service
         void DeleteCourseSelectionById(long userId, long classId);
 
         /// <summary>
-        /// 老师获取该班级签到、分组状态.
+        /// 老师获取位置信息，获取班级签到状态.
         /// 
         /// @author yexiaona
         /// </summary>
         /// <param name="seminarId">讨论课id</param>
-        /// <returns>classBO 班级</returns>
+        /// <param name="classId">班级id</param>
+        /// <returns>location 班级签到状态</returns>
         /// <seealso cref="M:Xmu.Crms.Shared.Service.ISeminarGroupService.ListSeminarGroupBySeminarId(System.Int64)"/>
-        ClassInfo GetCallGroupStatusById(long seminarId);
+        Location GetCallStatusById(long seminarId, long classId);
 
         /// <summary>
         /// 新建班级.
@@ -91,8 +92,9 @@ namespace Xmu.Crms.Shared.Service
         /// </summary>
         /// <param name="userId">教师id</param>
         /// <param name="courseId">课程id</param>
+        /// <param name="classInfo">班级信息</param>
         /// <returns>classId 班级Id</returns>
-        long InsertClassById(long userId, long courseId);
+        long InsertClassById(long userId, long courseId,ClassInfo classInfo);
 
         /// <summary>
         /// 按courseId删除Class.

@@ -33,7 +33,6 @@ namespace Xmu.Crms.Services.Group1
         public School Find(long id)
         {
             School school = _db.School.FirstOrDefault(s => s.Id == id);
-            if (school == null) throw new Exception();
             return school;
         }
 
@@ -41,18 +40,12 @@ namespace Xmu.Crms.Services.Group1
         public List<School> FindAll()
         {
             List<School> list = _db.School.ToList<School>();
-            if (list == null)
-                throw new Exception();
             return list;
         }
         //按照城市名字列出所有学校
         public List<School> FindAllByCity(string city)
         {
             List<School> list = _db.School.Where(u => u.City == city).ToList<School>();
-            if (list == null)
-            {
-                throw new Exception();
-            }
             return list;
         }
 
@@ -60,10 +53,6 @@ namespace Xmu.Crms.Services.Group1
         public List<School> FindAllByProvince(string province)
         {
             List<School> list = _db.School.Where(u => u.Province == province).ToList<School>();
-            if (list == null)
-            {
-                throw new Exception();
-            }
             return list;
         }
 
