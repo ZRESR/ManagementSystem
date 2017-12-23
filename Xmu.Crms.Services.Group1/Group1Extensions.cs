@@ -18,5 +18,24 @@ namespace Microsoft.Extensions.DependencyInjection
             return serviceCollection.AddScoped<ISchoolDao, SchoolDao>();
         }
 
+        //Topic注入
+        public static IServiceCollection AddGroup1TopicService(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<ITopicService, TopicService>();
+        }
+        public static IServiceCollection AddGroup1TopicDao(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<ITopicDao, TopicDao>();
+        }
+
+        //User注入
+        public static IServiceCollection AddGroup1UserService(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<IUserService, UserService>();
+        }
+        public static IServiceCollection AddGroup1UserDao(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<IUserService, UserService>();
+        }
     }
 }
