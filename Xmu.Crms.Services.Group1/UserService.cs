@@ -126,29 +126,62 @@ namespace Xmu.Crms.Services.Group1
             return list;
         }
 
+
         public IList<UserInfo> ListPresentStudent(long seminarId, long classId)
         {
-            throw new NotImplementedException();
+            if (seminarId.GetType() != typeof(long) || classId.GetType() != typeof(long)) throw new ArgumentException();
+            IList<Attendance> AttendanceList = ListAttendanceById(classId, seminarId);
+            IList<UserInfo> PresentStudentList = new List<UserInfo>();
+            foreach (Attendance Temp in AttendanceList)
+            {
+                if (Temp.AttendanceStatus == 0)
+                    PresentStudentList.Add(GetUserByUserId(Temp.Id));
+            }
+            if (PresentStudentList == null) throw new SeminarNotFoundException();
+
+            return PresentStudentList;
+
         }
 
         public IList<UserInfo> ListUserByClassId(long classId, string numBeginWith, string nameBeginWith)
         {
-            throw new NotImplementedException();
+            if (classId.GetType() != typeof(long) || numBeginWith.GetType() != typeof(string) || nameBeginWith.GetType() != typeof(string)) throw new ArgumentException();
+            IList<UserInfo> StudentInfoList = _userDao.ListUserByClassId(classId, numBeginWith, nameBeginWith);
+            if (StudentInfoList == null) throw new ClassNotFoundException();
+            return StudentInfoList;
+            //throw new NotImplementedException();
         }
+
 
         public IList<UserInfo> ListUserByUserName(string userName)
         {
-            throw new NotImplementedException();
+            if (userName.GetType() != typeof(string)) throw new ArgumentException();
+            IList<UserInfo> userList = _userDao.ListUserByUserName(userName);
+            if (userList == null) throw new UserNotFoundException();
+            return userList;
+
         }
 
         public IList<long> ListUserIdByUserName(string userName)
         {
-            throw new NotImplementedException();
+            if (userName.GetType() != typeof(string)) throw new ArgumentException();
+            IList<long> userIdList = _userDao.ListUserIdByUserName(userName);
+            if (userIdList == null) throw new UserNotFoundException();
+            return userIdList;
+
         }
 
         public void UpdateUserByUserId(long userId, UserInfo user)
         {
-            throw new NotImplementedException();
+            if (userId.GetType() != typeof(long) || user.GetType() != typeof(UserInfo)) throw new ArgumentException();
+            _userDao.UpdateUserByUserId(userId, user);
+
         }
+
+
+
+
+
+
     }
 }

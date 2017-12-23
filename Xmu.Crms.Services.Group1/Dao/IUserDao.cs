@@ -20,5 +20,17 @@ namespace Xmu.Crms.Services.Group1.Dao
         Location FindTeacherLocation(long classId, long seminarId);
         //插入attendance记录
         void AddAttendance(Attendance attendance);
+
+        //按班级ID、学号开头、姓名开头获取学生列表
+        IList<UserInfo> ListUserByClassId(long classId, string numBeginWith, string nameBeginWith);
+
+        //根据用户名获取用户列表
+        IList<UserInfo> ListUserByUserName(string userName);
+
+        //根据用户名获取用户列表
+        IList<long> ListUserIdByUserName(string userName);
+
+        //修改个人信息
+        void UpdateUserByUserId(long userId, UserInfo userInfo);
     }
 }

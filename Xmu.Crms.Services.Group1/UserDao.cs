@@ -60,5 +60,52 @@ namespace Xmu.Crms.Services.Group1
             _db.Attendences.Add(attendance);
             _db.SaveChanges();
         }
+
+
+        public IList<UserInfo> ListUserByClassId(long classId, string numBeginWith, string nameBeginWith)
+        {
+            List<CourseSelection> CourseSelectionList = _db.CourseSelection.Include(u => u.ClassInfo).Include(u => u.Student).Where(u => u.ClassInfo.Id == classId && u.Student.Number.StartsWith(numBeginWith) && u.Student.Name.StartsWith(nameBeginWith)).ToList<CourseSelection>();
+            List<UserInfo> StudentInfoList = new List<UserInfo>();
+            UserInfo tempUserInfo = new UserInfo();
+            foreach (CourseSelection temp in CourseSelectionList)
+            {
+                //tempUserInfo = _db.UserInfo.First(u => u.Id == temp.Student.Id);
+
+                StudentInfoList.Add(temp.Student);
+            }
+            return StudentInfoList;
+
+        }
+
+        public IList<UserInfo> ListUserByUserName(string userName)
+        {
+            List<UserInfo> list = _db.UserInfo.Where(u => u.Name == userName).ToList<UserInfo>();
+            return list;
+        }
+
+        public IList<long> ListUserIdByUserName(string userName)
+        {
+            List<long> list = _db.UserInfo.Where(u => u.Name == userName).Select(u => u.Id).ToList<long>();
+            return list;
+        }
+
+        public void UpdateUserByUserId(long userId, UserInfo newUserInfo)
+        {
+            UserInfo userInfo = _db.UserInfo.First(u => u.Id == userId);
+
+            //用修改后的值给修改前的值赋值
+            userInfo.Avatar = newUserInfo.Avatar;
+            userInfo.Education = newUserInfo.Education;
+            userInfo.Email = newUserInfo.Email;
+            userInfo.Gender = newUserInfo.Gender;
+            userInfo.Name = newUserInfo.Name;
+            userInfo.Number = newUserInfo.Number;
+            userInfo.Password = newUserInfo.Password;
+            userInfo.Phone = newUserInfo.Phone;
+            userInfo.School = newUserInfo.School;
+            userInfo.Title = newUserInfo.Title;
+            userInfo.Type = newUserInfo.Type;
+            _db.SaveChanges();
+        }
     }
 }
