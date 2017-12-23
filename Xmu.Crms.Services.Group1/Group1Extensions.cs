@@ -1,4 +1,5 @@
 ﻿using Xmu.Crms.Services.Group1;
+using Xmu.Crms.Services.Group1.Dao;
 using Xmu.Crms.Shared.Service;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -10,6 +11,15 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return serviceCollection.AddScoped<IUserService, UserService>();
         }
-        
+        //school 注入
+        public static IServiceCollection AddGroup1SchoolService(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<ISchoolService, SchoolService>();
+        }
+        public static IServiceCollection AddGroup1SchoolDao(this IServiceCollection serviceCollection)
+        {
+            return serviceCollection.AddScoped<ISchoolDao, SchoolDao>();
+        }
+
     }
 }
