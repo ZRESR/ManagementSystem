@@ -37,5 +37,15 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return serviceCollection.AddScoped<IUserDao, UserDao>();
         }
+
+        //Course注入
+        //public static IServiceCollection AddGroup1CourseService(this IServiceCollection serviceCollection)
+        //{
+        //    return serviceCollection.AddScoped<ICourseService, CourseService>();
+        //}
+        //public static IServiceCollection AddGroup1CourseDao(this IServiceCollection serviceCollection)
+        //{
+        //    return serviceCollection.AddScoped<ICourseDao, CourseDao>();
+        //}
     }
 }
