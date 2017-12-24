@@ -31,7 +31,7 @@
                 type: 'GET',
                 url: "/api/course",
                 headers: {
-                    type: "student"
+                    "Authorization": "Bearer " + token
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {

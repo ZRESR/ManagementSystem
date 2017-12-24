@@ -12,6 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Xmu.Crms.Shared.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
+using Xmu.Crms.Shared.Service;
+using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Headers;
+using System.IO;
 
 namespace Xmu.Crms.Controllers
 {
@@ -20,9 +24,13 @@ namespace Xmu.Crms.Controllers
     public class MeController : Controller
     {
         private JwtSettings _jwtSettings;
-        public MeController(IOptions<JwtSettings> _jwtSettingsAccesser)
+        private IUserService userService;
+        private IHostingEnvironment hostingEnvironment;
+        public MeController(IHostingEnvironment env, IOptions<JwtSettings> _jwtSettingsAccesser, IUserService userService)
         {
             _jwtSettings = _jwtSettingsAccesser.Value;
+            this.userService = userService;
+            this.hostingEnvironment = env;
         }
         // GET: api/Me
         [Authorize]
@@ -33,33 +41,45 @@ namespace Xmu.Crms.Controllers
             var array = temp.Split(" ");
             var token = array[1];
             JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var type = jwt.Claims.ElementAt(1).Value;
-            if (type == "student")
-            {
-                var me = new { id = 1, type = "student", name = "张三", number = "24320152202333", phone = "18911114514", email = "24320152202333@stu.xmu.edu.cn", gender = "male", school = new { id = 32, name = "厦门大学" }, title = "", avatar = "../../images/user.png" };
-                return Json(me);
-            }
-            else
-            {
-                var me = new { id = 2, type = "teacher", name = "邱明", number = "1121432543", phone = "18987965721", email = "1121432543@xmu.edu.cn", gender = "male", school = new { id = 32, name = "厦门大学" }, title = "", avatar = "../../images/user.png" };
-                return Json(me);
-            }
+            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            var user = userService.GetUserByUserId(id);
+            return Json(user);
         }
-        // POST: api/Me
+        [Authorize]
         [HttpPost("me")]
-        public IActionResult POSTMe([FromBody]dynamic json)
+        public IActionResult PutAvatar([FromBody]dynamic json)
         {
-            return Json(new { status="success" });
+            var temp = Request.Headers["Authorization"].ToString();
+            var array = temp.Split(" ");
+            var token = array[1];
+            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
+            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            UserInfo user = userService.GetUserByUserId(id);
+            user.Avatar = json.path;
+            userService.UpdateUserByUserId(id, user);
+            return Json(new { status = json.path });
         }
         // PUT: api/Me/5
-        public void Put(int id, [FromBody]string value)
+        [Authorize]
+        [HttpPut("me")]
+        public IActionResult Put()
         {
+            var temp = Request.Headers["Authorization"].ToString();
+            var array = temp.Split(" ");
+            var token = array[1];
+            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
+            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            UserInfo user =  userService.GetUserByUserId(id);
+            UserInfo newUser = new UserInfo
+            {
+                Id = user.Id,
+                Phone = user.Phone,
+                Password = user.Password
+            };
+            userService.UpdateUserByUserId(id, newUser);
+            return Json(new { status = 200 });
         }
-
-        // DELETE: api/Me/5
-        public void Delete(int id)
-        {
-        }
+        
         // POST: api/signin
         [HttpPost("signin")]
         public JsonResult Login([FromBody]dynamic json) 
@@ -69,9 +89,10 @@ namespace Xmu.Crms.Controllers
             string b = json.password;
             if (a == "18911114514" && b == "qwer2345!")
             {
+                UserInfo user = userService.GetUserByUserId(3);
                 var claims = new Claim[]
                 {
-                    new Claim("name", "karl"),
+                    new Claim("id", user.Id.ToString()),
                     new Claim(ClaimTypes.Role, "student")
                 };
                 var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
