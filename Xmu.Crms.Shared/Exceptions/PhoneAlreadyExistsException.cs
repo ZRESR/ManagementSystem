@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class PhoneAlreadyExistsException : ArgumentException
     {
+        private string mes;
         public PhoneAlreadyExistsException()
         {
+            mes = "找用户名已存在!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public PhoneAlreadyExistsException(string message) : base(message)
         {
         }

@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class TopicNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public TopicNotFoundException()
         {
+            mes = "找不到该话题!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public TopicNotFoundException(string paramName) : base(paramName)
         {
         }

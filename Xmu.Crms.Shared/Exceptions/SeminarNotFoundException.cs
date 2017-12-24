@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class SeminarNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public SeminarNotFoundException()
         {
+            mes = "找不到该讨论课!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public SeminarNotFoundException(string paramName) : base(paramName)
         {
         }

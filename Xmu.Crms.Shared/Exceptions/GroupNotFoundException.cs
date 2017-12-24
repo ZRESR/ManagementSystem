@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class GroupNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public GroupNotFoundException()
         {
+            mes = "找不到该小组!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public GroupNotFoundException(string paramName) : base(paramName)
         {
         }

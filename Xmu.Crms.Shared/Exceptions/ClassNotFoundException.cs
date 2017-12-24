@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class ClassNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public ClassNotFoundException()
         {
+            mes = "找不到该班级!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public ClassNotFoundException(string paramName) : base(paramName)
         {
         }

@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class FixGroupNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public FixGroupNotFoundException()
         {
+            mes = "找不到该固定小组!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public FixGroupNotFoundException(string paramName) : base(paramName)
         {
         }
@@ -28,6 +33,10 @@ namespace Xmu.Crms.Shared.Exceptions
 
         protected FixGroupNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
+        }
+        public override string ToString()
+        {
+            return mes;
         }
     }
 }

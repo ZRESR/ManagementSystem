@@ -6,10 +6,15 @@ namespace Xmu.Crms.Shared.Exceptions
     [Serializable]
     public class UserNotFoundException : ArgumentOutOfRangeException
     {
+        private string mes;
         public UserNotFoundException()
         {
+            mes = "用户名不存在!";
         }
-
+        public override string ToString()
+        {
+            return mes;
+        }
         public UserNotFoundException(string paramName) : base(paramName)
         {
         }
