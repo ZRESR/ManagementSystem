@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,13 +50,13 @@ namespace Xmu.Crms.Services.Group1
             return list;
         }
         //根据班级号和讨论课号查找老师位置
-        Location FindTeacherLocation(long classId, long seminarId)
+        public Location FindTeacherLocation(long classId, long seminarId)
         {
             Location location = _db.Location.FirstOrDefault(l => l.ClassInfo.Id == classId && l.Seminar.Id == seminarId);
             return location;
         }
         //插入attendance记录
-        void AddAttendance(Attendance attendance)
+        public void AddAttendance(Attendance attendance)
         {
             _db.Attendences.Add(attendance);
             _db.SaveChanges();
@@ -107,5 +108,7 @@ namespace Xmu.Crms.Services.Group1
             userInfo.Type = newUserInfo.Type;
             _db.SaveChanges();
         }
+
+       
     }
 }
