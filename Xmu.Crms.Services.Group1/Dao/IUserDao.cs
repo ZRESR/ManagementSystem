@@ -12,8 +12,6 @@ namespace Xmu.Crms.Services.Group1.Dao
         List<UserInfo> FindAbsenceStudents(long seminarId, long classId);
         //根据班级号和讨论课号查找出勤记录
         IList<Attendance> FindAttendanceById(long seminarId, long classId);
-        //根据老师姓名查询所有课程
-        IList<Course> FindCourseByTeacher(string teacherName);
         //根据班级号和讨论课号查找迟到学生
         IList<UserInfo> FindLateStudents(long seminarId, long classId);
         //根据班级号和讨论课号查找老师位置

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Transactions;
 using Xmu.Crms.Services.Group1.Dao;
-using Xmu.Crms.Services.Group1.Exceptions;
+using Xmu.Crms.Shared.Exceptions;
 using Xmu.Crms.Shared.Models;
 namespace Xmu.Crms.Services.Group1
 {

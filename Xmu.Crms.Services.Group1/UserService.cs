@@ -41,11 +41,7 @@ namespace Xmu.Crms.Services.Group1
                 || userId.GetType().ToString() != "System.Int64")
                 throw new ArgumentException();//id格式错误
             Location location = _userDao.FindTeacherLocation(classId, seminarId);
-            if(location == null)
-            {
-                throw new ClassNotFoundException();
-                throw new SeminarNotFoundException();
-            }
+           
             double tLongtitude = location.Longitude;
             double tLatitude = location.Latitude;
             double EARTH_RADIUS = 6378.137;//地球半径
@@ -99,8 +95,6 @@ namespace Xmu.Crms.Services.Group1
         // 根据教师名称列出课程名称
         //public IList<Course> ListCourseByTeacherName(string teacherName)
         //{
-        //    CourseService courseService = new CourseService();
-        //    IList<Course> list = _userDao.FindCourseByTeacher(teacherName);
         //    IList<UserInfo> users = ListUserByUserName(teacherName);
         //    foreach (UserInfo u in users)
         //    {

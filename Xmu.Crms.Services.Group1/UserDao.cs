@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xmu.Crms.Services.Group1.Dao;
+using Xmu.Crms.Shared.Exceptions;
 using Xmu.Crms.Shared.Models;
 
 namespace Xmu.Crms.Services.Group1
@@ -20,7 +21,7 @@ namespace Xmu.Crms.Services.Group1
         //通过Id查找用户
         public UserInfo Find(long userId)
         {
-            UserInfo userInfo = _db.UserInfo.FirstOrDefault(u => u.Id == userId);
+            UserInfo userInfo = _db.UserInfo.Include(u=>u.School).FirstOrDefault(u => u.Id == userId);
             return userInfo;
         }
         //查找这个班所有缺勤学生
@@ -36,12 +37,8 @@ namespace Xmu.Crms.Services.Group1
             List<Attendance> list =  _db.Attendences.Where(s => s.ClassInfo.Id == classId && s.Seminar.Id == seminarId).ToList<Attendance>();
             return list;
         }
-        //根据老师姓名查询所有课程
-        public IList<Course> FindCourseByTeacher(string teacherName)
-        {
-            List<Course> list = _db.Course.Where(u => u.Teacher.Name == teacherName).ToList<Course>();
-            return list;
-        }
+
+       
         //根据班级号和讨论课号查找迟到学生
         public IList<UserInfo> FindLateStudents(long seminarId, long classId)
         {
@@ -53,6 +50,11 @@ namespace Xmu.Crms.Services.Group1
         public Location FindTeacherLocation(long classId, long seminarId)
         {
             Location location = _db.Location.FirstOrDefault(l => l.ClassInfo.Id == classId && l.Seminar.Id == seminarId);
+            if (location == null)
+            {
+                throw new ClassNotFoundException();
+                throw new SeminarNotFoundException();
+            }
             return location;
         }
         //插入attendance记录
@@ -98,14 +100,15 @@ namespace Xmu.Crms.Services.Group1
             userInfo.Avatar = newUserInfo.Avatar;
             userInfo.Education = newUserInfo.Education;
             userInfo.Email = newUserInfo.Email;
-            userInfo.Gender = newUserInfo.Gender;
-            userInfo.Name = newUserInfo.Name;
-            userInfo.Number = newUserInfo.Number;
-            userInfo.Password = newUserInfo.Password;
-            userInfo.Phone = newUserInfo.Phone;
-            userInfo.School = newUserInfo.School;
-            userInfo.Title = newUserInfo.Title;
-            userInfo.Type = newUserInfo.Type;
+            //userInfo.Gender = newUserInfo.Gender;
+            //userInfo.Name = newUserInfo.Name;
+            //userInfo.Number = newUserInfo.Number;
+            //userInfo.Password = newUserInfo.Password;
+            //userInfo.Phone = newUserInfo.Phone;
+            //userInfo.School = newUserInfo.School;
+            //userInfo.Title = newUserInfo.Title;
+            //userInfo.Type = newUserInfo.Type;
+            _db.Entry(userInfo).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
