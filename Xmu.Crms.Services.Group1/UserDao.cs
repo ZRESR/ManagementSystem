@@ -22,6 +22,7 @@ namespace Xmu.Crms.Services.Group1
         public UserInfo Find(long userId)
         {
             UserInfo userInfo = _db.UserInfo.Include(u=>u.School).FirstOrDefault(u => u.Id == userId);
+            if (userInfo == null) throw new UserNotFoundException();
             return userInfo;
         }
         //查找这个班所有缺勤学生
@@ -34,7 +35,7 @@ namespace Xmu.Crms.Services.Group1
         //根据班级号和讨论课号查找出勤记录
         public IList<Attendance> FindAttendanceById(long seminarId, long classId)
         {
-            List<Attendance> list =  _db.Attendences.Where(s => s.ClassInfo.Id == classId && s.Seminar.Id == seminarId).ToList<Attendance>();
+            List<Attendance> list =  _db.Attendences.Include(a=>a.Student).Where(s => s.ClassInfo.Id == classId && s.Seminar.Id == seminarId).ToList<Attendance>();
             return list;
         }
 
@@ -60,8 +61,19 @@ namespace Xmu.Crms.Services.Group1
         //插入attendance记录
         public void AddAttendance(Attendance attendance)
         {
-            _db.Attendences.Add(attendance);
-            _db.SaveChanges();
+            using (var scope = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    _db.Attendences.Add(attendance);
+                    _db.SaveChanges();
+                }
+                catch(System.Exception e)
+                {
+                    scope.Rollback();
+                    throw e;
+                }
+            }
         }
 
 
@@ -94,22 +106,34 @@ namespace Xmu.Crms.Services.Group1
 
         public void UpdateUserByUserId(long userId, UserInfo newUserInfo)
         {
-            UserInfo userInfo = _db.UserInfo.First(u => u.Id == userId);
-
-            //用修改后的值给修改前的值赋值
-            userInfo.Avatar = newUserInfo.Avatar;
-            userInfo.Education = newUserInfo.Education;
-            userInfo.Email = newUserInfo.Email;
-            //userInfo.Gender = newUserInfo.Gender;
-            //userInfo.Name = newUserInfo.Name;
-            //userInfo.Number = newUserInfo.Number;
-            //userInfo.Password = newUserInfo.Password;
-            //userInfo.Phone = newUserInfo.Phone;
-            //userInfo.School = newUserInfo.School;
-            //userInfo.Title = newUserInfo.Title;
-            //userInfo.Type = newUserInfo.Type;
-            _db.Entry(userInfo).State = EntityState.Modified;
-            _db.SaveChanges();
+            using (var scope = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    UserInfo userInfo = _db.UserInfo.First(u => u.Id == userId);
+                    if (userInfo == null) throw new UserNotFoundException();
+                    //用修改后的值给修改前的值赋值
+                    userInfo.Avatar = newUserInfo.Avatar;
+                    userInfo.Education = newUserInfo.Education;
+                    userInfo.Email = newUserInfo.Email;
+                    //userInfo.Gender = newUserInfo.Gender;
+                    //userInfo.Name = newUserInfo.Name;
+                    //userInfo.Number = newUserInfo.Number;
+                    //userInfo.Password = newUserInfo.Password;
+                    //userInfo.Phone = newUserInfo.Phone;
+                    //userInfo.School = newUserInfo.School;
+                    //userInfo.Title = newUserInfo.Title;
+                    //userInfo.Type = newUserInfo.Type;
+                    _db.Entry(userInfo).State = EntityState.Modified;
+                    _db.SaveChanges();
+                }
+                catch(System.Exception e)
+                {
+                    scope.Rollback();
+                    throw e;
+                }
+            }
+            
         }
 
        

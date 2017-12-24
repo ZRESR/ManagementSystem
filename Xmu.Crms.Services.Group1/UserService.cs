@@ -23,10 +23,15 @@ namespace Xmu.Crms.Services.Group1
         {
             if (userId.GetType().ToString() != "System.Int64")
                 throw new UserNotFoundException();//id格式错误 
-            UserInfo userInfo = _userDao.Find(userId);
-            if(userInfo==null)
-                throw new UserNotFoundException();//未找到对应用户
-            return userInfo;
+            try
+            {
+                UserInfo userInfo = _userDao.Find(userId);
+                return userInfo;
+            }
+            catch(UserNotFoundException e)
+            {
+                throw e;
+            }            
         }
 
         // InsertAttendanceById中用到的方法

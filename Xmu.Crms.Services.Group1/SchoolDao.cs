@@ -21,10 +21,22 @@ namespace Xmu.Crms.Services.Group1
         //插入学校
         public long AddSchool(School school)
         {
-            
-                _db.School.Add(school);
-                _db.SaveChanges();
-                return school.Id;
+            using (var scope = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    _db.School.Add(school);
+                    _db.SaveChanges();
+                    return school.Id;
+                }
+                catch(System.Exception e)
+                {
+                    scope.Rollback();
+                    throw e;
+                }
+               
+            }
+                
                 
         }
 
