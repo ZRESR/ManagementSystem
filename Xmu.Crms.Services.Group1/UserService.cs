@@ -185,10 +185,9 @@ namespace Xmu.Crms.Services.Group1
 
         }
 
-
-
-
-
-
+        public UserInfo GetUserByNumber(string number)
+        {
+            return _userDao.GetByNumber(number);
+        }
     }
 }

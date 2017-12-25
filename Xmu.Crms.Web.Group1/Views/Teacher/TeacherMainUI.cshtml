@@ -17,10 +17,11 @@
                 type: 'GET',
                 url: "/api/me",
                 headers: {
-                    type: "teacher"
+                    "Authorization": "Bearer " + window.localStorage.getItem("token")
                 },
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
+                    console.log(data);
                     $(".name").text("姓名：" + data.name);
                     $(".ID").text("教工号：" + data.number);
                 }
@@ -29,12 +30,12 @@
                 type: 'GET',
                 url: "/api/course",
                 headers: {
-                    type: "teacher"
+                    "Authorization": "Bearer " + window.localStorage.getItem("token")
                 },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data, status) {
-                    for (var i in data.Data) {
+                    for (var i in data) {
                         $("#lowBox").append("<div id='" + data[i].id + "' class='blueBox'><div class='text'> " + data[i].name + "</div></div>");
                     }
                 }
