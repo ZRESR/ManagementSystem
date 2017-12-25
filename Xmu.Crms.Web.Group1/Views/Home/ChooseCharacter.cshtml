@@ -15,12 +15,30 @@
     <script>
         $(document).ready(function () {
             $(".teacherButton").click(function () {
-                window.localStorage.setItem("type", "teacher");
-                $(window).attr("location", '/Teacher/TeacherBindingUI');
+                var d = { type: "teacher",id: window.localStorage.getItem("id")};
+                $.ajax({
+                    type: "POST",
+                    url: "/api/chooseCharacter",
+                    data: JSON.stringify(d),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data, status) {
+                        $(window).attr("location", '/Teacher/TeacherBindingUI');     
+                    }
+                });
             });
             $(".studentButton").click(function () {
-                window.localStorage.setItem("type", "student");
-                $(window).attr("location", '/Student/StudentBindingUI');
+                var d = { type:"student", id:window.localStorage.getItem("id") };
+                $.ajax({
+                    type: "POST",
+                    url: "/api/chooseCharacter",
+                    data: JSON.stringify(d),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data, status) {
+                        $(window).attr("location", '/Student/StudentBindingUI');
+                    }
+                });
             });
         });
     </script>

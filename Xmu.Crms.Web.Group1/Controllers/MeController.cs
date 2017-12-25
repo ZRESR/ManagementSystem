@@ -108,9 +108,10 @@ namespace Xmu.Crms.Controllers
             }
         }
 
+        //登录判断
         // POST: api/signin
         [HttpPost("signin")]
-        public JsonResult Login([FromBody]dynamic json) 
+        public IActionResult Login([FromBody]dynamic json) 
         {
             try
             {
@@ -169,5 +170,57 @@ namespace Xmu.Crms.Controllers
      
         }
 
+
+        //选角色
+        //POST: api/chooseCharacter
+        [HttpPost("chooseCharacter")]
+        public IActionResult chooseCharacter([FromBody]dynamic json)
+        {
+            string str = json.id;
+            long id = long.Parse(str);
+            UserInfo user = userService.GetUserByUserId(id);
+            if (json.type == "teacher")
+                user.Type = Shared.Models.Type.Teacher;
+            else
+                user.Type = Shared.Models.Type.Student;
+            userService.UpdateUserByUserId(user.Id, user);
+            if (json.type == "teacher")
+            {
+                var claims = new Claim[]
+                   {
+                        new Claim("id", user.Id.ToString()),
+                        new Claim("type", "teacher")
+                   };
+                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    null,
+                    null,
+                    claims,
+                    DateTime.Now, DateTime.Now.AddMinutes(30),
+                    creds);
+                var t = token.Claims.ElementAt(1).Value;
+                return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+            }
+            else
+            {
+                var claims = new Claim[]
+                  {
+                        new Claim("id", user.Id.ToString()),
+                        new Claim("type", "student")
+                  };
+                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    null,
+                    null,
+                    claims,
+                    DateTime.Now, DateTime.Now.AddMinutes(30),
+                    creds);
+                var t = token.Claims.ElementAt(1).Value;
+                return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+            }
+           
+        }
     }
 }

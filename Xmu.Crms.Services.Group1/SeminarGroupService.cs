@@ -8,11 +8,11 @@ using Xmu.Crms.Shared.Service;
 
 namespace Xmu.Crms.Services.Insomnia
 {
-    public class GroupService : ISeminarGroupService
+    public class SeminarGroupService : ISeminarGroupService
     {
         private readonly CrmsContext _db;
 
-        public GroupService(CrmsContext db) => _db = db;
+        public SeminarGroupService(CrmsContext db) => _db = db;
 
         public void DeleteSeminarGroupMemberBySeminarGroupId(long seminarGroupId)
         {
