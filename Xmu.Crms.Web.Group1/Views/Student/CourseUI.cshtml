@@ -39,11 +39,13 @@
                             var box = "blueBox";
                         else var box = "greyBox";
                         index++;
-                        if (data[i].groupingMethod == "fixed")
+                        if (data[i].isFixed)
                             var g = "固定分组";
                         else var g = "随机分组";
+                        var startTime = data[i].startTime.substr(0,10);
+                        var endTime = data[i].endTime.substr(0, 10);
                         var col = "<div class='" + box + "' id='" + data[i].id + "'><p class='LeftBoxText'>" + data[i].name
-                            + "</p><p class='RightBoxText1' style='margin-left: 60%;margin-top: 3%;'>" + data[i].startTime + "至" + data[i].endTime
+                            + "</p><p class='RightBoxText1' style='margin-left: 60%;margin-top: 3%;'>" + startTime + "至" + endTime
                             + "</p><p class='RightBoxText2' style='margin-left: 60%;margin-top: 12%;'>" + g
                             + "</p><p class='RightBoxText3' style='margin-left: 60%;margin-top: 21%;'> 成绩：未完成</p></div>";
                         $("#list").append(col);
@@ -55,6 +57,7 @@
             });
             function chooseSeminar() {
                 window.localStorage.setItem("seminarid", $(this).attr("id"));
+      
                 $(window).attr("location", '/Student/Seminar');
             }
             $("#list").on('click', ".blueBox", chooseSeminar);

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Xmu.Crms.Shared.Models;
+using Xmu.Crms.Shared.Service;
 
 namespace Xmu.Crms.Controllers
 {
@@ -14,96 +16,65 @@ namespace Xmu.Crms.Controllers
     [Route("/api/course")]
     public class CourseController : Controller
     {
-        // GET: api/Course
-        [Authorize]
-        [HttpGet]
-        public JsonResult GetCourseList()
+        private ICourseService courseService;
+        private IClassService classService;
+        private ISeminarService seminarService;
+        public CourseController(ICourseService courseService, IClassService classService, ISeminarService seminarService)
         {
-            var temp = Request.Headers["Authorization"].ToString();
-            var array = temp.Split(" ");
-            var token = array[1];
-            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var type = jwt.Claims.ElementAt(1).Value;
-            if (type == "teacher")
+            this.courseService = courseService;
+            this.classService = classService;
+            this.seminarService = seminarService;
+        }
+        //根据JWT获取与用户类型
+        //根据类型获取相应课程信息
+        // GET: api/Course
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet]
+        public IActionResult GetCourseList()
+        {
+            var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            var type = User.Claims.Single(c => c.Type == "type").Value;
+            if(type == "teacher")
             {
-                var courses = new object[] { new { id = 1, name = "OOAD", description = "面向对象设计与分析" }, new { id = 2, name = "J2EE", description = "J2EE" } };
+                var courses = courseService.ListCourseByUserId(id);
                 return Json(courses);
             }
             else
             {
-                var courses = new object[] { new { id = 1, name = "OOAD", teacher = "邱明",description = "面向对象设计与分析" },
-                new { id = 2, name = "J2EE", teacher = "邱明", description = "J2EE" },
-                new { id = 3, name = "操作系统", teacher = "吴清强", description = "操作系统" },
-                new { id = 4, name = "数据仓库", teacher = "王鸿吉", description = "数据仓库" } };
+                var classes = classService.ListClassByUserId(id);
+                List<Course> courses = new List<Course>();
+                foreach(var i in classes)
+                {
+                    var course = courseService.GetCourseByCourseId(i.Course.Id);
+                    courses.Add(course);
+                }
                 return Json(courses);
-
             }
+            
         }
+        //根据课程id获取课程详细信息
         // GET: api/Course/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(long id)
         {
-            if (id == 1)
-            {
-                var course = new { id = 1, name = "OOAD", teacher = "邱明", teacherEmail = "mingqiu@xmu.edu.cn", description = "面向对象设计与分析" };
-                return Json(course);
-            }
-            else
-            {
-                var course = new { id = 2, name = "J2EE", teacher = "邱明", teacherEmail = "mingqiu@xmu.edu.cn", description = "J2EE" };
-                return Json(course);
-            }
+            var course = courseService.GetCourseByCourseId(id);
+            return Json(course);
         }
+        //根据课程id获取seminar信息
         // GET: api/Course/{id}/Seminar
         [HttpGet("{id}/seminar")]
-        public JsonResult getSeminar(int id)
+        public IActionResult getSeminar(long id)
         {
-            if (id == 1)
-            {
-                var seminars = new object[] { new { id = 1,name = "界面原型设计", description = "界面原型设计",
-        groupingMethod = "fixed", startTime = "9月25日", endTime = "10月9日" },
-                    new { id = 2,name = "概要设计", description = "模型层与数据库设计",
-        groupingMethod = "random", startTime = "10月10日", endTime = "10月24日" }
-                };
-                return Json(seminars);
-            }
-            else
-            {
-                var seminars = new object[] { new { id = 1,name = "包划分", description = "包划分",
-        groupingMethod = "random", startTime = "9月25日", endTime = "10月9日" },
-                    new { id = 2,name = "概要设计", description = "模型层与数据库设计",
-        groupingMethod = "random", startTime = "10月10日", endTime = "10月24日" }
-                };
-                return Json(seminars);
-            }
+            var seminars = seminarService.ListSeminarByCourseId(id);
+            return Json(seminars);
         }
+        //根据courseId获取class信息
         //GET: api/course/{courseId}/class
         [HttpGet("{courseId}/class")]
         public IActionResult getClassByCourseId(int courseId)
         {
-            var Class = new object[] { new { id = 1, name = "周三1-2节" }, new { id = 2, name = "周三3-4节" } };
-            var Class2 = new object[] { new { id = 3, name = "周二7-8节" }, new { id = 4, name = "周四7-8节" } };
-            if (courseId == 1)
-                return Json(Class);
-            else 
-                return Json(Class2);
-        }
-        // POST: api/Course
-        [HttpPost]
-        public IActionResult Post([FromBody]dynamic Json)
-        {
-            var course = new { id = Json.id, name = Json.name, status = "success" };
-            return Json(course);
-        }
-
-        // PUT: api/Course/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Course/5
-        public void Delete(int id)
-        {
+            var classes = classService.ListClassByCourseId(courseId);
+            return Json(classes);
         }
     }
 }
