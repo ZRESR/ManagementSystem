@@ -69,7 +69,7 @@ namespace Xmu.Crms.Controllers
 
 
         //解绑
-        // PUT: api/Me/5
+        // PUT: api/unbind
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("unbind")]
         public IActionResult Put()
@@ -85,9 +85,27 @@ namespace Xmu.Crms.Controllers
             userService.UpdateUserByUserId(id, newUser);
             return Json(new { status = 200 });
         }
-        
 
-
+        //注册手机号和密码
+        //POST: api/me
+        [HttpPost("me")]
+        public IActionResult Register([FromBody]dynamic json)
+        {
+            try
+            {
+                UserInfo userInfo = new UserInfo()
+                {
+                    Phone = json.phone,
+                    Password = json.password
+                };
+                userInfo = loginService.SignUpPhone(userInfo);
+                return Json(userInfo);
+            }
+            catch(ArgumentException e)
+            {
+                return Json(new { status = 1 });
+            }
+        }
 
         // POST: api/signin
         [HttpPost("signin")]
