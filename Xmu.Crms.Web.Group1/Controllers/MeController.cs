@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Xmu.Crms.Shared.Exceptions;
 
 namespace Xmu.Crms.Controllers
 {
@@ -110,31 +111,62 @@ namespace Xmu.Crms.Controllers
         // POST: api/signin
         [HttpPost("signin")]
         public JsonResult Login([FromBody]dynamic json) 
-        {           
-            string a = json.username;
-            string b = json.password;
-            if (a == "18911114514" && b == "qwer2345!")
+        {
+            try
             {
-                UserInfo user = userService.GetUserByUserId(3);
-                var claims = new Claim[]
+
+                UserInfo user = new UserInfo()
                 {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim("type", "student")
+                    Phone = json.username,
+                    Password = json.password
                 };
-                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var token = new JwtSecurityToken(
-                    null,
-                    null,
-                    claims, 
-                    DateTime.Now, DateTime.Now.AddMinutes(30),
-                    creds);
-                var t = token.Claims.ElementAt(1).Value;
-                return Json(new { status="200", type = t, token = new JwtSecurityTokenHandler().WriteToken(token)});
+                user = loginService.SignInPhone(user);
+                if(user.Type== Shared.Models.Type.Teacher)
+                {
+                    var claims = new Claim[]
+                    {
+                        new Claim("id", user.Id.ToString()),
+                        new Claim("type", "teacher")
+                    };
+                    var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var token = new JwtSecurityToken(
+                        null,
+                        null,
+                        claims,
+                        DateTime.Now, DateTime.Now.AddMinutes(30),
+                        creds);
+                    var t = token.Claims.ElementAt(1).Value;
+                    return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+                }
+                else if(user.Type==Shared.Models.Type.Student)
+                {
+                    var claims = new Claim[]
+                    {
+                        new Claim("id", user.Id.ToString()),
+                        new Claim("type", "student")
+                    };
+                    var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var token = new JwtSecurityToken(
+                        null,
+                        null,
+                        claims,
+                        DateTime.Now, DateTime.Now.AddMinutes(30),
+                        creds);
+                    var t = token.Claims.ElementAt(1).Value;
+                    return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+                }
+                else
+                {
+                    return Json(new { status = 500,id=user.Id});
+                }
             }
-            else if (a == "18911118978" && b == "asdf1234!")
-                return Json(" ");
-            else return Json(new { status = "err" });          
+            catch(PasswordErrorException e)
+            {
+                return Json(new { status = 404 });
+            }
+     
         }
 
     }
