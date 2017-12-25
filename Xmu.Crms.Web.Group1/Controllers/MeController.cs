@@ -242,13 +242,29 @@ namespace Xmu.Crms.Controllers
             var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             UserInfo user = userService.GetUserByUserId(id);
             string str = json.number;
-            user.Number = str;
-            str = json.name;
-            user.Name = str;
-            str = json.school;
-            School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
-            user.School = school;
-            userService.UpdateUserByUserId(user.Id, user);
+            UserInfo tempUser = userService.GetUserByNumber(str);
+            if(tempUser==null)
+            {
+                user.Number = str;
+                str = json.name;
+                user.Name = str;
+                str = json.school;
+                School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
+                user.School = school;
+                userService.UpdateUserByUserId(user.Id, user);
+                
+            }
+            else
+            {
+                tempUser.Phone = user.Phone;
+                tempUser.Password = user.Password;
+                str = json.name;
+                tempUser.Name = str;
+                str = json.school;
+                School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
+                tempUser.School = school;
+                
+            }
             return Json(new { status = 200 });
         }
     }
