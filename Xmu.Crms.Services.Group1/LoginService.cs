@@ -9,11 +9,11 @@ using Type = Xmu.Crms.Shared.Models.Type;
 
 namespace Xmu.Crms.Services.Insomnia
 {
-    public class Md5LoginService : ILoginService
+    public class LoginService : ILoginService
     {
         private readonly CrmsContext _db;
 
-        public Md5LoginService(CrmsContext db) => _db = db;
+        public LoginService(CrmsContext db) => _db = db;
 
         public string GetMd5(string strPwd)
         {
