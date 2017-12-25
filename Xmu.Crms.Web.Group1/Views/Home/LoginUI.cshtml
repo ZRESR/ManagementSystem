@@ -37,10 +37,12 @@
                         else if (data.status == 501)
                         {
                             window.localStorage.setItem("token", data.token);
+                            window.localStorage.setItem("type", data.type);
                             $(window).attr("location", '/Teacher/TeacherBindingUI');
                         }
                         else if (data.status == 502) {
                             window.localStorage.setItem("token", data.token);
+                            window.localStorage.setItem("type", data.type);
                             $(window).attr("location", '/Student/StudentBindingUI');
                         }
                         else {

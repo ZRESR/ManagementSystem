@@ -15,6 +15,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            console.log(window.localStorage.getItem("type"));
             var pid = 1;
             var cname = "北京";
             $.getJSON("../../js/province.json",

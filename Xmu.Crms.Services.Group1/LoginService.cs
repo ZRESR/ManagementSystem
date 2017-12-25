@@ -51,9 +51,9 @@ namespace Xmu.Crms.Services.Insomnia
             }
             user.Type = Type.Unbinded;
 
-            var entry = _db.UserInfo.Add(user);
+            _db.UserInfo.Add(user);
             _db.SaveChanges();
-            return entry.Entity;
+            return user;
         }
 
         public void DeleteTeacherAccount(long userId) => throw new NotImplementedException();
