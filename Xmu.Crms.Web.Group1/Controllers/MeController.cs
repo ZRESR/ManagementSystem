@@ -101,8 +101,9 @@ namespace Xmu.Crms.Controllers
                     Phone = json.phone,
                     Password = json.password
                 };
-                userInfo = loginService.SignUpPhone(userInfo);
-                return Json(userInfo);
+                //userInfo = loginService.SignUpPhone(userInfo);
+                UserInfo user= loginService.SignUpPhone(userInfo);
+                return Json(user);
             }
             catch(ArgumentException e)
             {
@@ -142,7 +143,7 @@ namespace Xmu.Crms.Controllers
                         creds);
                     var t = token.Claims.ElementAt(1).Value;
                     if (user.Number == null)
-                        return Json(new { status = 501, id = user.Id,token= new JwtSecurityTokenHandler().WriteToken(token) });
+                        return Json(new { type = t, status = 501, id = user.Id,token= new JwtSecurityTokenHandler().WriteToken(token) });
                     return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
                 }
                 else if(user.Type==Shared.Models.Type.Student)
@@ -163,7 +164,7 @@ namespace Xmu.Crms.Controllers
                         creds);
                     var t = token.Claims.ElementAt(1).Value;
                     if (user.Number == null)
-                        return Json(new { status = 501, id = user.Id, token = new JwtSecurityTokenHandler().WriteToken(token) });
+                        return Json(new { type = t, status = 502, id = user.Id, token = new JwtSecurityTokenHandler().WriteToken(token) });
                     return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
                 }
                 else
@@ -208,7 +209,7 @@ namespace Xmu.Crms.Controllers
                     DateTime.Now, DateTime.Now.AddMinutes(30),
                     creds);
                 var t = token.Claims.ElementAt(1).Value;
-                return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+                return Json(new { type = "teacher", token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             else
             {
@@ -226,7 +227,7 @@ namespace Xmu.Crms.Controllers
                     DateTime.Now, DateTime.Now.AddMinutes(30),
                     creds);
                 var t = token.Claims.ElementAt(1).Value;
-                return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
+                return Json(new { type = "student", token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
            
         }
