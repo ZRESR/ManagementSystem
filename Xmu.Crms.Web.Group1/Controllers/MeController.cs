@@ -41,7 +41,7 @@ namespace Xmu.Crms.Controllers
             var array = temp.Split(" ");
             var token = array[1];
             JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
             var user = userService.GetUserByUserId(id);
             return Json(user);
         }
@@ -53,7 +53,7 @@ namespace Xmu.Crms.Controllers
             var array = temp.Split(" ");
             var token = array[1];
             JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
             UserInfo user = userService.GetUserByUserId(id);
             user.Avatar = json.path;
             userService.UpdateUserByUserId(id, user);
@@ -68,7 +68,7 @@ namespace Xmu.Crms.Controllers
             var array = temp.Split(" ");
             var token = array[1];
             JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.ElementAt(0).Value);
+            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
             UserInfo user =  userService.GetUserByUserId(id);
             UserInfo newUser = new UserInfo
             {
