@@ -20,6 +20,7 @@
                 url: "/api/course/" + window.localStorage.getItem("courseid"),
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
+                    console.log(data)
                     $(".title").text(data.name);
                 }
             });
@@ -44,7 +45,7 @@
                     }
                 }
             });
-            $(".ninedotImg").click(function () {
+            $(".ninebutton").click(function () {
                 $(window).attr("location", '/Student/CourseInfoUI');
             });
             function chooseSeminar() {
@@ -58,7 +59,7 @@
 <body class="body">
     <div class="topBox">
         <span class="title"></span>
-        <img class="ninedotImg" src="../images/home.png" />
+        <img class="ninebutton" src="../images/home.png" />
     </div>
     <div id="list"></div>
 </body>

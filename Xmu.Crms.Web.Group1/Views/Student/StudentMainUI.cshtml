@@ -34,13 +34,14 @@
                     "Authorization": "Bearer " + token
                 },
                 contentType: "application/json; charset=utf-8",
-                success: function (data, status) {
+                success: function (data) {
+                    console.log(data)
                     var box = "blueBox";
                     for (var i in data) {
                         if (data[i].id > 2)
                             box = "greyBox";
                         var col = "<div id='" + data[i].id + "' class='" + box + "'><p class='leftText'>" + data[i].name
-                            + "</p> <p class='rightText'>老师：" + data[i].teacher + "</p></div>";
+                            + "</p> <p class='rightText'>老师：" + data[i].teacher.name + "</p></div>";
                         $("#list").append(col);
                     }
 

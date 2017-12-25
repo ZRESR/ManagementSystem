@@ -20,8 +20,8 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
                     $(".title").text(data.name)
-                    $("#teacher").text("老师：" + data.teacher);
-                    $("#email").text("邮箱：" + data.teacherEmail);
+                    $("#teacher").text("老师：" + data.teacher.name);
+                    $("#email").text("邮箱：" + data.teacher.email);
                     $("#description").text("简介：" + data.description);
                 }
             });
@@ -42,7 +42,7 @@
     </div>
     <div>
         <img src="~/images/file.png" class="PaperImg" />
-        <span id="description" class="IntroText"></span>
+        <p id="description" class="IntroText"></p>
     </div>
 </body>
 </html>
