@@ -16,6 +16,7 @@ using Xmu.Crms.Shared.Service;
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Xmu.Crms.Controllers
 {
@@ -33,42 +34,35 @@ namespace Xmu.Crms.Controllers
             this.hostingEnvironment = env;
         }
         // GET: api/Me
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("me")]
         public IActionResult GetMe()
         {
-            var temp = Request.Headers["Authorization"].ToString();
+            
+            /*var temp = Request.Headers["Authorization"].ToString();
             var array = temp.Split(" ");
             var token = array[1];
-            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
+            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);*/
+            var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             var user = userService.GetUserByUserId(id);
             return Json(user);
         }
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("avatar")]
         public IActionResult PutAvatar([FromBody]dynamic json)
         {
-            var temp = Request.Headers["Authorization"].ToString();
-            var array = temp.Split(" ");
-            var token = array[1];
-            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
+            var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             UserInfo user = userService.GetUserByUserId(id);
             user.Avatar = json.path;
             userService.UpdateUserByUserId(id, user);
             return Json(new { status = json.path });
         }
         // PUT: api/Me/5
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("me")]
         public IActionResult Put()
         {
-            var temp = Request.Headers["Authorization"].ToString();
-            var array = temp.Split(" ");
-            var token = array[1];
-            JwtSecurityToken jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-            var id = long.Parse(jwt.Claims.Single(c => c.Type == "id").Value);
+            var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             UserInfo user =  userService.GetUserByUserId(id);
             UserInfo newUser = new UserInfo
             {
