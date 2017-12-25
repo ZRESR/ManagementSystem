@@ -48,10 +48,10 @@
                 url: "/api/seminar/" + window.localStorage.getItem("seminarid") + "/group",
                 contentType: "application/json; charset=utf-8",
                 data: {
-                    "isFix": false,
+                    "isFixed": false,
                     "gradeable": false,
                     "classid": 0,
-                    "include": false
+                    "include": true
                 },
                 headers: {
                     "Authorization": "Bearer " + token

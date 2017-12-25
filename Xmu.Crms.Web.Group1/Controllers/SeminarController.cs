@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Web;
-using Xmu.Crms.Shared.Service;
-using System.Net;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 using Xmu.Crms.Shared.Models;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
+using Xmu.Crms.Shared.Service;
+using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Headers;
+using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Xmu.Crms.Shared.Exceptions;
 
 namespace Xmu.Crms.Controllers
 {
@@ -38,7 +46,7 @@ namespace Xmu.Crms.Controllers
         // GET: api/Seminar/5/Group
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/group")]
-        public IActionResult GetGroup(long id,[FromQuery]bool isFix, [FromQuery]bool gradeable, [FromQuery]long classid, [FromQuery]bool include)
+        public IActionResult GetGroup(long id, [FromQuery]bool isFixed,[FromQuery]bool gradeable, [FromQuery]long classid, [FromQuery]bool include)
         {
             var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             if (gradeable)
@@ -53,7 +61,7 @@ namespace Xmu.Crms.Controllers
             }
             if(classid != 0)
             {
-                if (!isFix)
+                if (!isFixed)
                 {
                     var t = seminarGroupService.ListSeminarGroupBySeminarId(id);
                     List<SeminarGroup> groups = new List<SeminarGroup>();
@@ -82,6 +90,10 @@ namespace Xmu.Crms.Controllers
         public IActionResult GetTopic(long id)
         {
             var topics = topicService.ListTopicBySeminarId(id);
+            foreach(var t in topics)
+            {
+                //topicService.GetRestTopicById(t.Id, );
+            }
             return Json(topics);
         }
     }
