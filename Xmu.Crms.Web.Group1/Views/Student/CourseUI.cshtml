@@ -14,11 +14,15 @@
     <link href="~/css/CourseUI.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
+            var token = window.localStorage.getItem("token")
             var index = 1;
             $.ajax({
                 type: 'GET',
                 url: "/api/course/" + window.localStorage.getItem("courseid"),
                 contentType: "application/json; charset=utf-8",
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
                 success: function (data, status) {
                     console.log(data)
                     $(".title").text(data.name);
@@ -26,9 +30,10 @@
             });
             $.ajax({
                 type: 'GET',
-                url: "/api/Course/" + window.localStorage.getItem("courseid") + "/Seminar",
+                url: "/api/course/" + window.localStorage.getItem("courseid") + "/seminar",
                 contentType: "application/json; charset=utf-8",
                 success: function (data, status) {
+                    console.log(data)
                     for (var i in data) {
                         if (index == 1)
                             var box = "blueBox";

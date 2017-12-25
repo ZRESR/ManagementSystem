@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using Xmu.Crms.Shared.Service;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Xmu.Crms.Shared.Models;
 
 namespace Xmu.Crms.Controllers
 {
@@ -12,101 +17,72 @@ namespace Xmu.Crms.Controllers
     [Route("/api/seminar")]
     public class SeminarController : Controller
     {
-
+        private ISeminarGroupService seminarGroupService;
+        private IFixGroupService fixGroupService;
+        private ITopicService topicService;
+        private ISeminarService seminarService;
+        public SeminarController(ISeminarGroupService seminarGroupService, ITopicService topicService, ISeminarService seminarService, IFixGroupService fixGroupService)
+        {
+            this.seminarGroupService = seminarGroupService;
+            this.fixGroupService = fixGroupService;
+            this.topicService = topicService;
+            this.seminarService = seminarService;
+        }
         // GET: api/Seminar/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(long id)
         {
-            if (id == 1)
-            {
-                var seminar = new { id = 1,name = "界面原型设计"};
-                return Json(seminar);
-            }
-            else
-            {
-                var seminar = new { id = 1, name = "概要设计" };
-                return Json(seminar);
-            }
+            var seminar = seminarService.GetSeminarBySeminarId(id);
+            return Json(seminar);
         }
         // GET: api/Seminar/5/Group
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/group")]
-        public JsonResult GetGroup(int id, [FromQuery]bool gradeable, [FromQuery]int classid, [FromQuery]bool include)
+        public IActionResult GetGroup(long id,[FromQuery]bool isFix, [FromQuery]bool gradeable, [FromQuery]long classid, [FromQuery]bool include)
         {
-            if(gradeable)
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            if (gradeable)
             {
-                int cid = 1;
-                if (cid == 1)
+                var group = seminarGroupService.GetSeminarGroupById(id, userId);
+                var groupTopics = topicService.ListSeminarGroupTopicByGroupId(group.Id);
+                var allGroups = seminarGroupService.ListSeminarGroupBySeminarId(id);
+                foreach(var g in allGroups)
                 {
-                    var groups = new object[] {
-                        new { id = 11, name = "1-A-1" },
-                        new { id = 12, name = "1-A-2" },
-                        new { id = 13, name = "1-A-3" },
-                        new { id = 14, name = "1-C-1" },
-                        new { id = 15, name = "1-C-2" },
-                        new { id = 16, name = "1-C-3" }
-                    };
+                }
+                return Json(groupTopics);
+            }
+            if(classid != 0)
+            {
+                if (!isFix)
+                {
+                    var t = seminarGroupService.ListSeminarGroupBySeminarId(id);
+                    List<SeminarGroup> groups = new List<SeminarGroup>();
+                    foreach(var g in t)
+                    {
+                        if (g.ClassInfo.Id == classid) groups.Add(g);
+                    }
                     return Json(groups);
                 }
                 else
                 {
-                    var groups = new object[] {
-                        new { id = 21, name = "2-B-1" },
-                        new { id = 22, name = "2-B-2" },
-                        new { id = 23, name = "2-B-3" },
-                        new { id = 24, name = "2-C-1" },
-                        new { id = 25, name = "2-C-2" },
-                        new { id = 26, name = "2-C-3" }
-                    };
+                    var groups = fixGroupService.ListFixGroupByClassId(classid);
                     return Json(groups);
                 }
             }
-            if(classid != 0)
-            {
-                var groups = new object[]{ new { id = 1 }, new { id = 2 }, new { id = 3 } };
-                return Json(groups);
-            }
             if (include)
             {
-                var group = new
-                {
-                    id = 1,
-                    leader = new { id = 8888, name = "张三", number = "24320xxxxxx" },
-                    members = new object[] {
-                        new { id = 5324, name = "李四", number = "24320xxxxxx" },
-                        new { id = 5678, name = "王五", number = "24320xxxxxx" },
-                        new { id = 5324, name = "李四", number = "24320xxxxxx" }
-                    },
-                    topics = new { id = 257, name = "领域模型与模块" }
-                };
-                return Json(group);
+                var group = seminarGroupService.GetSeminarGroupById(id, userId);
+                var members = seminarGroupService.ListSeminarGroupMemberByGroupId(group.Id);
+                return Json(new { group = group, members = members });
             }
             else
                 return Json(new{ status="false" });
         }
         [HttpGet("{id}/topic")]
-        public IActionResult GetTopic(int id)
+        public IActionResult GetTopic(long id)
         {
-            var topics = new object[]
-            {
-                new { id = 257, name = "领域模型与模块", description = "Domain model与模块划分", groupLimit = 5, groupLeft = 2 },
-                new { id = 258, name = "模块划分", description = "模块划分，PackageDiagram", groupLimit = 5, groupLeft = 1 },
-                new { id = 259, name = "界面设计", description = "界面设计，界面原型设计", groupLimit = 5, groupLeft = 0 },
-            };
+            var topics = topicService.ListTopicBySeminarId(id);
             return Json(topics);
-        }
-        // POST: api/Seminar
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Seminar/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Seminar/5
-        public void Delete(int id)
-        {
         }
     }
 }

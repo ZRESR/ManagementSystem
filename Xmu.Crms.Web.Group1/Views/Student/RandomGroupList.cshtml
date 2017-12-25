@@ -32,6 +32,7 @@
         }
 
         $(document).ready(function () {
+            var token = window.localStorage.getItem("token")
             $(window).bind("unload", function () { });
             var topic = window.localStorage.getItem("topic");
             if (topic != null) {
@@ -46,20 +47,21 @@
                 url: "/api/seminar/" + window.localStorage.getItem("seminarid") + "/group",
                 contentType: "application/json; charset=utf-8",
                 data: {
-                    "gradeable": false,
+                    "gradeable": true,
                     "classid": 0,
                     "include": true
                 },
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
                 success: function (data, status) {
-                    var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.leader.name
-                        + "<br />" + data.leader.number + "</div></div></div>";
-                    $("#list").append(col);
+                    console.log(data)
                     for (var i in data.members) {
                         var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.members[i].name
                             + "<br />" + data.members[i].number + "</div></div></div>";
                         $("#list").append(col);
                     }
-                    $(".seminarblackword").text(data.topics.name + "-" + "随机分组");
+                    $(".seminarblackword").text(data.group.seminar.name + "-" + "随机分组");
                 }
             });
             $("#btnleader").click(function () {
