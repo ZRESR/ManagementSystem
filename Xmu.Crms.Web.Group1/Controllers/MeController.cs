@@ -46,7 +46,7 @@ namespace Xmu.Crms.Controllers
             return Json(user);
         }
         [Authorize]
-        [HttpPost("me")]
+        [HttpPost("avatar")]
         public IActionResult PutAvatar([FromBody]dynamic json)
         {
             var temp = Request.Headers["Authorization"].ToString();
