@@ -124,6 +124,12 @@ namespace Xmu.Crms.Services.Group1
              
         }
 
+        public IList<SeminarGroup> GetSeminarGroupById(long classId,long seminarId)
+        {
+            IList<SeminarGroup> list = _db.SeminarGroup.Include(s=>s.Seminar).Include(s=>s.ClassInfo).Where(s => s.ClassInfo.Id == classId & s.Seminar.Id == seminarId).ToList<SeminarGroup>();
+            return list;
+        }
+
 
         //判断该节讨论课是否存在
         public Seminar FindSeminar(long seminarId)

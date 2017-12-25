@@ -104,5 +104,8 @@ namespace Xmu.Crms.Shared.Service
         /// <seealso cref="M:Xmu.Crms.Shared.Service.IGradeService.DeleteStudentScoreGroupByTopicId(System.Int64)"/>
         /// <exception cref="T:System.ArgumentException">seminarId格式错误</exception>
         void DeleteTopicBySeminarId(long seminarId);
+
+
+        int GetRestTopicById(long topicId,long classId);
     }
 }
