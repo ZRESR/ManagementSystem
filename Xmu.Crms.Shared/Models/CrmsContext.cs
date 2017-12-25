@@ -417,6 +417,9 @@ namespace Xmu.Crms.Shared.Models
                     .Property(m => m.Id)
                     .HasColumnName("id");
                 entity
+                    .Property(m => m.Serial)
+                    .HasColumnName("serial");
+                entity
                     .Property(m => m.Name)
                     .HasColumnName("name");
                 entity
@@ -504,6 +507,9 @@ namespace Xmu.Crms.Shared.Models
                 entity
                    .Property(m => m.Method)
                    .HasColumnName("method_name");
+                entity
+                   .Property(m => m.Time)
+                   .HasColumnName("time");
             });
         }
     }

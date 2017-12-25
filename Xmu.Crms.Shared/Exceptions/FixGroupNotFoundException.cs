@@ -34,9 +34,5 @@ namespace Xmu.Crms.Shared.Exceptions
         protected FixGroupNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
-        public override string ToString()
-        {
-            return mes;
-        }
     }
 }

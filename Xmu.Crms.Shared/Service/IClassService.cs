@@ -17,21 +17,14 @@ namespace Xmu.Crms.Shared.Service
         void DeleteClassSelectionByClassId(long classId);
 
         /// <summary>
-        /// 按课程名称和教师名称获取班级列表.
-        /// @author yexiaona
-        /// </summary>
-        /// <param name="courseName">课程名称</param>
-        /// <param name="teacherName">教师名称</param>
-        /// <returns>List 班级列表</returns>
-        IList<ClassInfo> ListClassByName(string courseName, string teacherName);
-
-        /// <summary>
         /// 根据课程ID获得班级列表.
         /// @author yexiaona
         /// </summary>
         /// <param name="courseId">课程ID</param>
         /// <returns>list 班级列表</returns>
         IList<ClassInfo> ListClassByCourseId(long courseId);
+
+
 
         /// <summary>
         /// 按班级id获取班级详情.
@@ -46,7 +39,8 @@ namespace Xmu.Crms.Shared.Service
         /// @author yexiaona
         /// </summary>
         /// <param name="classId">班级ID</param>
-        void UpdateClassByClassId(long classId);
+        /// <param name="newclass">修改后班级信息</param>
+        void UpdateClassByClassId(long classId, ClassInfo newclass);
 
         /// <summary>
         /// 按班级id删除班级.
@@ -64,8 +58,8 @@ namespace Xmu.Crms.Shared.Service
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <param name="classId">班级id</param>
-        /// <returns>url 选课url</returns>
-        string InsertCourseSelectionById(long userId, long classId);
+        /// <returns>courseSelectionId 选课记录id</returns>
+        long InsertCourseSelectionById(long userId, long classId);
 
         /// <summary>
         /// 学生按班级id取消选择班级.
@@ -86,15 +80,7 @@ namespace Xmu.Crms.Shared.Service
         /// <seealso cref="M:Xmu.Crms.Shared.Service.ISeminarGroupService.ListSeminarGroupBySeminarId(System.Int64)"/>
         Location GetCallStatusById(long seminarId, long classId);
 
-        /// <summary>
-        /// 新建班级.
-        /// @author yexiaona
-        /// </summary>
-        /// <param name="userId">教师id</param>
-        /// <param name="courseId">课程id</param>
-        /// <param name="classInfo">班级信息</param>
-        /// <returns>classId 班级Id</returns>
-        long InsertClassById(long userId, long courseId,ClassInfo classInfo);
+
 
         /// <summary>
         /// 按courseId删除Class.
@@ -107,36 +93,38 @@ namespace Xmu.Crms.Shared.Service
         /// <seealso cref="M:Xmu.Crms.Shared.Service.IFixGroupService.DeleteFixGroupByClassId(System.Int64)"/>
         void DeleteClassByCourseId(long courseId);
 
-        /// <summary>
-        /// 按classId删除ScoreRule.
-        /// @author zhouzhongjun
+
+
+        ///<summary>
+        ///老师发起签到.
+        ///往location表插入一条当前讨论课班级的签到状态
         /// </summary>
-        /// <param name="classId">班级Id</param>
-        void DeleteScoreRuleById(long classId);
+        /// <param name="location">当前讨论课班级的签到状态记录 </param>
+        /// <returns> 返回location表的新记录的id</returns>
+        ///   <exception cref="T:Xmu.Crms.Shared.Exceptions.SeminarNotFoundException">讨论课没有找到</exception>
+        /// <exception cref="T:Xmu.Crms.Shared.Exceptions.ClassesNotFoundException">无此Id的班级</exception>
+        long CallInRollById(Location location);
 
         /// <summary>
-        /// 查询评分规则.
-        /// @author YeHongjie
+        /// 新增老师结束签到
+        /// @author qinlingyun
+        /// 老师结束签到,修改当前讨论课班级的签到状态为已结束
         /// </summary>
-        /// <param name="classId">班级id</param>
-        /// <returns>ProportionBO 返回评分规则，若未找到对应评分规则返回空（null)</returns>
-        ClassInfo GetScoreRule(long classId);
+        /// <param name="location">当前讨论课班级的签到状态记录</param>
+        /// <exception cref="T:Xmu.Crms.Shared.Exceptions.SeminarNotFoundException">讨论课没有找到</exception>
+        /// <exception cref="T:Xmu.Crms.Shared.Exceptions.ClassesNotFoundException">无此Id的班级</exception>
+        void EndCallRollById(long seminarId,long classId);
 
-        /// <summary>
-        /// 新增评分规则.
-        /// @author YeHongjie
+        ///<summary>
+        ///根据学生ID获取班级列表.
+        /// @author YeXiaona
+        ///
         /// </summary>
-        /// <param name="classId">班级Id</param>
-        /// <param name="proportions">评分规则</param>
-        /// <returns>scoreRuleId 若创建成功则返回该评分规则的id，失败则返回-1</returns>
-        long InsertScoreRule(long classId, ClassInfo proportions);
+        /// <param name="userId">学生ID</param>
+        /// <returns>list 班级列表</returns>
+        /// <exception cref="T:System.ArgumentException">userId格式错误时抛出</exception>
+        ///  <exception cref="T:Xmu.Crms.Shared.Exceptions.ClassesNotFoundException">无此班级</exception>
+        List<ClassInfo> ListClassByUserId(long userId);
 
-        /// <summary>
-        /// 修改评分规则.
-        /// @author YeHongjie
-        /// </summary>
-        /// <param name="classId">班级id</param>
-        /// <param name="proportions">评分规则</param>
-        void UpdateScoreRule(long classId, ClassInfo proportions);
     }
 }
