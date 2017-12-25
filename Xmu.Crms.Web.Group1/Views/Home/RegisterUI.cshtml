@@ -59,7 +59,14 @@
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (data, status) {
-                                $(window).attr("location", '/Home/ChooseCharacter')
+                                if (data.status == 1) {
+                                    $(".tipFont").text("用户名已存在！");
+                                }
+                                else {
+                                    window.localStorage.setItem("id", data.Id);
+                                    $(window).attr("location", '/Home/ChooseCharacter');
+                                }
+
                             }
                         });
 

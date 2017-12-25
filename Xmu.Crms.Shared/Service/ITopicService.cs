@@ -105,7 +105,7 @@ namespace Xmu.Crms.Shared.Service
         /// <exception cref="T:System.ArgumentException">seminarId格式错误</exception>
         void DeleteTopicBySeminarId(long seminarId);
 
-
+        //查询剩余话题
         int GetRestTopicById(long topicId,long classId);
     }
 }
