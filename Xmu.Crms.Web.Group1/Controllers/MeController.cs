@@ -28,13 +28,15 @@ namespace Xmu.Crms.Controllers
         private JwtSettings _jwtSettings;
         private IUserService userService;
         private ILoginService loginService;
+        private ISchoolService schoolService;
         private IHostingEnvironment hostingEnvironment;
-        public MeController(IHostingEnvironment env, IOptions<JwtSettings> _jwtSettingsAccesser, IUserService userService,ILoginService loginService)
+        public MeController(IHostingEnvironment env, IOptions<JwtSettings> _jwtSettingsAccesser, IUserService userService,ILoginService loginService,ISchoolService schoolService)
         {
             _jwtSettings = _jwtSettingsAccesser.Value;
             this.userService = userService;
             this.hostingEnvironment = env;
             this.loginService = loginService;
+            this.schoolService = schoolService;
         }
 
 
@@ -124,6 +126,7 @@ namespace Xmu.Crms.Controllers
                 user = loginService.SignInPhone(user);
                 if(user.Type== Shared.Models.Type.Teacher)
                 {
+                   
                     var claims = new Claim[]
                     {
                         new Claim("id", user.Id.ToString()),
@@ -138,10 +141,13 @@ namespace Xmu.Crms.Controllers
                         DateTime.Now, DateTime.Now.AddMinutes(30),
                         creds);
                     var t = token.Claims.ElementAt(1).Value;
+                    if (user.Number == null)
+                        return Json(new { status = 501, id = user.Id,token= new JwtSecurityTokenHandler().WriteToken(token) });
                     return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
                 }
                 else if(user.Type==Shared.Models.Type.Student)
                 {
+                    
                     var claims = new Claim[]
                     {
                         new Claim("id", user.Id.ToString()),
@@ -156,6 +162,8 @@ namespace Xmu.Crms.Controllers
                         DateTime.Now, DateTime.Now.AddMinutes(30),
                         creds);
                     var t = token.Claims.ElementAt(1).Value;
+                    if (user.Number == null)
+                        return Json(new { status = 501, id = user.Id, token = new JwtSecurityTokenHandler().WriteToken(token) });
                     return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
                 }
                 else
@@ -221,6 +229,26 @@ namespace Xmu.Crms.Controllers
                 return Json(new { type = t, token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
            
+        }
+
+
+        //绑定信息
+        //POST :api/bind
+        [HttpPost("bind")]
+        public IActionResult binding([FromBody] dynamic json)
+        {
+            
+            var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            UserInfo user = userService.GetUserByUserId(id);
+            string str = json.number;
+            user.Number = str;
+            str = json.name;
+            user.Name = str;
+            str = json.school;
+            School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
+            user.School = school;
+            userService.UpdateUserByUserId(user.Id, user);
+            return Json(new { status = 200 });
         }
     }
 }

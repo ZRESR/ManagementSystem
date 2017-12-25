@@ -38,10 +38,24 @@
             $(".inputSchool").val(window.localStorage.getItem("school"));
             $(".inputSchool").attr("readonly", "readonly");
             $("button").click(function () {
+                var d = { number: window.localStorage.getItem("number"), name: window.localStorage.getItem("name"), school: window.localStorage.getItem("schoolid")}
+                var token = window.localStorage.getItem("token");
                 window.localStorage.removeItem("number");
                 window.localStorage.removeItem("name");
                 window.localStorage.removeItem("school");
-                $(window).attr("location", '/Teacher/TeacherMainUI');
+                $.ajax({
+                    type: 'POST',
+                    url: "/api/bind",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    data: JSON.stringify(d),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data, status) {
+                        $(window).attr("location", '/Teacher/TeacherMainUI');
+                    }
+                });     
             });
             $(".selectSchoolIcon").click(function () {
                 window.localStorage.setItem("number", $(".inputteacherID").val());

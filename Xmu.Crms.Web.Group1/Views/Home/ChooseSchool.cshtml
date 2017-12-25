@@ -130,6 +130,7 @@
                 });
             }
             function school() {
+                window.localStorage.setItem("schoolid", $(this).attr("id"));
                 window.localStorage.setItem("school", $(this).text());
                 window.history.go(-1);
             }

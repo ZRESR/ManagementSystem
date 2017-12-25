@@ -15,7 +15,8 @@
     <script>
         $(document).ready(function () {
             $(".teacherButton").click(function () {
-                var d = { type: "teacher",id: window.localStorage.getItem("id")};
+                var d = { type: "teacher", id: window.localStorage.getItem("id") };
+                window.localStorage.removeItem("id");
                 $.ajax({
                     type: "POST",
                     url: "/api/chooseCharacter",
@@ -23,12 +24,14 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data, status) {
+                        window.localStorage.setItem("token", data.token);
                         $(window).attr("location", '/Teacher/TeacherBindingUI');     
                     }
                 });
             });
             $(".studentButton").click(function () {
-                var d = { type:"student", id:window.localStorage.getItem("id") };
+                var d = { type: "student", id: window.localStorage.getItem("id") };
+                window.localStorage.removeItem("id");
                 $.ajax({
                     type: "POST",
                     url: "/api/chooseCharacter",
@@ -36,6 +39,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data, status) {
+                        window.localStorage.setItem("token", data.token);
                         $(window).attr("location", '/Student/StudentBindingUI');
                     }
                 });

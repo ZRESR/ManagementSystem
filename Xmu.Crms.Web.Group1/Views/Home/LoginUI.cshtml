@@ -34,6 +34,15 @@
                             window.localStorage.setItem("id", data.id);
                             $(window).attr("location", '/Home/ChooseCharacter');
                         }
+                        else if (data.status == 501)
+                        {
+                            window.localStorage.setItem("token", data.token);
+                            $(window).attr("location", '/Teacher/TeacherBindingUI');
+                        }
+                        else if (data.status == 502) {
+                            window.localStorage.setItem("token", data.token);
+                            $(window).attr("location", '/Student/StudentBindingUI');
+                        }
                         else {
                             if (data.token != null)
                                 window.localStorage.setItem("token", data.token);
