@@ -26,13 +26,18 @@ namespace Xmu.Crms.Controllers
     {
         private JwtSettings _jwtSettings;
         private IUserService userService;
+        private ILoginService loginService;
         private IHostingEnvironment hostingEnvironment;
-        public MeController(IHostingEnvironment env, IOptions<JwtSettings> _jwtSettingsAccesser, IUserService userService)
+        public MeController(IHostingEnvironment env, IOptions<JwtSettings> _jwtSettingsAccesser, IUserService userService,ILoginService loginService)
         {
             _jwtSettings = _jwtSettingsAccesser.Value;
             this.userService = userService;
             this.hostingEnvironment = env;
+            this.loginService = loginService;
         }
+
+
+        //获取用户信息
         // GET: api/Me
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("me")]
@@ -47,6 +52,10 @@ namespace Xmu.Crms.Controllers
             var user = userService.GetUserByUserId(id);
             return Json(user);
         }
+
+
+        //更换头像
+        //POST: api/avatar
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("avatar")]
         public IActionResult PutAvatar([FromBody]dynamic json)
@@ -57,9 +66,12 @@ namespace Xmu.Crms.Controllers
             userService.UpdateUserByUserId(id, user);
             return Json(new { status = json.path });
         }
+
+
+        //解绑
         // PUT: api/Me/5
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpPut("me")]
+        [HttpPut("unbind")]
         public IActionResult Put()
         {
             var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
@@ -74,11 +86,13 @@ namespace Xmu.Crms.Controllers
             return Json(new { status = 200 });
         }
         
+
+
+
         // POST: api/signin
         [HttpPost("signin")]
         public JsonResult Login([FromBody]dynamic json) 
-        {
-            
+        {           
             string a = json.username;
             string b = json.password;
             if (a == "18911114514" && b == "qwer2345!")
@@ -87,7 +101,7 @@ namespace Xmu.Crms.Controllers
                 var claims = new Claim[]
                 {
                     new Claim("id", user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, "student")
+                    new Claim("type", "student")
                 };
                 var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -102,9 +116,7 @@ namespace Xmu.Crms.Controllers
             }
             else if (a == "18911118978" && b == "asdf1234!")
                 return Json(" ");
-            else return Json(new { status = "err" });
-            
-
+            else return Json(new { status = "err" });          
         }
 
     }
