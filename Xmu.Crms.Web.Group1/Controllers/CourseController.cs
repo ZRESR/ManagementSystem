@@ -66,12 +66,14 @@ namespace Xmu.Crms.Controllers
         }
         //根据课程id获取seminar信息
         // GET: api/Course/{id}/Seminar
+
         [HttpGet("{id}/seminar")]
         public IActionResult getSeminar(long id)
         {
             var seminars = seminarService.ListSeminarByCourseId(id);
             return Json(seminars);
         }
+
         //根据courseId获取class信息
         //GET: api/course/{courseId}/class
         [HttpGet("{courseId}/class")]
