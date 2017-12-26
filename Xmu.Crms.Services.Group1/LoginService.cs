@@ -56,8 +56,23 @@ namespace Xmu.Crms.Services.Insomnia
             return user;
         }
 
-        public void DeleteTeacherAccount(long userId) => throw new NotImplementedException();
-
-        public void DeleteStudentAccount(long userId) => throw new NotImplementedException();
+        public void DeleteTeacherAccount(long userId)
+        {
+            UserInfo userInfo = _db.UserInfo.SingleOrDefault(u => u.Id == userId);
+            if (userInfo != null)
+            {
+                _db.UserInfo.Remove(userInfo);
+                _db.SaveChanges();
+            }
+        }
+        public void DeleteStudentAccount(long userId)
+        {
+            UserInfo userInfo = _db.UserInfo.SingleOrDefault(u => u.Id == userId);
+            if (userInfo != null)
+            {
+                _db.UserInfo.Remove(userInfo);
+                _db.SaveChanges();
+            }
+        }
     }
 }

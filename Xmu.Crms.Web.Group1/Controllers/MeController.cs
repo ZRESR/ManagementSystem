@@ -242,8 +242,8 @@ namespace Xmu.Crms.Controllers
             var id = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             UserInfo user = userService.GetUserByUserId(id);
             string str = json.number;
-            UserInfo tempUser = userService.GetUserByNumber(str);
-            if(tempUser==null)
+            UserInfo tempUser = userService.GetUserByUserNumber(str);
+            if (tempUser == null)
             {
                 user.Number = str;
                 str = json.name;
@@ -252,7 +252,7 @@ namespace Xmu.Crms.Controllers
                 School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
                 user.School = school;
                 userService.UpdateUserByUserId(user.Id, user);
-                
+                return Json(new { status = 200 });
             }
             else
             {
@@ -263,9 +263,25 @@ namespace Xmu.Crms.Controllers
                 str = json.school;
                 School school = schoolService.GetSchoolBySchoolId(long.Parse(str));
                 tempUser.School = school;
-                
+                tempUser.Type = Shared.Models.Type.Student;
+                userService.UpdateUserByUserId(tempUser.Id, tempUser);
+                loginService.DeleteStudentAccount(user.Id);
+                var claims = new Claim[]
+                    {
+                        new Claim("id", tempUser.Id.ToString()),
+                        new Claim("type", "student")
+                    };
+                var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.ServerSecretKey));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    null,
+                    null,
+                    claims,
+                    DateTime.Now, DateTime.Now.AddMinutes(30),
+                    creds);
+                var t = token.Claims.ElementAt(1).Value;
+                return Json(new { status = 201, token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
-            return Json(new { status = 200 });
         }
     }
 }
