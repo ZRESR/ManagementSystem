@@ -58,6 +58,11 @@
             $(".blueBigBtn").click(function () {
                 $(this).remove();
                 $("#list").off('click', '.GroupGradeIcon', hclick)
+                var a = $(".GradeDiv").children("div").find("#on").index
+                for (var i in a) {
+                    console.log(a[i])
+
+                }
                 $("#title").text("您的打分结果");
             });
             $("#list").on('click', '.GroupGradeIcon', hclick)
