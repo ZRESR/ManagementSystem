@@ -23,6 +23,7 @@ namespace Xmu.Crms.Controllers
             this.seminarGroupService = seminarGroupService;
             this.topicService = topicService;
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/grade/presentation")]
         public IActionResult PostGrade(long id,[FromQuery]long topicId, [FromQuery]int grade)
@@ -31,6 +32,7 @@ namespace Xmu.Crms.Controllers
             gradeService.InsertGroupGradeByUserId(topicId, userId, id, grade);
             return Json(new { status = 200 });
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}")]
         public IActionResult Get(long id)
@@ -39,6 +41,7 @@ namespace Xmu.Crms.Controllers
             var group = topicService.ListSeminarGroupTopicByGroupId(id);
             return Json(group);
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/leader")]
         public IActionResult GetLeader(long id)
@@ -48,6 +51,7 @@ namespace Xmu.Crms.Controllers
             if (leader == userId) return Json(new { isLeader = true });
             return Json(new { isLeader = false });
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/resign")]
         public IActionResult Resign(long id)
@@ -56,6 +60,7 @@ namespace Xmu.Crms.Controllers
             seminarGroupService.ResignLeaderById(id, userId);
             return Json(new { status = 200 });
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/assign")]
         public IActionResult Assign(long id)
@@ -68,13 +73,17 @@ namespace Xmu.Crms.Controllers
             }
             return Json(new { isLeader = false });
         }
+
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/topic")]
         public IActionResult Assign(long id, [FromQuery]long topicId)
         {
             var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            var group = seminarGroupService.GetSeminarGroupByGroupId(id);
+            if (topicService.GetRestTopicById(topicId, group.ClassInfo.Id) == 0)
+                return Json(new { isChoose = false });
             seminarGroupService.InsertTopicByGroupId(id, topicId);
-            return Json(new { status = 200 });
+            return Json(new { isChoose = true });
         }
     }
 }

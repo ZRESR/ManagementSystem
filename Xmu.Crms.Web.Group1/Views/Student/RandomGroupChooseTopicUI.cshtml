@@ -59,7 +59,6 @@
                     "Authorization": "Bearer " + token
                 },
                 success: function (data, status) {
-                    var topic = ["A", "B", "C"];
                     console.log(data)
                     for (var i in data.topics) {
                         var tdiv;
@@ -73,9 +72,9 @@
                             else color = "leftNumWhite";
                         }
 
-                        var col = "<div><div id='" + data.topics[i].id +"' class='" + tdiv + "'><span class='topic'>话题" + topic[i]
+                        var col = "<div><div id='" + data.topics[i].id + "' class='" + tdiv + "'><span class='topic'>话题" + data.topics[i].serial
                             + "</span><div class='hrVertical'> </div><span class='topicName'>" + data.topics[i].name
-                            + "</span><span class='" + color + "'>剩余 ： " + data.left[i] + "/" + data.topics[i].groupStudentLimit
+                            + "</span><span class='" + color + "'>剩余 ： " + data.left[i] + "/" + data.topics[i].groupNumberLimit
                             + "</span><img src='../images/home.png' class='nineIcon'/></div><div class='topicDescribeDiv'>"
                             + "<span class='topicDescribeTitle'>" + data.topics[i].name + "</span><span class='topicDescribeText'>"
                             + data.topics[i].description + "</span> </div> </div>";
@@ -93,7 +92,6 @@
                         return;
                     var confirmChoose = window.confirm("确定选择此话题吗？(一旦选定无法修改)");
                     if (confirmChoose) {
-                        window.localStorage.setItem("topic", $(this).children(".topicName").text());
                         var temp = {
                             topicId: $(this).attr("id"),
                             topicName: $(this).children(".topicName").text()
@@ -106,7 +104,20 @@
                             Content: msg
                         };
                         socket.send(JSON.stringify(msgObj));
-                        //window.history.go(-1);
+                        $.ajax({
+                            type: 'GET',
+                            url: "/api/group/" + window.localStorage.getItem("groupid") + "/topic",
+                            contentType: "application/json; charset=utf-8",
+                            data: {
+                                topicId: temp.topicId
+                            },
+                            headers: {
+                                "Authorization": "Bearer " + token
+                            },
+                            success: function (data, status) {
+                                window.history.go(-1);
+                            }
+                        });
                     }
                 }
             }

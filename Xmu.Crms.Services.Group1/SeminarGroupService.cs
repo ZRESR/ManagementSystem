@@ -189,7 +189,9 @@ namespace Xmu.Crms.Services.Insomnia
                 throw new ArgumentException();
             }
 
-            var group = _db.SeminarGroup.Find(groupId);
+            var group = _db.SeminarGroup
+                .Include(s => s.ClassInfo)
+                .SingleOrDefault(sg => sg.Id == groupId);
             if (group == null)
             {
                 throw new GroupNotFoundException();

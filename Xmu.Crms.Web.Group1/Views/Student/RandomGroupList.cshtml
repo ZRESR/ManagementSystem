@@ -60,6 +60,7 @@
                 success: function (data, status) {
                     console.log(data)
                     group = data.group;
+                    window.localStorage.setItem("groupid", group.id);
                     for (var i in data.members) {
                         var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.members[i].name
                             + "<br />" + data.members[i].number + "</div></div></div>";
@@ -75,11 +76,11 @@
                         },
                         success: function (data, status) {
                             console.log(data)
-                            if (data != null) {
-                                $("#btntopic").hide();
-                                $("#btnleader").hide();
-                                $(".middlegreyword").hide();
-                                $(".column3").hide();
+                            if (data != "") {
+                            //    $("#btntopic").hide();
+                            //    $("#btnleader").hide();
+                            //    $(".middlegreyword").hide();
+                            //    $(".column3").hide();
                                 $("#topicBox p").text(data[0].topic.name);
                             }
                         }
@@ -96,16 +97,16 @@
                             console.log(data)
                             if (data.isLeader == true) {
                                 $(".btnquit").show();
-                                $("#btnleader").hide();
-                                $(".middlegreyword").hide();
+                                //$("#btnleader").hide();
+                                //$(".middlegreyword").hide();
                                 $(".column3").show();
                                 $("#btntopic").show();
                             }
                             else if (group.leader != null) {
-                                $("#btntopic").hide();
-                                $("#btnleader").hide();
-                                $(".middlegreyword").hide();
-                                $(".column3").hide();
+                                //$("#btntopic").hide();
+                                //$("#btnleader").hide();
+                                //$(".middlegreyword").hide();
+                                //$(".column3").hide();
                             }
                         }
                     });
@@ -123,19 +124,19 @@
                         console.log(data)
                         if (data.isLeader == true) {
                             $(".btnquit").show();
-                            $("#btnleader").hide();
-                            $(".middlegreyword").hide();
+                            //$("#btnleader").hide();
+                            //$(".middlegreyword").hide();
                             $(".column3").show();
                             $("#btntopic").show();
                         }
                         else {
                             alert("其他组员已抢先成为队长")
-                            $(".btnquit").show();
+                            //$(".btnquit").show();
                             $(".btntopic").hide();
                             $("#btnleader").hide();
                             $(".middlegreyword").hide();
-                            $(".column3").show();
-                            $("#btntopic").show();
+                            //$(".column3").show();
+                            //$("#btntopic").show();
                         }
                     }
                 });
@@ -186,9 +187,9 @@
         </div>
     </div>
     <div class="middlediv">
-        <button id="btnleader" class="btnleader">成为队长</button>
+        <button id="btnleader" class="btnleader" style="display:none;">成为队长</button>
         <button id="btntopic" class="btnleader" style="display:none;">选题</button>
-        <p class="middlegreyword">您的队伍还没有队长，您可以选择成为队长。</p>
+        <p class="middlegreyword" style="display:none;">您的队伍还没有队长，您可以选择成为队长。</p>
     </div>
     <input type="hidden" id="refreshed" value="no" />
 </body>
