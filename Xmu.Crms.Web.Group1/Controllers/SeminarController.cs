@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Configuration;
 using Xmu.Crms.Shared.Models;
-using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
 using Xmu.Crms.Shared.Service;
-using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Xmu.Crms.Shared.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace Xmu.Crms.Controllers
 {
@@ -54,10 +51,46 @@ namespace Xmu.Crms.Controllers
                 var group = seminarGroupService.GetSeminarGroupById(id, userId);
                 var groupTopics = topicService.ListSeminarGroupTopicByGroupId(group.Id);
                 var allGroups = seminarGroupService.ListSeminarGroupBySeminarId(id);
-                foreach(var g in allGroups)
+                List<SeminarGroup> groups = allGroups.ToList<SeminarGroup>();
+                List<SeminarGroupTopic> topics = new List<SeminarGroupTopic>();
+                var sg = seminarGroupService.GetSeminarGroupByGroupId(groupTopics.First().SeminarGroup.Id);
+                if (groupTopics.Count == 1)
                 {
+                    foreach(var g in allGroups)
+                    {
+                        var t = topicService.ListSeminarGroupTopicByGroupId(g.Id);
+                        if(t.Count <= 0 || g.Id == group.Id || t.First().Id == groupTopics.First().Id)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            var sg2 = seminarGroupService.GetSeminarGroupByGroupId(t.First().SeminarGroup.Id);
+                            if (sg2.ClassInfo.Id != sg.ClassInfo.Id)
+                                continue;
+                        }
+                        topics.Add(t.First());
+                    }
                 }
-                return Json(groupTopics);
+                else
+                {
+                    foreach (var g in allGroups)
+                    {
+                        if (g.Id != group.Id)
+                        {
+                            var t = topicService.ListSeminarGroupTopicByGroupId(g.Id);
+                            if (t.Count <= 0)
+                            {
+                                continue;
+                            }
+                            var sg2 = seminarGroupService.GetSeminarGroupByGroupId(t.First().SeminarGroup.Id);
+                            if (sg2.ClassInfo.Id != sg.ClassInfo.Id)
+                                continue;
+                            topics.Add(t.First());
+                        }
+                    }
+                }
+                return Json(topics.GroupBy(g => g.Topic));
             }
             if(classid != 0)
             {
@@ -86,15 +119,18 @@ namespace Xmu.Crms.Controllers
             else
                 return Json(new{ status="false" });
         }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/topic")]
-        public IActionResult GetTopic(long id)
+        public IActionResult GetTopic(long id, [FromQuery]long classid)
         {
             var topics = topicService.ListTopicBySeminarId(id);
-            foreach(var t in topics)
+            List<int> left = new List<int>();
+            foreach (var t in topics)
             {
-                //topicService.GetRestTopicById(t.Id, );
+                int i = topicService.GetRestTopicById(t.Id, classid);
+                left.Add(i);
             }
-            return Json(topics);
+            return Json(new { topics = topics, left = left });
         }
     }
 }

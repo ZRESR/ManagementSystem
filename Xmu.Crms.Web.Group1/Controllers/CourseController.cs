@@ -42,17 +42,15 @@ namespace Xmu.Crms.Controllers
             else
             {
                 var classes = classService.ListClassByUserId(id);
-                var courses = "";
-                foreach(var i in classes)
+                List<Course> courses = new List<Course>();
+                List<long> classid = new List<long>();
+                foreach (var i in classes)
                 {
                     var course = courseService.GetCourseByCourseId(i.Course.Id);
-                    var temp =
-                    new {
-                        course = course,
-                        classid = i.Id
-                    };
+                    courses.Add(course);
+                    classid.Add(i.Id);
                 }
-                return Json(courses);
+                return Json(new { courses = courses, classid = classid });
             }
             
         }
