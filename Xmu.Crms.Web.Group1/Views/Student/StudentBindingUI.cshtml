@@ -54,7 +54,12 @@
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data, status) {
-                        $(window).attr("location", '/Teacher/TeacherMainUI');
+                        if (data.status == 200)
+                            $(window).attr("location", '/Student/StudentMainUI');
+                        else {
+                            window.localStorage.setItem("token", data.token);
+                            $(window).attr("location", '/Student/StudentMainUI');
+                        }
                     }
                 });     
                 $(window).attr("location", '/Student/StudentMainUI');
