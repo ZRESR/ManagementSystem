@@ -25,6 +25,11 @@
                 }
             });
             $(".ScoreBox").click(function () {
+                var a = window.localStorage.getItem("gradeStatus");
+                if (a == "over") {
+                    alert("您已经打过分了");
+                    return;
+                }
                 $(window).attr("location", '/Student/Score');
             });
             $(".GroupBox").click(function () {
