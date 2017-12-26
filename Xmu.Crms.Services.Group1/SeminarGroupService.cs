@@ -108,7 +108,7 @@ namespace Xmu.Crms.Services.Insomnia
             {
                 throw new GroupNotFoundException();
             }
-
+            if (group.Leader == null) return -1;
             return group.Leader.Id;
         }
 

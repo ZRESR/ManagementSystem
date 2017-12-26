@@ -16,10 +16,12 @@ namespace Xmu.Crms.Controllers
     {
         private IGradeService gradeService;
         private ISeminarGroupService seminarGroupService;
-        public GroupController(IGradeService gradeService, ISeminarGroupService seminarGroupService)
+        private ITopicService topicService;
+        public GroupController(IGradeService gradeService, ISeminarGroupService seminarGroupService, ITopicService topicService)
         {
             this.gradeService = gradeService;
             this.seminarGroupService = seminarGroupService;
+            this.topicService = topicService;
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/grade/presentation")]
@@ -34,8 +36,17 @@ namespace Xmu.Crms.Controllers
         public IActionResult Get(long id)
         {
             var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
-            var group = seminarGroupService.GetSeminarGroupByGroupId(id);
+            var group = topicService.ListSeminarGroupTopicByGroupId(id);
             return Json(group);
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id}/leader")]
+        public IActionResult GetLeader(long id)
+        {
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            var leader = seminarGroupService.GetSeminarGroupLeaderByGroupId(id);
+            if (leader == userId) return Json(new { isLeader = true });
+            return Json(new { isLeader = false });
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/resign")]
@@ -50,8 +61,12 @@ namespace Xmu.Crms.Controllers
         public IActionResult Assign(long id)
         {
             var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
-            seminarGroupService.AssignLeaderById(id, userId);
-            return Json(new { status = 200 });
+            if (seminarGroupService.GetSeminarGroupLeaderByGroupId(id) == -1)
+            {
+                seminarGroupService.AssignLeaderById(id, userId);
+                return Json(new { isLeader = true });
+            }
+            return Json(new { isLeader = false });
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/topic")]

@@ -33,6 +33,7 @@
 
         $(document).ready(function () {
             var token = window.localStorage.getItem("token")
+            var group;
             $(window).bind("unload", function () { });
             //var topic = window.localStorage.getItem("topic");
             /*if (topic != null) {
@@ -58,22 +59,99 @@
                 },
                 success: function (data, status) {
                     console.log(data)
+                    group = data.group;
                     for (var i in data.members) {
                         var col = "<div class='block'><div class='panel-body'> <div class='column1'><img src='../images/user.png'/></div><div class='column2'>" + data.members[i].name
                             + "<br />" + data.members[i].number + "</div></div></div>";
                         $("#list").append(col);
                     }
                     $(".seminarblackword").text(data.group.seminar.name + "-" + "随机分组");
+                    $.ajax({
+                        type: 'GET',
+                        url: "/api/group/" + group.id,
+                        contentType: "application/json; charset=utf-8",
+                        headers: {
+                            "Authorization": "Bearer " + token
+                        },
+                        success: function (data, status) {
+                            console.log(data)
+                            if (data != null) {
+                                $("#btntopic").hide();
+                                $("#btnleader").hide();
+                                $(".middlegreyword").hide();
+                                $(".column3").hide();
+                                $("#topicBox p").text(data[0].topic.name);
+                            }
+                        }
+                    })
+
+                    $.ajax({
+                        type: 'GET',
+                        url: "/api/group/" + group.id + "/leader",
+                        contentType: "application/json; charset=utf-8",
+                        headers: {
+                            "Authorization": "Bearer " + token
+                        },
+                        success: function (data, status) {
+                            console.log(data)
+                            if (data.isLeader == true) {
+                                $(".btnquit").show();
+                                $("#btnleader").hide();
+                                $(".middlegreyword").hide();
+                                $(".column3").show();
+                                $("#btntopic").show();
+                            }
+                            else if (group.leader != null) {
+                                $("#btntopic").hide();
+                                $("#btnleader").hide();
+                                $(".middlegreyword").hide();
+                                $(".column3").hide();
+                            }
+                        }
+                    });
                 }
             });
             $("#btnleader").click(function () {
-                $(".btnquit").show();
-                $("#btnleader").hide();
-                $(".middlegreyword").hide();
-                $(".column3").show();
-                $("#btntopic").show();
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/group/" + group.id + "/assign",
+                    contentType: "application/json; charset=utf-8",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (data, status) {
+                        console.log(data)
+                        if (data.isLeader == true) {
+                            $(".btnquit").show();
+                            $("#btnleader").hide();
+                            $(".middlegreyword").hide();
+                            $(".column3").show();
+                            $("#btntopic").show();
+                        }
+                        else {
+                            alert("其他组员已抢先成为队长")
+                            $(".btnquit").show();
+                            $(".btntopic").hide();
+                            $("#btnleader").hide();
+                            $(".middlegreyword").hide();
+                            $(".column3").show();
+                            $("#btntopic").show();
+                        }
+                    }
+                });
             });
             $(".btnquit").click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "/api/group/" + group.id + "/resign",
+                    contentType: "application/json; charset=utf-8",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (data, status) {
+                        console.log(data)
+                    }
+                });
                 $(".btnquit").hide();
                 $("#btnleader").show();
                 $(".middlegreyword").show();
@@ -104,6 +182,7 @@
     <div class="whiteword">
         <div id="topicBox" class="panel-body">
             <div>选题：</div>
+            <p style='margin:auto; width:80%; text-align:center;'>暂未选题</p>
         </div>
     </div>
     <div class="middlediv">
