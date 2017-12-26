@@ -15,9 +15,11 @@ namespace Xmu.Crms.Controllers
     public class GroupController : Controller
     {
         private IGradeService gradeService;
-        public GroupController(IGradeService gradeService)
+        private ISeminarGroupService seminarGroupService;
+        public GroupController(IGradeService gradeService, ISeminarGroupService seminarGroupService)
         {
             this.gradeService = gradeService;
+            this.seminarGroupService = seminarGroupService;
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}/grade/presentation")]
@@ -25,7 +27,39 @@ namespace Xmu.Crms.Controllers
         {
             var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
             gradeService.InsertGroupGradeByUserId(topicId, userId, id, grade);
-            return Json(new { status = grade });
+            return Json(new { status = 200 });
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id}")]
+        public IActionResult Get(long id)
+        {
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            var group = seminarGroupService.GetSeminarGroupByGroupId(id);
+            return Json(group);
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id}/resign")]
+        public IActionResult Resign(long id)
+        {
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            seminarGroupService.ResignLeaderById(id, userId);
+            return Json(new { status = 200 });
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id}/assign")]
+        public IActionResult Assign(long id)
+        {
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            seminarGroupService.AssignLeaderById(id, userId);
+            return Json(new { status = 200 });
+        }
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id}/topic")]
+        public IActionResult Assign(long id, [FromQuery]long topicId)
+        {
+            var userId = long.Parse(User.Claims.Single(c => c.Type == "id").Value);
+            seminarGroupService.InsertTopicByGroupId(id, topicId);
+            return Json(new { status = 200 });
         }
     }
 }
